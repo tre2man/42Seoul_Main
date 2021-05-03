@@ -14,9 +14,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-void	ft_bzero(void *s, size_t n)
+void ft_bzero(void *s, size_t n)
 {
-	char *a = (char*)s;
+	char *a;
+
+	a = (char *)s;
 	while (n--)
 		*a++ = 0;
 }

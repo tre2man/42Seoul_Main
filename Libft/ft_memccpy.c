@@ -14,13 +14,16 @@
 #include <string.h>
 #include <stdlib.h>
 
-void		*ft_memccpy(void *restrict dst, void *restrict src, int c, size_t n)
+void *ft_memccpy(void *restrict dst, void *restrict src, int c, size_t n)
 {
-	char	*dstemp = (char*)dst;
-	char	*srctemp = (char*)src;
+	char *dstemp;
+	char *srctemp;
+
+	dstemp = (char *)dst;
+	srctemp = (char *)src;
 	if (dst != src)
 	{
-		while(n--)
+		while (n--)
 		{
 			if (*srctemp == (unsigned char)c)
 				return (dstemp + 1);
@@ -33,10 +36,10 @@ void		*ft_memccpy(void *restrict dst, void *restrict src, int c, size_t n)
 int main()
 {
 	char dst[10] = "kkkk";
-	char src[10] = "asdf";	
+	char src[10] = "asdf";
 	char dst1[10] = "kkkk";
 	char src1[10] = "asdf";
 
-	printf("%s %s\n",ft_memccpy(dst,src,'z',4),dst);
-	printf("%s %s\n",memccpy(dst1,src1,'z',4),dst1);
+	printf("%s %s\n", ft_memccpy(dst, src, 'z', 4), dst);
+	printf("%s %s\n", memccpy(dst1, src1, 'z', 4), dst1);
 }

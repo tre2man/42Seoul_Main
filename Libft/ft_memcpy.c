@@ -18,6 +18,9 @@ void		*ft_memcpy(void *restrict dst, void *restrict src, size_t n)
 {
 	char	*dstemp = (char*)dst;
 	char	*srcemp = (char*)src;
+
+	dstemp = (char*)dst;
+	srcemp = (char*)src;
 	if (dst != src)
 	{
 		while(n--)
