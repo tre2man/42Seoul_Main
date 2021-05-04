@@ -1,4 +1,14 @@
-//42헤더 추가
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/04 16:45:21 by namwkim           #+#    #+#             */
+/*   Updated: 2021/05/04 16:50:44 by namwkim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,7 +31,7 @@ void *ft_memmove(void *dest, const void *src, size_t n)
     else
     {
         while (n--)
-            *--destemp = *--srctemp;
+            *destemp++ = *srctemp++;
     }
     return (dest);
 }
@@ -29,7 +39,7 @@ void *ft_memmove(void *dest, const void *src, size_t n)
 int main()
 {
     char str[] = "memmove can be very useful......";
-    ft_memmove(str + 20, str + 15, 11);
+    ft_memmove(str + 15, str + 20, 3);
     puts(str);
     return 0;
 }
