@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 17:27:46 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/04 18:06:06 by namwkim          ###   ########.fr       */
+/*   Created: 2021/05/04 17:54:53 by namwkim           #+#    #+#             */
+/*   Updated: 2021/05/04 18:11:11 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(const char *str)
+int		ft_isalpha(int c)
 {
-	int	ans;
-	int minus;
-
-	ans = 0;
-	minus = 1;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			minus = -1;
-		str++;
-	}
-	while ('0' <= *str && *str <= '9')
-	{
-		ans = (ans * 10) + minus * (*str - '0');
-		str++;	
-	}
-	return (ans);
+	if (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'))
+		return (1);
+	return (0);
 }

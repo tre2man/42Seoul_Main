@@ -10,12 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-
-size_t		ft_strlen(const char *s)
+unsigned int		ft_strlen(const char *s)
 {
-	size_t i;
+	unsigned int i;
 	
 	i = 0;
 	while(*s++)
@@ -23,11 +20,4 @@ size_t		ft_strlen(const char *s)
 	return (i);
 }
 
-int main()
-{
-	char str[100] = "";
-	printf("%u\n",strlen(str));
-	printf("%u\n",ft_strlen(str));
-	return (0);
-}
 	

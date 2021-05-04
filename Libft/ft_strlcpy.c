@@ -10,12 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-
-size_t			ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
+unsigned int			ft_strlcpy(char *restrict dst, const char *restrict src, unsigned int dstsize)
 {
-	size_t		i;
+	unsigned int		i;
 
 	i = 0;
 	while(dst[i] && i + 1 < dstsize)
@@ -29,12 +26,3 @@ size_t			ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize
 	return (i);
 }
 
-int main()
-{
-	char src[] = "hello";
-	char dst[] = "goods";	
-	char src1[] = "hello";
-	char dst1[] = "goods";	
-	printf("%ld %s\n",strlcpy(dst, src, 3), dst);
-	printf("%ld %s",ft_strlcpy(dst1, src1, 3), dst1);
-}

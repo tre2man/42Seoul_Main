@@ -10,11 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-void		*ft_memcpy(void *restrict dst, void *restrict src, size_t n)
+void		*ft_memcpy(void *restrict dst, void *restrict src, unsigned int n)
 {
 	char	*dstemp = (char*)dst;
 	char	*srcemp = (char*)src;
@@ -27,14 +23,4 @@ void		*ft_memcpy(void *restrict dst, void *restrict src, size_t n)
 			*dstemp++ = *srcemp++;
 	}
 	return (dst);
-}
-
-int main()
-{
-	char test1[10] = "asdf";
-	char test2[10] = "zxcv";
-
-	memcpy(test2, test1, 20);
-	printf("%s",test2);
-	return (0);
 }

@@ -10,12 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-
-size_t		ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
+unsigned int		ft_strlcat(char *restrict dst, const char *restrict src, unsigned int dstsize)
 {
-	size_t	i, j, k;
+	unsigned int	i, j, k;
 
 	i = 0;
 	j = 0;
@@ -35,11 +32,3 @@ size_t		ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
 	return (i + j - k);
 }
 
-int main()
-{
-	char src[] = "good morning";
-	char dst[] = "hello";
-	printf("%d\n", ft_strlcat(dst, src, 7));
-	printf("%s\n", dst);
-	return (0);
-}

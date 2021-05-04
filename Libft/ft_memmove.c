@@ -10,11 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-void *ft_memmove(void *dest, const void *src, size_t n)
+void *ft_memmove(void *dest, const void *src, unsigned int n)
 {
     char *destemp;
     const char *srctemp;
@@ -34,12 +30,4 @@ void *ft_memmove(void *dest, const void *src, size_t n)
             *destemp++ = *srctemp++;
     }
     return (dest);
-}
-
-int main()
-{
-    char str[] = "memmove can be very useful......";
-    ft_memmove(str + 15, str + 20, 3);
-    puts(str);
-    return 0;
 }

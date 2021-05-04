@@ -10,17 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-
-void *ft_memccpy(void *restrict dst, void *restrict src, int c, size_t n)
+void *ft_memccpy(void *restrict dst, void *restrict src, int c, unsigned int n)
 {
-	char *dstemp;
-	char *srctemp;
+	unsigned char *dstemp;
+	unsigned char *srctemp;
 
-	dstemp = (char *)dst;
-	srctemp = (char *)src;
+	dstemp = (unsigned char *)dst;
+	srctemp = (unsigned char *)src;
 	if (dst != src)
 	{
 		while (n--)
@@ -30,16 +26,6 @@ void *ft_memccpy(void *restrict dst, void *restrict src, int c, size_t n)
 			*dstemp++ = *srctemp++;
 		}
 	}
-	return (NULL);
+	return (0);
 }
 
-int main()
-{
-	char dst[10] = "kkkk";
-	char src[10] = "asdf";
-	char dst1[10] = "kkkk";
-	char src1[10] = "asdf";
-
-	printf("%s %s\n", ft_memccpy(dst, src, 'z', 4), dst);
-	printf("%s %s\n", memccpy(dst1, src1, 'z', 4), dst1);
-}

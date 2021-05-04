@@ -10,15 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-#include <xlocale.h>
-
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, unsigned int len)
 {
-	int	i;
-	int	j;
-	int	correct;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	correct;
 
 	i = 0;
 	while(haystack[i])
@@ -37,14 +33,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 			return (char*)(haystack + i);
 		i++;
 	}
-	return (NULL);
-}
-
-int main()
-{
-	char big[] = "go go yogurt";
-	char little[] = "";
-	printf("return(gurt) : %s\n", ft_strnstr(big,little,14));	// return(gurt) : gurt
-	printf("return(null) : %s\n", ft_strnstr(big,little,9));	//return(null) : null
 	return (0);
 }
+

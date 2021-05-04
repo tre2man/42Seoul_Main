@@ -10,11 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-void ft_bzero(void *s, size_t n)
+void ft_bzero(void *s, unsigned int n)
 {
 	char *a;
 
@@ -23,15 +19,3 @@ void ft_bzero(void *s, size_t n)
 		*a++ = 0;
 }
 
-int main()
-{
-	char test1[10] = "asdf";
-	char test2[10] = "asdf";
-	int temp = 1;
-
-	ft_bzero(test1, temp);
-	bzero(test2, temp);
-
-	printf("%s\n%s", test1, test2);
-	return (0);
-}
