@@ -6,14 +6,14 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 16:54:16 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/03 17:45:14 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/05 14:19:42 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void *ft_memccpy(void *restrict dst, void *restrict src, int c, unsigned int n)
+void				*ft_memccpy(void *dst, void *src, int c, unsigned int n)
 {
-	unsigned char *dstemp;
-	unsigned char *srctemp;
+	unsigned char	*dstemp;
+	unsigned char	*srctemp;
 
 	dstemp = (unsigned char *)dst;
 	srctemp = (unsigned char *)src;
@@ -28,4 +28,3 @@ void *ft_memccpy(void *restrict dst, void *restrict src, int c, unsigned int n)
 	}
 	return (0);
 }
-

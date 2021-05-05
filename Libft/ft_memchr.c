@@ -6,16 +6,16 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 11:50:04 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/04 12:13:52 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/05 14:12:26 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(const void *s, int c, unsigned int n)
+void			*ft_memchr(const void *s, int c, unsigned int n)
 {
-	const char *a;
+	const char	*a;
 
 	a = s;
-	while(n--)
+	while (n--)
 	{
 		if (*a == c)
 			return ((void*)a);
@@ -23,4 +23,3 @@ void	*ft_memchr(const void *s, int c, unsigned int n)
 	}
 	return (0);
 }
-

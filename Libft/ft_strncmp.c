@@ -6,19 +6,18 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 17:20:33 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/04 17:24:51 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/05 14:19:32 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_strncmp(const char *s1, const char *s2, unsigned int n)
 {
-	while(n-- && *s1 && *s2)
+	while (n-- && *s1 && *s2)
 	{
-		if(*s1 != *s2)
+		if (*s1 != *s2)
 			return (*s1 - *s2);
 		s1++;
 		s2++;
 	}
 	return (*s1 - *s2);
 }
-

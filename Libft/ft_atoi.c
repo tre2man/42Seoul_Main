@@ -6,7 +6,7 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 17:27:46 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/04 18:06:06 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/05 14:25:46 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_atoi(const char *str)
 	while ('0' <= *str && *str <= '9')
 	{
 		ans = (ans * 10) + minus * (*str - '0');
-		str++;	
+		str++;
 	}
 	return (ans);
 }

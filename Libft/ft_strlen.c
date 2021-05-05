@@ -6,18 +6,16 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 12:16:03 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/04 12:20:10 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/05 14:18:35 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 unsigned int		ft_strlen(const char *s)
 {
-	unsigned int i;
-	
+	unsigned int	i;
+
 	i = 0;
-	while(*s++)
+	while (*s++)
 		i++;
 	return (i);
 }
-
-	

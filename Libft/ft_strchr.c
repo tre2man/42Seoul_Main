@@ -6,18 +6,18 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 16:02:09 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/04 18:16:00 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/05 14:14:06 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char		*ft_strchr(const char *s, int c)
 {
-	char *a;
+	char	*a;
 
 	a = (char*)s;
-	while(*a++)
+	while (*a++)
 	{
-		if(*a == (unsigned char)c)
+		if (*a == (unsigned char)c)
 			return (a);
 	}
 	return (0);
