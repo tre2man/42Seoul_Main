@@ -6,11 +6,11 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 16:23:47 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 16:41:52 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/05 16:51:03 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 char				*ft_strdup(const char *s1)
 {

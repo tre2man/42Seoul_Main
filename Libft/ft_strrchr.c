@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 16:02:09 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 18:50:12 by namwkim          ###   ########.fr       */
+/*   Created: 2021/05/05 19:20:22 by namwkim           #+#    #+#             */
+/*   Updated: 2021/05/05 19:32:54 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char		*ft_strchr(const char *s, int c)
-{
-	char	*a;
+#include "libft.h"
 
-	a = (char*)s;
-	while (*a++)
+char			*ft_strrchr(const char *s, int c)
+{
+	int			i;
+	int			j;
+
+	i = 0;
+	j = -1;
+	while (s[i])
 	{
-		if (*a == (unsigned char)c)
-			return (a);
+		if (s[i] == (unsigned char)c)
+			j = i;
+		i++;
 	}
-	return (0);
+	if (j == -1)
+		return (0);
+	return ((char*)s + j);
 }

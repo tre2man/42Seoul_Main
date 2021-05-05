@@ -6,9 +6,11 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:46:45 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 15:33:28 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/05 18:20:06 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 void			*ft_memmove(void *dest, const void *src, unsigned int n)
 {

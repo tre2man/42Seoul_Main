@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 16:02:09 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 18:50:12 by namwkim          ###   ########.fr       */
+/*   Created: 2021/05/05 17:12:50 by namwkim           #+#    #+#             */
+/*   Updated: 2021/05/05 17:21:42 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char		*ft_strchr(const char *s, int c)
-{
-	char	*a;
+#include "libft.h"
 
-	a = (char*)s;
-	while (*a++)
-	{
-		if (*a == (unsigned char)c)
-			return (a);
-	}
-	return (0);
+char				*ft_strjoin(char const *s1, char const *s2)
+{
+	char			*s;
+	unsigned int	len1;
+	unsigned int	len2;
+	unsigned int	i;
+
+	len1 = strlen(s1);
+	len2 = strlen(s2);
+	i = 0;
+	s = malloc(len1 + len2 + 1);
+	while (*s1)
+		s[i++] = *s1++;
+	while (*s2)
+		s[i++] = *s2++;
+	s[i] = *s2;
+	return (s);
 }
