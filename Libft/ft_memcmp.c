@@ -6,7 +6,7 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:36:55 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 19:40:23 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/05 19:42:29 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int			memcmp(const void *s1, const void *s2, unsigned int n)
 {
-	char 	*p1;
+	char	*p1;
 	char	*p2;
 
 	p1 = (char*)s1;
 	p2 = (char*)s2;
-	while(n--)
+	while (n--)
 	{
 		if (*p1 != *p2)
 			return (1);
