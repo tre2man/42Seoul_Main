@@ -6,7 +6,7 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 15:24:09 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 15:34:45 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/05 16:43:33 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ int				ft_strncmp(const char *s1, const char *s2, unsigned int n);
 char			*ft_strnstr(char *haystack, char *needle, unsigned int len);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
+void			*ft_calloc(unsigned int count, unsigned int size);
+char			*ft_strdup(const char *s1);
 
 /* Part2 - Additional functions */
