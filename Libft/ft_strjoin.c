@@ -6,7 +6,7 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 17:12:50 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 17:21:42 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/06 18:14:09 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char				*ft_strjoin(char const *s1, char const *s2)
 	unsigned int	len2;
 	unsigned int	i;
 
+	if (!s1 || !s2)
+		return (0);
 	len1 = strlen(s1);
 	len2 = strlen(s2);
 	i = 0;

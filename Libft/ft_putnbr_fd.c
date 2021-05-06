@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/05 16:23:47 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/06 18:57:01 by namwkim          ###   ########.fr       */
+/*   Created: 2021/05/06 18:44:14 by namwkim           #+#    #+#             */
+/*   Updated: 2021/05/06 18:46:13 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strdup(const char *s1)
+void			ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
-	char	*a;
+	char	*str;
 
-	i = 0;
-	while (s1[i])
-		i++;
-	a = malloc(i);
-	i = 0;
-	while (*s1)
-		a[i++] = *s1++;
-	a[i] = s1[i];
-	return (a);
+	if (fd < 0)
+		return ;
+	str = ft_itoa(n);
+	write(fd, str, ft_strlen(str));
+	write(fd, "\n", 1);
 }

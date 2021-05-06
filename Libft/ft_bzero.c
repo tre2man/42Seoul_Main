@@ -6,11 +6,13 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 16:23:53 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 14:27:13 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/06 18:48:22 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void		ft_bzero(void *s, unsigned int n)
+#include "libft.h"
+
+void		ft_bzero(void *s, size_t n)
 {
 	char	*a;
 

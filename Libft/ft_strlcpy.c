@@ -6,13 +6,15 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 12:21:22 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 14:19:23 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/06 18:54:05 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int			ft_strlcpy(char *dst, char *src, unsigned int size)
+#include "libft.h"
+
+size_t		ft_strlcpy(char *dst, char *src, size_t size)
 {
-	unsigned int		i;
+	size_t	i;
 
 	i = 0;
 	while (dst[i] && i + 1 < size)

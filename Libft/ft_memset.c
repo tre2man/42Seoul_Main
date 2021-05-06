@@ -6,14 +6,16 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 14:38:48 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 14:13:50 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/06 18:50:52 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void				*ft_memset(void *s, int c, unsigned int n)
+#include "libft.h"
+
+void		*ft_memset(void *s, int c, size_t n)
 {
-	char			*a;
-	unsigned int	i;
+	char	*a;
+	size_t	i;
 
 	a = (char *)s;
 	i = 0;

@@ -6,11 +6,13 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 11:50:04 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 14:12:26 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/06 18:48:37 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void			*ft_memchr(const void *s, int c, unsigned int n)
+#include "libft.h"
+
+void			*ft_memchr(const void *s, int c, size_t n)
 {
 	const char	*a;
 

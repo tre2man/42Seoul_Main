@@ -6,15 +6,15 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 16:07:23 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 19:58:15 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/06 18:55:17 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char				*ft_strnstr(char *haystack, char *needle, unsigned int len)
+char		*ft_strnstr(char *haystack, char *needle, size_t len)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	correct;
+	size_t	i;
+	size_t	j;
+	size_t	correct;
 
 	i = 0;
 	while (haystack[i])

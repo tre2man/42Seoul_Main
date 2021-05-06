@@ -6,7 +6,7 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 17:46:15 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/06 13:30:40 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/06 18:13:29 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char				*ft_strtrim(char const *s1, char const *set)
 	unsigned int	rear;
 	char			*ans;
 
-	if (!*s1 || !*set)
+	if (!s1 || !set)
 		return (0);
 	ans = 0;
 	front = 0;
@@ -32,4 +32,3 @@ char				*ft_strtrim(char const *s1, char const *set)
 		ft_strlcpy(ans, s1 + front, rear - front + 2);
 	return (ans);
 }
-

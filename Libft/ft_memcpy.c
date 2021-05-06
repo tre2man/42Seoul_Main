@@ -6,11 +6,13 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 16:33:21 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 16:49:55 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/06 18:48:07 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void		*ft_memcpy(void *dst, void *src, unsigned int n)
+#include "libft.h"
+
+void		*ft_memcpy(void *dst, void *src, size_t n)
 {
 	char	*dstemp;
 	char	*srcemp;
