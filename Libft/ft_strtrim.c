@@ -6,43 +6,30 @@
 /*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 17:46:15 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 19:19:46 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/06 13:30:40 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int			ft_strcheck(char *s1, char *s2)
-{
-	while (*s1 && *s2)
-	{
-		if (*s1++ != *s2++)
-			return (0);
-	}
-	return (1);
-}
-
 char				*ft_strtrim(char const *s1, char const *set)
 {
-	unsigned int	i;
-	char			*str;
-	char			*temp;
+	unsigned int	front;
+	unsigned int	rear;
+	char			*ans;
 
-	str = ft_strdup(s1);
-	i = 0;
-	while (str[i])
-	{
-		if (ft_strcheck((str + i), (char*)set))
-		{
-			temp = ft_strdup(str);
-			temp[i] = '\0';
-			str = ft_strjoin(temp, temp + i + ft_strlen(set));
-		}
-		else
-			i++;
-	}
-	if (!ft_strcmp(s1, str))
+	if (!*s1 || !*set)
 		return (0);
-	else
-		return (str);
+	ans = 0;
+	front = 0;
+	rear = ft_strlen(s1) - 1;
+	while (s1[front] && ft_strchr(set, s1[front]))
+		front++;
+	while (s1[rear] && ft_strchr(set, s1[rear]) && front < rear + 1)
+		rear--;
+	ans = malloc(rear - front + 1);
+	if (ans)
+		ft_strlcpy(ans, s1 + front, rear - front + 2);
+	return (ans);
 }
+
