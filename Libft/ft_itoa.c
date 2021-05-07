@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 static int			ft_numlen(long int n)
 {
 	unsigned int	len;
@@ -30,12 +32,12 @@ static int			ft_numlen(long int n)
 	return (len);
 }
 
-char				*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	char			*ans;
-	unsigned int	len;
-	unsigned int	check;
-	int				isminus;
+	size_t	len;
+	size_t	check;
+	size_t	isminus;
 
 	len = ft_numlen((long int)n);
 	ans = malloc(len + 1);

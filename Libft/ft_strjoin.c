@@ -12,17 +12,17 @@
 
 #include "libft.h"
 
-char				*ft_strjoin(char const *s1, char const *s2)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
-	char			*s;
-	unsigned int	len1;
-	unsigned int	len2;
-	unsigned int	i;
+	char	*s;
+	size_t	len1;
+	size_t	len2;
+	size_t	i;
 
 	if (!s1 || !s2)
 		return (0);
-	len1 = strlen(s1);
-	len2 = strlen(s2);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
 	i = 0;
 	s = malloc(len1 + len2 + 1);
 	while (*s1)

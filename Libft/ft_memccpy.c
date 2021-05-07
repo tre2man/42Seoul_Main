@@ -14,18 +14,20 @@
 
 void		*ft_memccpy(void *dst, void *src, int c, size_t n)
 {
-	size_t	*dstemp;
-	size_t	*srctemp;
+	char	*dstemp;
+	char	*srctemp;
 
-	dstemp = (size_t *)dst;
-	srctemp = (size_t *)src;
+	dstemp = (char *)dst;
+	srctemp = (char *)src;
 	if (dst != src)
 	{
 		while (n--)
 		{
-			if (*srctemp == (size_t)c)
+			*dstemp = *srctemp;
+			if (*srctemp == (char)c)
 				return (dstemp + 1);
-			*dstemp++ = *srctemp++;
+			dstemp++;
+			srctemp++;
 		}
 	}
 	return (0);

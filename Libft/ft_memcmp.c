@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int			memcmp(const void *s1, const void *s2, unsigned int n)
+int			ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	char	*p1;
 	char	*p2;
@@ -22,7 +22,7 @@ int			memcmp(const void *s1, const void *s2, unsigned int n)
 	while (n--)
 	{
 		if (*p1 != *p2)
-			return (1);
+			return (*p1 - *p2);
 		p1++;
 		p2++;
 	}

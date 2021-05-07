@@ -20,5 +20,4 @@ void			ft_putnbr_fd(int n, int fd)
 		return ;
 	str = ft_itoa(n);
 	write(fd, str, ft_strlen(str));
-	write(fd, "\n", 1);
 }
