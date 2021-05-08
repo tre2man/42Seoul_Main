@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 19:36:55 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 19:42:29 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/08 14:58:04 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_memcmp(const void *s1, const void *s2, size_t n)
+int					ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	*p1;
-	char	*p2;
+	unsigned char	*p1;
+	unsigned char	*p2;
 
-	p1 = (char*)s1;
-	p2 = (char*)s2;
+	p1 = (unsigned char*)s1;
+	p2 = (unsigned char*)s2;
 	while (n--)
 	{
 		if (*p1 != *p2)

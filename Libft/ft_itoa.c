@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:52:32 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/06 17:53:10 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/08 16:14:43 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int			ft_numlen(long int n)
+static int		ft_numlen(long int n)
 {
-	unsigned int	len;
-	long int		check;
+	size_t		len;
+	long int	check;
 
 	len = 1;
 	check = 10;
@@ -32,12 +32,12 @@ static int			ft_numlen(long int n)
 	return (len);
 }
 
-char		*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	char			*ans;
-	size_t	len;
-	size_t	check;
-	size_t	isminus;
+	char		*ans;
+	size_t		len;
+	size_t		check;
+	size_t		isminus;
 
 	len = ft_numlen((long int)n);
 	ans = malloc(len + 1);

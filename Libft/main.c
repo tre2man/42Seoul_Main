@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/03 14:38:48 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/08 14:16:28 by namwkim          ###   ########.fr       */
+/*   Created: 2021/05/08 14:45:49 by namwkim           #+#    #+#             */
+/*   Updated: 2021/05/08 19:23:27 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <string.h>
 #include "libft.h"
 
-void		*ft_memset(void *s, int c, size_t n)
+int main()
 {
-	char	*a;
-
-	a = (char *)s;
-	while (n--)
-		*a++ = c;
-	return (s);
+	char *s1 = "lol";
+    char *s2 = "\t \n";
+	char dest[15];
+	int i = 0;
+	
+	ft_putstr_fd(ft_strdup(s1), 1);
 }

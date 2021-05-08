@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 16:02:09 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 18:50:12 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/08 16:21:55 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ char		*ft_strchr(const char *s, int c)
 			return (a);
 		a++;
 	}
-	return ("");
+	return (0);
 }

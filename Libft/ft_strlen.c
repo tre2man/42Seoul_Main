@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 12:16:03 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 14:18:35 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/08 14:28:13 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int		ft_strlen(const char *s)
+#include "libft.h"
+
+size_t		ft_strlen(const char *s)
 {
-	unsigned int	i;
+	size_t	i;
 
 	i = 0;
 	while (*s++)

@@ -3,27 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 17:27:46 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/05 14:25:46 by namwkim          ###   ########.fr       */
+/*   Created: 2021/05/08 13:58:15 by namwkim           #+#    #+#             */
+/*   Updated: 2021/05/08 19:00:56 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(const char *str)
-{
-	int	ans;
-	int minus;
+#include "libft.h"
 
+static int	ft_iscontrol(char c)
+{
+	if (9 <= c && c <= 13)
+		return (1);
+	return (0);
+}
+
+int			ft_atoi(const char *str)
+{
+	int		ans;
+	int		minus;
+
+	if (!str)
+		return (0);
 	ans = 0;
 	minus = 1;
+	while (*str != '+' && *str != '-' && *str
+			&& (ft_iscontrol(*str) || *str == ' '))
+		str++;
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
 			minus = -1;
 		str++;
 	}
-	while ('0' <= *str && *str <= '9')
+	while (ft_isdigit(*str))
 	{
 		ans = (ans * 10) + minus * (*str - '0');
 		str++;
