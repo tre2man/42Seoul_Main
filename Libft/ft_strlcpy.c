@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 12:21:22 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/08 14:27:32 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/10 13:22:36 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t		ft_strlcpy(char *dst, char *src, size_t size)
 	i = 0;
 	if (!dst || !src)
 		return (0);
-	while (src[i] && i + 1 < size)
+	while (src[i] && i < size - 1)
 	{
 		dst[i] = src[i];
 		i++;

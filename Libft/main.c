@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 14:45:49 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/08 19:23:27 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/10 12:44:44 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,15 @@
 
 int main()
 {
-	char *s1 = "lol";
-    char *s2 = "\t \n";
+	char *s1 = "lorem ipsum dolor sit amet";
+    char *s2 = malloc(15);
 	char dest[15];
 	int i = 0;
 	
-	ft_putstr_fd(ft_strdup(s1), 1);
+	memset(s2,0,15);
+	memset(s2,'r',6);
+	ft_putstr_fd(s2, 1);
+	ft_putstr_fd("\n", 1);
+	ft_strlcpy(s2, s1, 0);
+	ft_putstr_fd(s2, 1);
 }
