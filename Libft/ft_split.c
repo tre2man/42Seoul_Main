@@ -36,11 +36,11 @@ static char		*ft_cutstr(char *s, char c)
 	size_t		i;
 
 	i = 0;
-	while (s[i] != c)
+	while (s[i] && s[i] != c)
 		i++;
-	word = malloc(i + 1);
+	word = malloc(sizeof(char) * (i + 1));
 	i = 0;
-	while (*s != c)
+	while (*s && *s != c)
 		word[i++] = *s++;
 	word[i] = '\0';
 	return (word);
@@ -65,7 +65,7 @@ char			**ft_split(char const *s, char c)
 	i = 0;
 	words = ft_countwords(s, c);
 	a = (char*)s;
-	ans = malloc(sizeof(char*) * words + 1);
+	ans = malloc(sizeof(char*) * (words + 1));
 	while (*a && words--)
 	{
 		while (*a == c)

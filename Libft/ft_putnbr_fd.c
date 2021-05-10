@@ -12,12 +12,25 @@
 
 #include "libft.h"
 
-void			ft_putnbr_fd(int n, int fd)
+static void	ft_rec(int n, int fd)
 {
-	char	*str;
+	int		input;
+	char	out;
 
+	input = n % 10;
+	if (input < 0)
+		input *= -1;
+	out = input + '0';
+	if (n > 9 || n < -9)
+		ft_rec(n / 10, fd);
+	write(fd, &out, 1);
+}
+
+void		ft_putnbr_fd(int n, int fd)
+{
 	if (fd < 0)
 		return ;
-	str = ft_itoa(n);
-	write(fd, str, ft_strlen(str));
+	if (n < 0)
+		write(fd, "-", 1);
+	ft_rec(n, fd);
 }

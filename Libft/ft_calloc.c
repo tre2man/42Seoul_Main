@@ -16,6 +16,8 @@ void		*ft_calloc(size_t count, size_t size)
 {
 	void	*a;
 
-	a = (void*)malloc(sizeof(char*) * count * size);
+	if (!(a = (void*)malloc(count * size)))
+		return (0);
+	ft_memset(a, 0, count * size);
 	return (a);
 }

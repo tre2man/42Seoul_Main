@@ -18,10 +18,20 @@ char		*ft_substr(char const *s, size_t start, size_t len)
 	size_t	slen;
 	size_t	i;
 
-	slen = ft_strlen(s);
-	if (start > slen)
+	if (!s)
 		return (0);
-	a = (char*)malloc(sizeof(char) * (len + 1));
+	slen = ft_strlen(s);
+	if (start > slen || !*s)
+	{
+		a = malloc(1);
+		*a = '\0';
+		return (a);
+	}
+	if (start + len > slen)
+		a = (char*)malloc(sizeof(char) * (len + 1));
+	else
+		if (!(a = (char*)malloc(sizeof(char) * (slen - start + 1))))
+			return (0);
 	i = 0;
 	while (i < len)
 	{

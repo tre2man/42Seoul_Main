@@ -16,15 +16,9 @@
 
 int main()
 {
-	char *s1 = "lorem ipsum dolor sit amet";
-    char *s2 = malloc(15);
-	char dest[15];
-	int i = 0;
-	
-	memset(s2,0,15);
-	memset(s2,'r',6);
-	ft_putstr_fd(s2, 1);
+	char	*s1 = "99999999999999999999";
+	char	*s2 = "";
+	ft_putnbr_fd(ft_atoi(s1), 1);
 	ft_putstr_fd("\n", 1);
-	ft_strlcpy(s2, s1, 0);
-	ft_putstr_fd(s2, 1);
+	ft_putnbr_fd(atoi(s1), 1);
 }
