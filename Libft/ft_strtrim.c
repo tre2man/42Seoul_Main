@@ -24,8 +24,7 @@ char		*ft_strtrim(char const *s1, char const *set)
 	rear = ft_strlen(s1);
 	while (s1[front] && ft_strchr(set, s1[front]))
 		front++;
-	while (rear >= 0 && s1[rear - 1] &&
-				ft_strchr(set, s1[rear - 1]) && front < rear)
+	while (s1[rear - 1] && ft_strchr(set, s1[rear - 1]) && front < rear)
 		rear--;
 	ans = (char*)malloc(sizeof(char) * (rear - front + 1));
 	if (ans)

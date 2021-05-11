@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "_bonus.h"
+#include "libft.h"
 
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*))
 {
@@ -25,7 +25,7 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*))
 	while (lst)
 	{
 		temp = malloc(sizeof(t_list));
-		ft_lstadd_back(temp, f(lst->content));
+		ft_lstadd_back(&temp, f(lst->content));
 		lst = lst->next;
 		temp = temp->next;
 	}

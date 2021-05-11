@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "_bonus.h"
+#include "libft.h"
 
 void		ft_lstclear(t_list **lst, void (*del)(void*))
 {
@@ -22,6 +22,6 @@ void		ft_lstclear(t_list **lst, void (*del)(void*))
 	{
 		temp = *explore;
 		del(temp->content);
-		*explore = *(explore->next);
+		*explore = (*explore)->next;
 	}
 }

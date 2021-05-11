@@ -12,6 +12,9 @@
 
 #include "libft.h"
 
+#define INT32_MAX 2147483647
+#define INT32_MIN -INT32_MAX - 1
+
 static int		ft_iscontrol(char c)
 {
 	if (9 <= c && c <= 13)
