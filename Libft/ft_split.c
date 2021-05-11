@@ -19,6 +19,8 @@ static size_t	ft_countwords(char const *s, char c)
 
 	i = 1;
 	ans = 0;
+	if (!*s)
+		return (0);
 	if (s[0] != c)
 		ans++;
 	while (s[i])
@@ -48,7 +50,7 @@ static char		*ft_cutstr(char *s, char c)
 
 static char		*ft_nextstr(char *s, char c)
 {
-	while (*s != c)
+	while (*s && *s != c)
 		s++;
 	return (s);
 }
@@ -65,7 +67,7 @@ char			**ft_split(char const *s, char c)
 	i = 0;
 	words = ft_countwords(s, c);
 	a = (char*)s;
-	ans = malloc(sizeof(char*) * (words + 1));
+	ans = (char**)malloc(sizeof(char*) * (words + 1));
 	while (*a && words--)
 	{
 		while (*a == c)

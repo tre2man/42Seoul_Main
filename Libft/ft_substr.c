@@ -12,11 +12,24 @@
 
 #include "libft.h"
 
+static char	*ft_assign(char *a, char const *s, size_t len, size_t start)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		a[i] = s[start + i];
+		i++;
+	}
+	a[i] = '\0';
+	return (a);
+}
+
 char		*ft_substr(char const *s, size_t start, size_t len)
 {
 	char	*a;
 	size_t	slen;
-	size_t	i;
 
 	if (!s)
 		return (0);
@@ -29,15 +42,8 @@ char		*ft_substr(char const *s, size_t start, size_t len)
 	}
 	if (start + len > slen)
 		a = (char*)malloc(sizeof(char) * (len + 1));
-	else
-		if (!(a = (char*)malloc(sizeof(char) * (slen - start + 1))))
-			return (0);
-	i = 0;
-	while (i < len)
-	{
-		a[i] = s[start + i];
-		i++;
-	}
-	a[i] = '\0';
+	else if (!(a = (char*)malloc(sizeof(char) * (slen - start + 1))))
+		return (0);
+	a = ft_assign(a, s, len, start);
 	return (a);
 }
