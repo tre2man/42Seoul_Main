@@ -40,7 +40,8 @@ char			*ft_itoa(int n)
 	size_t		isminus;
 
 	len = ft_numlen((long int)n);
-	ans = malloc(len + 1);
+	if (!(ans = malloc(len + 1)))
+		return (0);
 	ans[len] = '\0';
 	if (n < 0)
 	{

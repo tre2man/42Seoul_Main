@@ -17,10 +17,12 @@ void		ft_lstiter(t_list *lst, void (*f)(void*))
 	t_list	*temp;
 
 	temp = lst;
-	while (temp->next)
+	if (lst)
 	{
-		f(temp->content);
-		temp = temp->next;
+		while (temp)
+		{
+			f(temp->content);
+			temp = temp->next;
+		}
 	}
-	f(temp->content);
 }

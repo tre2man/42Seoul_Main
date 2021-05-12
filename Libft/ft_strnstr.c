@@ -18,6 +18,8 @@ char		*ft_strnstr(char *haystack, char *needle, size_t len)
 	size_t	j;
 	size_t	correct;
 
+	if (!ft_strncmp(haystack, needle, INT32_MAX))
+		return (haystack);
 	i = 0;
 	while (haystack[i])
 	{
