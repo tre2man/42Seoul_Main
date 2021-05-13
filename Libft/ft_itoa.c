@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 16:52:32 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/08 16:14:43 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/13 17:35:41 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,22 @@ static int		ft_numlen(long int n)
 	return (len);
 }
 
+static void		ft_init(int n, char **ans,
+						size_t *isminus, unsigned long *check)
+{
+	if (n < 0)
+	{
+		*check = -(unsigned long)n;
+		*ans[0] = '-';
+		*isminus = 1;
+	}
+	else
+	{
+		*check = (unsigned long)n;
+		*isminus = 0;
+	}
+}
+
 char			*ft_itoa(int n)
 {
 	char		*ans;
@@ -43,17 +59,7 @@ char			*ft_itoa(int n)
 	if (!(ans = malloc(len + 1)))
 		return (0);
 	ans[len] = '\0';
-	if (n < 0)
-	{
-		check = -(unsigned int)n;
-		ans[0] = '-';
-		isminus = 1;
-	}
-	else
-	{
-		check = (unsigned int)n;
-		isminus = 0;
-	}
+	ft_init(n, &ans, &isminus, &check);
 	while (len-- > isminus)
 	{
 		ans[len] = '0' + (check % 10);
