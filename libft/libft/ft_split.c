@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 13:33:33 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/08 14:20:28 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/18 11:33:46 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char			**ft_split(char const *s, char c)
 	size_t		i;
 	size_t		words;
 
-	if (!s || !c)
+	if (!s)
 		return (0);
 	i = 0;
 	words = ft_countwords(s, c);

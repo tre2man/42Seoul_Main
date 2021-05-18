@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 16:07:23 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/17 17:27:44 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/18 12:04:06 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	correct;
 
 	if (!ft_strncmp(haystack, needle, INT32_MAX))
-		return (haystack);
+		return ((char*)haystack);
 	i = 0;
 	while (haystack[i])
 	{
@@ -29,11 +29,11 @@ char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		{
 			if (haystack[i + j] != needle[j])
 				correct = 0;
-			if (i + j + 1 >= len)
+			if (i + j >= len)
 				correct = 0;
 			j++;
 		}
-		if (correct)
+		if (correct && !needle[j])
 			return (char*)(haystack + i);
 		i++;
 	}
