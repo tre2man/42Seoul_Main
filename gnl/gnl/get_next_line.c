@@ -23,6 +23,23 @@ int			get_next_line(int fd, char **line)
 	return (fd);
 }
 
+char		*ft_strdup(const char *s1)
+{
+	size_t	i;
+	char	*a;
+
+	i = 0;
+	if (!(a = (char*)malloc((sizeof(char)) * (ft_strlen(s1) + 1))))
+		return (0);
+	while (i < ft_strlen(s1))
+	{
+		a[i] = s1[i];
+		i++;
+	}
+	a[i] = '\0';
+	return (a);
+}
+
 int main()
 {
 	int             fd;
@@ -40,6 +57,7 @@ int main()
 	}
 	while ((i = get_next_line(fd, &line)) > 0)
 	{
+		printf("--%d--\n",i);
 		printf("|%s\n", line);
 		lineadress[j - 1] = line;
 		j++;

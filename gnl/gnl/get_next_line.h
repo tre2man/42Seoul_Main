@@ -17,17 +17,24 @@
 # include <fcntl.h>
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 32
+# define BUFFER_SIZE 4
 #endif
 
 /*
 ** get_next_line.c
 */
 int			get_next_line(int fd, char **line);
+char		*ft_strdup(const char *s1);
 
 /*
 ** get_next_line_utils.c
 */
+char		*ft_save(char *s);
+size_t		ft_strlen(const char *s);
+char		*ft_substr(char const *s, size_t start, size_t len);
+size_t		ft_findnext(const char *s);
+char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strrchr(const char *s, int c);
 
 #endif
 
