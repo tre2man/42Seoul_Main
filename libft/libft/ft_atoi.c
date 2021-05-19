@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 13:58:15 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/12 16:10:31 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/19 16:43:01 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_iscontrol(char c)
+static int		ft_iscontrol(char c):
 {
 	if (9 <= c && c <= 13)
 		return (1);
