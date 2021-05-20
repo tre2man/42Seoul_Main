@@ -16,10 +16,16 @@ CC				= gcc
 CFLAGS			= -Wall -Wextra -Werror
 NAME			= libft.a
 
+ifdef IS_BONUS
+	NOW_OBJS = $(PARTS_OBJS) $(BONUS_OBJS)
+else
+	NOW_OBJS = $(PARTS_OBJS)
+endif
+
 all				: $(NAME)
 
-$(NAME)			: $(PARTS_OBJS)
-				ar rcs $(NAME) $(PARTS_OBJS)
+$(NAME)			: $(NOW_OBJS)
+				ar rcs $(NAME) $(NOW_OBJS)
 
 clean			:
 				rm -f $(PARTS_OBJS) $(BONUS_OBJS)
@@ -29,7 +35,7 @@ fclean			: clean
 
 re				: fclean all
 
-bonus			: $(PARTS_OBJS) $(BONUS_OBJS)
-				ar rcs $(NAME) $(PARTS_OBJS) $(BONUS_OBJS)
+bonus			:
+				IS_BONUS=1 $(MAKE) $(NAME)
 
 .PHONY			: all clean fclean re bonus

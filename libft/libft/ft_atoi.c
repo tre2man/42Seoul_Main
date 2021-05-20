@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int		ft_iscontrol(char c):
+static int		ft_iscontrol(char c)
 {
 	if (9 <= c && c <= 13)
 		return (1);
@@ -38,9 +38,9 @@ int				ft_atoi(const char *str)
 	while (ft_isdigit(*str))
 	{
 		ans = (ans * 10) + minus * (*str - '0');
-		if (ans < INT32_MIN)
+		if (ans > __LONG_LONG_MAX__)
 			return (0);
-		else if (ans > INT32_MAX)
+		else if (ans < -__LONG_LONG_MAX__ - 1)
 			return (-1);
 		str++;
 	}

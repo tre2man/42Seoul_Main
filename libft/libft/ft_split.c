@@ -12,6 +12,16 @@
 
 #include "libft.h"
 
+static void		ft_freestr(char ***str)
+{
+	size_t		i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+}
+
 static size_t	ft_countwords(char const *s, char c)
 {
 	size_t		i;
@@ -74,6 +84,11 @@ char			**ft_split(char const *s, char c)
 		while (*a == c)
 			a++;
 		ans[i++] = ft_cutstr(a, c);
+		if (!ans[i - 1])
+		{
+			ft_freestr(&ans);
+			return (0);
+		}
 		a = ft_nextstr(a, c);
 	}
 	ans[i] = 0;
