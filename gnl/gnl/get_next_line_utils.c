@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 14:49:14 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/18 18:58:31 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/21 17:51:52 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,58 +15,18 @@
 char			*ft_save(char *s)
 {
 	static char	*saved;
-	static char	*back;
-	char		*temp;
-	size_t		blen;
-	int			i;
-
-	blen = ft_strlen(s);
-	saved = (char*)malloc(sizeof(char) * (1000));
-	saved = (char*)malloc(sizeof(char) * (1000));
+	static char *back;
+	char		*next;
+	
+	saved = (char*)malloc(sizeof(char) * 1000);
+	back = (char*)malloc(sizeof(char) * 1000);
+	
+	saved = ft_strjoin((const char*)saved, (const char*)back);
+	saved = ft_strjoin(saved, s);
+	back = ft_strrchr((const char*)s, '\n');
 	if (back)
-	{
-		ft_strjoin((const char*)saved, (const char*)back);
-		free(back);
-	}
-	back = ft_strrchr((const char*)saved, '\n');
-	temp = ft_substr((char const*)s, 0, ft_findnext((const char*)s));
-	ft_strjoin((const char*)saved, (const char*)temp);
-}
-
-char		*ft_substr(char const *s, size_t start, size_t len)
-{
-	char	*a;
-	size_t	slen;
-	size_t	i;
-
-	if (!s)
-		return (0);
-	slen = ft_strlen(s);
-	if (start > slen)
-		return (ft_strdup(""));
-	if (slen < start + len)
-		len = slen - start;
-	if (!(a = (char*)malloc(sizeof(char) * (len + 1))))
-		return (0);
-	i = 0;
-	while (i < len)
-	{
-		a[i] = s[i + start];
-		i++;
-	}
-	a[i] = '\0';
-	return (a);
-}
-
-size_t			ft_findnext(const char *s)
-{
-	size_t		i;
-
-	i = 0;
-	while(*s++)
-		if(*s == '\n')
-			return (i);
-	return (i);
+		ft_strjoin(back, next);
+	return (saved);
 }
 
 size_t			ft_strlen(const char *s)
