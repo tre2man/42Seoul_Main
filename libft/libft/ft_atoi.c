@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 13:58:15 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/19 16:43:01 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/21 16:12:49 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,6 @@ int				ft_atoi(const char *str)
 	while (ft_isdigit(*str))
 	{
 		ans = (ans * 10) + minus * (*str - '0');
-		if (ans > __LONG_LONG_MAX__)
-			return (0);
-		else if (ans < -__LONG_LONG_MAX__ - 1)
-			return (-1);
 		str++;
 	}
 	return ((int)ans);

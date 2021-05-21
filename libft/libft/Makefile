@@ -36,6 +36,6 @@ fclean			: clean
 re				: fclean all
 
 bonus			:
-				IS_BONUS=1 $(MAKE) $(NAME)
+				IS_BONUS=1 $(MAKE)
 
 .PHONY			: all clean fclean re bonus

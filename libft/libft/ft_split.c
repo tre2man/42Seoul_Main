@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 13:33:33 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/18 11:33:46 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/21 14:04:23 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,7 @@ char			**ft_split(char const *s, char c)
 	{
 		while (*a == c)
 			a++;
-		ans[i++] = ft_cutstr(a, c);
-		if (!ans[i - 1])
+		if (!(ans[i++] = ft_cutstr(a, c)))
 		{
 			ft_freestr(&ans);
 			return (0);
