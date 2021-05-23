@@ -6,13 +6,13 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 13:33:33 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/21 14:04:23 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/23 17:12:11 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		ft_freestr(char ***str)
+static void		ft_freestr(char **str)
 {
 	size_t		i;
 
@@ -85,7 +85,7 @@ char			**ft_split(char const *s, char c)
 			a++;
 		if (!(ans[i++] = ft_cutstr(a, c)))
 		{
-			ft_freestr(&ans);
+			ft_freestr(ans);
 			return (0);
 		}
 		a = ft_nextstr(a, c);
