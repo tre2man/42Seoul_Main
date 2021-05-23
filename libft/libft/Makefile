@@ -36,6 +36,7 @@ fclean			: clean
 re				: fclean all
 
 bonus			:
+				sleep 1
 				IS_BONUS=1 $(MAKE)
 
 .PHONY			: all clean fclean re bonus
