@@ -12,71 +12,49 @@
 
 #include "get_next_line.h"
 
-char			*ft_save(char *s)
-{
-	static char	*saved;
-	static char *back;
-	char		*next;
-	
-	saved = (char*)malloc(sizeof(char) * 1000);
-	back = (char*)malloc(sizeof(char) * 1000);
-	
-	saved = ft_strjoin((const char*)saved, (const char*)back);
-	saved = ft_strjoin(saved, s);
-	back = ft_strrchr((const char*)s, '\n');
-	if (back)
-		ft_strjoin(back, next);
-	return (saved);
-}
-
-size_t			ft_strlen(const char *s)
+size_t		ft_strlen(const char *s)
 {
 	size_t	i;
 
 	i = 0;
-	while (*s++)
-		i++;
+	if (s)
+		while (*s++)
+			i++;
 	return (i);
 }
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char		*ft_strjoin(char *s1, char *s2)
 {
 	char	*s;
 	size_t	len1;
 	size_t	len2;
 	size_t	i;
 
-	if (!s1 || !s2)
+	if (!s2)
 		return (0);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	i = 0;
 	if (!(s = malloc(len1 + len2 + 1)))
 		return (0);
-	while (*s1)
-		s[i++] = *s1++;
+	if (s1)
+		while (*s1)
+			s[i++] = *s1++;
 	while (*s2)
 		s[i++] = *s2++;
 	s[i] = *s2;
 	return (s);
 }
 
-char	*ft_strrchr(const char *s, int c)
+char		*ft_inchar(char *s, char c)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = -1;
-	while (s[i])
+	while (*s)
 	{
-		if ((unsigned char)s[i] == (unsigned char)c)
-			j = i;
-		i++;
+		if (*s == c)
+			return (s);
+		s++;
 	}
-	if ((unsigned char)s[i] == (unsigned char)c)
-		j = i;
-	if (j == -1)
-		return (0);
-	return ((char*)s + j);
+	if (*s == c)
+		return (s);
+	return (0);
 }

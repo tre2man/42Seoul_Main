@@ -11,41 +11,51 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-int			get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
-	char	*str;
-	ssize_t	size;
-	
-	str = (char*)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	while(1)
+	static char	*save;
+	char		str[BUFFER_SIZE + 1];
+	char		*temp;
+	ssize_t		size;
+
+	if (fd < 0 || !line || BUFFER_SIZE <= 0)
+		return (-1);
+	while ((size = read(fd, str, BUFFER_SIZE)) > 0)
 	{
-		size = read(fd, str, BUFFER_SIZE);
 		str[BUFFER_SIZE] = '\0';
-		*line = ft_save(str);
-		if (ft_strrchr(str, '\n'))
-			break;
+		save = ft_strjoin(save, str);
+		temp = ft_inchar(save, '\n');
+		if (temp)
+		{
+			*temp = '\0';
+			*line = save;
+			save = temp + 1;
+			break ;
+		}
 	}
-	/*
-	size = read(fd, str, BUFFER_SIZE);
-	str[BUFFER_SIZE] = '\0';
-	*line = str;
-	printf("%s\n", str);
-	*/
-	return (fd);
+	if (!size)
+	{
+		str[BUFFER_SIZE] = '\0';
+		save = ft_strjoin(save, str);
+		*line = save;
+	}
+	return (size);
 }
 
 int main()
 {
-	int				fd;
-	int				i;
-	int				j;
-	char			*line = 0;
+	int             fd;
+	int             i;
+	int             j;
+	char    		*line = 0;
 	char			*lineadress[66];
 	
 	j = 1;
-	
+	printf("\n==========================================\n");
+	printf("========== TEST 1 : The Alphabet =========\n");
+	printf("==========================================\n\n");
+
 	if (!(fd = open("alphabet", O_RDONLY)))
 	{
 		printf("\nError in open\n");
@@ -54,12 +64,20 @@ int main()
 	while ((i = get_next_line(fd, &line)) > 0)
 	{
 		printf("|%s\n", line);
-		//lineadress[j - 1] = line;
+		lineadress[j - 1] = line;
 		j++;
-		if (j > 500)
-			break;
 	}
-	//printf("|%s\n", line);
+	printf("|%s\n", line);
 	free(line);
 	close(fd);
+
+	if (i == -1)
+		printf ("\nError in Fonction - Returned -1\n");
+	else if (j == 66)
+		printf("\nRight number of lines\n");
+	else if (j != 66)
+		printf("\nNot Good - Wrong Number Of Lines\n");
+	while (--j > 0)
+		free(lineadress[j - 1]);
+	j = 1;
 }

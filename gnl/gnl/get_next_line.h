@@ -18,7 +18,7 @@
 # include <stdio.h>
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 4
+# define BUFFER_SIZE 8
 #endif
 
 /*
@@ -31,8 +31,8 @@ int			get_next_line(int fd, char **line);
 */
 char		*ft_save(char *s);
 size_t		ft_strlen(const char *s);
-char		*ft_strjoin(char const *s1, char const *s2);
-char		*ft_strrchr(const char *s, int c);
+char		*ft_strjoin(char *s1, char *s2);
+char		*ft_inchar(char *s, char c);
 
 #endif
 
