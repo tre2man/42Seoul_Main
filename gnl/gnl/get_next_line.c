@@ -12,19 +12,34 @@
 
 #include "get_next_line.h"
 
+char			*ft_strsave(char *save, char *buff)
+{
+	char		*ans;
+
+	ans = ft_strjoin(save, buff);
+	printf("save : %s\n", save);
+	return (ans);
+}
+
 int				get_next_line(int fd, char **line)
 {
 	static char	*save;
-	char		str[BUFFER_SIZE + 1];
+	char		*buff;
+	char		*tempsave;
 	char		*temp;
 	ssize_t		size;
 
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
-	while ((size = read(fd, str, BUFFER_SIZE)) > 0)
+	if (!(buff = (char*)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		return (-1);
+	while ((size = read(fd, buff, BUFFER_SIZE)) > 0)
 	{
-		str[BUFFER_SIZE] = '\0';
-		save = ft_strjoin(save, str);
+		buff[BUFFER_SIZE] = '\0';
+		tempsave = ft_strsave(save, buff);
+		save = ft_strdup(tempsave);
+		if (tempsave)
+			free(tempsave);
 		temp = ft_inchar(save, '\n');
 		if (temp)
 		{
@@ -33,13 +48,10 @@ int				get_next_line(int fd, char **line)
 			save = temp + 1;
 			break ;
 		}
+		ft_memset(buff, 0, sizeof(buff));
 	}
 	if (!size)
-	{
-		str[BUFFER_SIZE] = '\0';
-		save = ft_strjoin(save, str);
 		*line = save;
-	}
 	return (size);
 }
 
@@ -56,7 +68,7 @@ int main()
 	printf("========== TEST 1 : The Alphabet =========\n");
 	printf("==========================================\n\n");
 
-	if (!(fd = open("alphabet", O_RDONLY)))
+	if (!(fd = open("42TESTERS-GNL/files/alphabet", O_RDONLY)))
 	{
 		printf("\nError in open\n");
 		return (0);
@@ -79,5 +91,5 @@ int main()
 		printf("\nNot Good - Wrong Number Of Lines\n");
 	while (--j > 0)
 		free(lineadress[j - 1]);
-	j = 1;
+	system("leaks a.out");
 }

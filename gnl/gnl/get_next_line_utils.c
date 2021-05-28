@@ -18,7 +18,7 @@ size_t		ft_strlen(const char *s)
 
 	i = 0;
 	if (s)
-		while (*s++)
+		while (*s++ > 0)
 			i++;
 	return (i);
 }
@@ -57,4 +57,31 @@ char		*ft_inchar(char *s, char c)
 	if (*s == c)
 		return (s);
 	return (0);
+}
+
+void		*ft_memset(void *s, int c, size_t n)
+{
+	char	*a;
+
+	a = (char *)s;
+	while (n--)
+		*a++ = c;
+	return (s);
+}
+
+char		*ft_strdup(const char *s1)
+{
+	size_t	i;
+	char	*a;
+
+	i = 0;
+	if (!(a = (char*)malloc((sizeof(char)) * (ft_strlen(s1) + 1))))
+		return (0);
+	while (i < ft_strlen(s1))
+	{
+		a[i] = s1[i];
+		i++;
+	}
+	a[i] = '\0';
+	return (a);
 }

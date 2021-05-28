@@ -29,10 +29,11 @@ int			get_next_line(int fd, char **line);
 /*
 ** get_next_line_utils.c
 */
-char		*ft_save(char *s);
+void		*ft_memset(void *s, int c, size_t n);
 size_t		ft_strlen(const char *s);
 char		*ft_strjoin(char *s1, char *s2);
 char		*ft_inchar(char *s, char c);
+char		*ft_strdup(const char *s1);
 
 #endif
 
