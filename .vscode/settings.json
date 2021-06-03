@@ -5,6 +5,7 @@
         "stdio.h": "c",
         "__string": "cpp",
         "cstdio": "cpp",
-        "locale": "cpp"
+        "locale": "cpp",
+        "get_next_line.h": "c"
     }
 }

@@ -12,69 +12,62 @@
 
 #include "get_next_line.h"
 
-size_t		ft_strlen(const char *s)
+size_t		ft_strlen(char const *s)
 {
 	size_t	i;
 
 	i = 0;
-	if (s)
-		while (*s++ > 0)
-			i++;
+	if (!s)
+		return (0);
+	while(s[i])
+		i++;
 	return (i);
 }
 
-char		*ft_strjoin(char *s1, char *s2)
+char		*ft_strjoin_(char const *s1, char const *s2)
 {
 	char	*s;
 	size_t	len1;
 	size_t	len2;
 	size_t	i;
 
-	if (!s2)
+	if (!s1 && !s2)
 		return (0);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	i = 0;
 	if (!(s = malloc(len1 + len2 + 1)))
 		return (0);
+	i = 0;
 	if (s1)
 		while (*s1)
 			s[i++] = *s1++;
 	while (*s2)
 		s[i++] = *s2++;
-	s[i] = *s2;
+	s[i] = '\0';
+	free((char*)(s1 - len1));
 	return (s);
-}
-
-char		*ft_inchar(char *s, char c)
-{
-	while (*s)
-	{
-		if (*s == c)
-			return (s);
-		s++;
-	}
-	if (*s == c)
-		return (s);
-	return (0);
 }
 
 void		*ft_memset(void *s, int c, size_t n)
 {
 	char	*a;
 
+	if (!s)
+		return (0);
 	a = (char *)s;
 	while (n--)
 		*a++ = c;
 	return (s);
 }
 
-char		*ft_strdup(const char *s1)
+char		*ft_strdup(char *s1)
 {
 	size_t	i;
 	char	*a;
 
 	i = 0;
+	if (!s1)
+		return (0);
 	if (!(a = (char*)malloc((sizeof(char)) * (ft_strlen(s1) + 1))))
 		return (0);
 	while (i < ft_strlen(s1))
@@ -82,6 +75,26 @@ char		*ft_strdup(const char *s1)
 		a[i] = s1[i];
 		i++;
 	}
-	a[i] = '\0';
+	a[i] = s1[i];
 	return (a);
+}
+
+size_t		ft_strlcpy(char *dst, char *src, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	if (!dst || !src)
+		return (0);
+	if (!size)
+		return (ft_strlen(src));
+	while (src[i] && i + 1 < size)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	while (src[i])
+		i++;
+	return (i);
 }

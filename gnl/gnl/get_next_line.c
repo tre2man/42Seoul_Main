@@ -12,84 +12,89 @@
 
 #include "get_next_line.h"
 
-char			*ft_strsave(char *save, char *buff)
+char			*get_next(char *save)
 {
+	int			i;
 	char		*ans;
 
-	ans = ft_strjoin(save, buff);
-	printf("save : %s\n", save);
+	if (!save)
+		return (0);
+	while(save[i] && save[i] != '\n')
+		i++;
+	if (!save[i])
+	{
+		free(save);
+		return (0);
+	}
+	if (!(ans = malloc(sizeof(char) * ((ft_strlen(save) - i) + 1))))
+		return (0);
+	ft_strlcpy(ans, save + i + 1, ft_strlen(save + i + 1) + 1);
+	free(save);
 	return (ans);
+}
+
+char			*get_now(char *save)
+{
+	int			len;
+	int			idx;
+	char		*ans;
+
+	if (!save)
+		return (0);
+	len = 0;
+	idx = 0;
+	while(save[len] && save[len] != '\n')
+		len++;
+	if (!(ans = malloc(sizeof(char) * (len + 1))))
+		return (0);
+	ft_memset(ans, 0, sizeof(char) * (len + 1));
+	while(save[idx] && save[idx] != '\n')
+	{
+		ans[idx] = save[idx];
+		idx++;
+	}
+	return (ans);
+}
+
+int				in_newline(char *save)
+{
+	if (!save)
+		return (0);
+	while(*save)
+	{
+		if (*save == '\n')
+			return (1);
+		save++;
+	}
+	return (0);
 }
 
 int				get_next_line(int fd, char **line)
 {
-	static char	*save;
-	char		*buff;
-	char		*tempsave;
-	char		*temp;
-	ssize_t		size;
+	static char *save;
+	char		*buffer;
+	int			rread;
 
-	if (fd < 0 || !line || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || !line)
 		return (-1);
-	if (!(buff = (char*)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
-	while ((size = read(fd, buff, BUFFER_SIZE)) > 0)
+	rread = 1;
+	while (!in_newline(save) && rread != 0)
 	{
-		buff[BUFFER_SIZE] = '\0';
-		tempsave = ft_strsave(save, buff);
-		save = ft_strdup(tempsave);
-		if (tempsave)
-			free(tempsave);
-		temp = ft_inchar(save, '\n');
-		if (temp)
+		ft_memset(buffer, 0, sizeof(char) * (BUFFER_SIZE + 1));
+		rread = read(fd, buffer, BUFFER_SIZE);
+		if (rread == -1)
 		{
-			*temp = '\0';
-			*line = save;
-			save = temp + 1;
-			break ;
+			free(buffer);
+			return (-1);
 		}
-		ft_memset(buff, 0, sizeof(buff));
+		save = ft_strjoin_(save, buffer);
 	}
-	if (!size)
-		*line = save;
-	return (size);
-}
-
-int main()
-{
-	int             fd;
-	int             i;
-	int             j;
-	char    		*line = 0;
-	char			*lineadress[66];
-	
-	j = 1;
-	printf("\n==========================================\n");
-	printf("========== TEST 1 : The Alphabet =========\n");
-	printf("==========================================\n\n");
-
-	if (!(fd = open("42TESTERS-GNL/files/alphabet", O_RDONLY)))
-	{
-		printf("\nError in open\n");
+	free(buffer);
+	*line = get_now(save);
+	save = get_next(save);
+	if (!rread)
 		return (0);
-	}
-	while ((i = get_next_line(fd, &line)) > 0)
-	{
-		printf("|%s\n", line);
-		lineadress[j - 1] = line;
-		j++;
-	}
-	printf("|%s\n", line);
-	free(line);
-	close(fd);
-
-	if (i == -1)
-		printf ("\nError in Fonction - Returned -1\n");
-	else if (j == 66)
-		printf("\nRight number of lines\n");
-	else if (j != 66)
-		printf("\nNot Good - Wrong Number Of Lines\n");
-	while (--j > 0)
-		free(lineadress[j - 1]);
-	system("leaks a.out");
+	return (1);
 }
