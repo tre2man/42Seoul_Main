@@ -19,7 +19,7 @@ size_t		ft_strlen(char const *s)
 	i = 0;
 	if (!s)
 		return (0);
-	while(s[i])
+	while (s[i])
 		i++;
 	return (i);
 }
@@ -58,25 +58,6 @@ void		*ft_memset(void *s, int c, size_t n)
 	while (n--)
 		*a++ = c;
 	return (s);
-}
-
-char		*ft_strdup(char *s1)
-{
-	size_t	i;
-	char	*a;
-
-	i = 0;
-	if (!s1)
-		return (0);
-	if (!(a = (char*)malloc((sizeof(char)) * (ft_strlen(s1) + 1))))
-		return (0);
-	while (i < ft_strlen(s1))
-	{
-		a[i] = s1[i];
-		i++;
-	}
-	a[i] = s1[i];
-	return (a);
 }
 
 size_t		ft_strlcpy(char *dst, char *src, size_t size)

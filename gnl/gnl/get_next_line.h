@@ -15,9 +15,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 8
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 8
+# endif
 
 /*
 ** get_next_line.c
@@ -30,8 +30,6 @@ int			get_next_line(int fd, char **line);
 void		*ft_memset(void *s, int c, size_t n);
 size_t		ft_strlen(char const *s);
 char		*ft_strjoin_(char const *s1, char const *s2);
-char		*ft_strdup(char *s1);
 size_t		ft_strlcpy(char *dst, char *src, size_t size);
 
 #endif
-

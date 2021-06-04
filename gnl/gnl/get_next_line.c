@@ -19,7 +19,8 @@ char			*get_next(char *save)
 
 	if (!save)
 		return (0);
-	while(save[i] && save[i] != '\n')
+	i = 0;
+	while (save[i] && save[i] != '\n')
 		i++;
 	if (!save[i])
 	{
@@ -43,12 +44,12 @@ char			*get_now(char *save)
 		return (0);
 	len = 0;
 	idx = 0;
-	while(save[len] && save[len] != '\n')
+	while (save[len] && save[len] != '\n')
 		len++;
 	if (!(ans = malloc(sizeof(char) * (len + 1))))
 		return (0);
 	ft_memset(ans, 0, sizeof(char) * (len + 1));
-	while(save[idx] && save[idx] != '\n')
+	while (save[idx] && save[idx] != '\n')
 	{
 		ans[idx] = save[idx];
 		idx++;
@@ -60,7 +61,7 @@ int				in_newline(char *save)
 {
 	if (!save)
 		return (0);
-	while(*save)
+	while (*save)
 	{
 		if (*save == '\n')
 			return (1);
@@ -83,8 +84,7 @@ int				get_next_line(int fd, char **line)
 	while (!in_newline(save) && rread != 0)
 	{
 		ft_memset(buffer, 0, sizeof(char) * (BUFFER_SIZE + 1));
-		rread = read(fd, buffer, BUFFER_SIZE);
-		if (rread == -1)
+		if ((rread = read(fd, buffer, BUFFER_SIZE)) == -1)
 		{
 			free(buffer);
 			return (-1);
