@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char			*get_next(char *save)
 {
@@ -72,7 +72,7 @@ int				in_newline(char *save)
 
 int				get_next_line(int fd, char **line)
 {
-	static char *save;
+	static char *save[OPEN_MAX];
 	char		*buffer;
 	int			rread;
 
@@ -81,7 +81,7 @@ int				get_next_line(int fd, char **line)
 	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	rread = 1;
-	while (!in_newline(save) && rread != 0)
+	while (!in_newline(save[fd]) && rread != 0)
 	{
 		ft_memset(buffer, 0, sizeof(char) * (BUFFER_SIZE + 1));
 		if ((rread = read(fd, buffer, BUFFER_SIZE)) == -1)
@@ -89,11 +89,11 @@ int				get_next_line(int fd, char **line)
 			free(buffer);
 			return (-1);
 		}
-		save = ft_strjoin_(save, buffer);
+		save[fd] = ft_strjoin_(save[fd], buffer);
 	}
 	free(buffer);
-	*line = get_now(save);
-	save = get_next(save);
+	*line = get_now(save[fd]);
+	save[fd] = get_next(save[fd]);
 	if (!rread)
 		return (0);
 	return (1);

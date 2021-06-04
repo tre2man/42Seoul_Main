@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t		ft_strlen(char const *s)
 {
@@ -75,7 +75,7 @@ size_t		ft_strlcpy(char *dst, char *src, size_t size)
 		dst[i] = src[i];
 		i++;
 	}
-	dst[i] = src[i];
+	dst[i] = '\0';
 	while (src[i])
 		i++;
 	return (i);
