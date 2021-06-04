@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 14:20:21 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/21 17:16:13 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/04 22:38:12 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 # define GET_NEXT_LINE_H
 # include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
+# include <fcntl.h>
+# include <stdio.h>
+# define OPEN_MAX 256
 
 /*
 ** get_next_line.c

@@ -6,6 +6,7 @@
         "__string": "cpp",
         "cstdio": "cpp",
         "locale": "cpp",
-        "get_next_line.h": "c"
+        "get_next_line.h": "c",
+        "get_next_line_bonus.h": "c"
     }
 }

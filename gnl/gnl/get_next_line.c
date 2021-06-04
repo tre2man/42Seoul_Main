@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 14:19:39 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/21 17:49:40 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/04 22:52:34 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ int				in_newline(char *save)
 	return (0);
 }
 
+int				free_error(char *str)
+{
+	free(str);
+	return (-1);
+}
+
 int				get_next_line(int fd, char **line)
 {
 	static char *save;
@@ -85,11 +91,9 @@ int				get_next_line(int fd, char **line)
 	{
 		ft_memset(buffer, 0, sizeof(char) * (BUFFER_SIZE + 1));
 		if ((rread = read(fd, buffer, BUFFER_SIZE)) == -1)
-		{
-			free(buffer);
-			return (-1);
-		}
-		save = ft_strjoin_(save, buffer);
+			return (free_error(buffer));
+		if (!(save = ft_strjoin_(save, buffer)))
+			return (free_error(buffer));
 	}
 	free(buffer);
 	*line = get_now(save);

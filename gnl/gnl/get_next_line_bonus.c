@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 14:19:39 by namwkim           #+#    #+#             */
-/*   Updated: 2021/05/21 17:49:40 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/04 22:53:48 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ char			*get_now(char *save)
 	return (ans);
 }
 
+int				free_error(char *str)
+{
+	free(str);
+	return (-1);
+}
+
+
 int				in_newline(char *save)
 {
 	if (!save)
@@ -81,15 +88,13 @@ int				get_next_line(int fd, char **line)
 	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	rread = 1;
-	while (!in_newline(save[fd]) && rread != 0)
+	while (!in_newline(save) && rread != 0)
 	{
 		ft_memset(buffer, 0, sizeof(char) * (BUFFER_SIZE + 1));
 		if ((rread = read(fd, buffer, BUFFER_SIZE)) == -1)
-		{
-			free(buffer);
-			return (-1);
-		}
-		save[fd] = ft_strjoin_(save[fd], buffer);
+			return (free_error(buffer));
+		if (!(save[fd] = ft_strjoin_(save[fd], buffer)))
+			return (free_error(buffer));
 	}
 	free(buffer);
 	*line = get_now(save[fd]);
