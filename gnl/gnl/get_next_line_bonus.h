@@ -6,7 +6,7 @@
 /*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 14:20:21 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/04 22:03:01 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/08 23:49:00 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # define OPEN_MAX 256
+
+# ifndef BUFFER_SIZE
+# define BUFFER_SIZE 32
+# endif
 
 /*
 ** get_next_line_bonus.c
