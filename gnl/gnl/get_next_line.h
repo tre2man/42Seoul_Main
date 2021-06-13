@@ -6,7 +6,7 @@
 /*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 14:20:21 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/08 23:48:55 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/13 23:20:54 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 ** get_next_line.c
 */
 int			get_next_line(int fd, char **line);
+char		*get_next(char *save);
+char		*get_now(char *save);
+int			in_newline(char *save);
+int			free_error(char *str);
 
 /*
 ** get_next_line_utils.c

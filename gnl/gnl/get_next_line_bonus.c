@@ -6,7 +6,7 @@
 /*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 14:19:39 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/08 23:48:46 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/13 23:21:35 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,6 @@ char			*get_now(char *save)
 	return (ans);
 }
 
-int				free_error(char *str)
-{
-	free(str);
-	return (-1);
-}
-
-
 int				in_newline(char *save)
 {
 	if (!save)
@@ -75,6 +68,12 @@ int				in_newline(char *save)
 		save++;
 	}
 	return (0);
+}
+
+int				free_error(char *str)
+{
+	free(str);
+	return (-1);
 }
 
 int				get_next_line(int fd, char **line)
