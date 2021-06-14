@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:51:28 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/14 17:48:58 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/14 20:22:20 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ t_type				check_type(char *str);
 /*
 ** utils2.c -> puts
 */
-void				ft_printf_char(va_list ap, t_all all);
-void				ft_printf_str(va_list ap, t_all all);
-void				ft_printf_int(va_list ap, t_all all);
+size_t				ft_printf_char(va_list ap, t_all all);
+size_t				ft_printf_str(va_list ap, t_all all);
+size_t				ft_printf_int(va_list ap, t_all all);
 
 #endif

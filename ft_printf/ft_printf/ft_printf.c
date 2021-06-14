@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:51:32 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/14 18:10:43 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/14 20:21:52 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ size_t		fmt_spf_len(char *format)
 
 size_t		ft_parser(va_list ap, char *format)
 {
-	t_all all;
+	t_all	all;
+	size_t	rtn;
 
 	format++;
 	all.flag = check_flag(format);
@@ -36,14 +37,18 @@ size_t		ft_parser(va_list ap, char *format)
 	all.prec = check_prec(format += all.width.idx);
 	all.type = check_type(format += all.prec.idx);
 	if (all.type.c)
-		ft_printf_char(ap, all);
+		return (ft_printf_char(ap, all));
 	else if (all.type.s)
-		ft_printf_str(ap, all);
+		return (ft_printf_str(ap, all));
 	else
-		ft_printf_int(ap, all);
-	return (all.flag.idx + all.width.idx + all.prec.idx + all.type.idx);
+		return (ft_printf_int(ap, all));
+	return (0);
 }
 
+/*
+** idx : 서식 지정자의 인덱스
+** rtn : 실제 출력하는 문자의 개수
+*/
 size_t		ft_check_fmt(va_list ap, char *format)
 {
 	size_t	rtn;
