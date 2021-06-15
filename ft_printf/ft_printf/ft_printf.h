@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:51:28 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/14 20:22:20 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/15 18:46:05 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define FT_PRINTF_H
 # include "libft/libft.h"
 # include <stdarg.h>
+
+# include <stdio.h>
+
+typedef long long lld;
+
 
 typedef struct		s_flag
 {
@@ -80,6 +85,14 @@ t_type				check_type(char *str);
 */
 size_t				ft_printf_char(va_list ap, t_all all);
 size_t				ft_printf_str(va_list ap, t_all all);
+size_t				ft_printf_ptr(va_list ap, t_all all);
 size_t				ft_printf_int(va_list ap, t_all all);
+
+/*
+** utils3.c -> flags, specifier, etc...
+*/
+void				print_empty(char c, int i);
+void				ft_putnbr_hexa_fd(lld i, int fd, int lower);
+int					ft_hexanbr_len(lld n);
 
 #endif

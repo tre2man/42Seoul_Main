@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:51:32 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/14 20:21:52 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/15 16:33:46 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t		fmt_spf_len(char *format)
 {
 	size_t	len;
 
-	len = 0;
+	len = 1;
 	while (*format++)
 	{
 		len++;
@@ -40,6 +40,8 @@ size_t		ft_parser(va_list ap, char *format)
 		return (ft_printf_char(ap, all));
 	else if (all.type.s)
 		return (ft_printf_str(ap, all));
+	else if (all.type.p)
+		return (ft_printf_ptr(ap, all));
 	else
 		return (ft_printf_int(ap, all));
 	return (0);
@@ -58,6 +60,8 @@ size_t		ft_check_fmt(va_list ap, char *format)
 	len = ft_strlen(format);
 	rtn = 0;
 	idx = 0;
+	if (!format)
+		return (rtn);
 	while (format[idx])
 	{
 		if (format[idx] != '%')

@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 16:02:55 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/14 18:11:48 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/15 16:31:21 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_flag			check_flag(char *str)
 
 	num = 0;
 	ft_memset((void*)&rtn, 0, sizeof(rtn));
-	while (ft_isdigit(*str))
+	while (!ft_isalnum(*str) || *str == '0')
 	{
 		if (*str == '0')
 		{
@@ -52,7 +52,7 @@ t_width			check_width(char *str)
 	}
 	else
 	{
-		rtn.star = ft_atoi(str);
+		rtn.num = ft_atoi(str);
 		while (ft_isdigit(*str++))
 			rtn.idx++;
 	}
