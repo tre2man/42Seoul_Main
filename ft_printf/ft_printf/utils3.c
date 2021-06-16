@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 15:11:15 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/15 19:01:31 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/16 16:07:38 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		print_empty(char c, int i)
 	}
 }
 
-static void	ft_putnbr_rec(lld n, int fd, int lower)
+static void	ft_putnbr_rec(t_lld n, int fd, int lower)
 {
 	int		input;
 	char	out;
@@ -43,7 +43,7 @@ static void	ft_putnbr_rec(lld n, int fd, int lower)
 	write(fd, &out, 1);
 }
 
-void		ft_putnbr_hexa_fd(lld n, int fd, int lower)
+void		ft_putnbr_hexa_fd(t_lld n, int fd, int lower)
 {
 	if (fd < 0)
 		return ;
@@ -56,9 +56,9 @@ void		ft_putnbr_hexa_fd(lld n, int fd, int lower)
 	ft_putnbr_rec(n, fd, lower);
 }
 
-int			ft_hexanbr_len(lld n)
+int			ft_hexanbr_len(t_lld n)
 {
-	lld		i;
+	t_lld		i;
 	int		rtn;
 
 	i = 1;

@@ -1,10 +1,11 @@
 #include "ft_printf.h"
-#include <stdio.h>
+#ifndef _STDIO_H_
+	#include <stdio.h>
+#endif
 
 int main()
 {
-    char *str = 0x12345;
-    ft_printf("[ptr is : %-10p]\n",str);
-    printf("[ptr is : %-10p]",str);
-    return (0);
+	printf("[%7.3s]\n", "12345");
+	ft_printf("[%7.3s]\n", "12345");
+	return (0);
 }

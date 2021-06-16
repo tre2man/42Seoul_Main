@@ -6,12 +6,15 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:51:32 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/15 16:33:46 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/16 21:50:08 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/*
+** 서식지정자의 길이를 반환하는 함수
+*/
 size_t		fmt_spf_len(char *format)
 {
 	size_t	len;
@@ -26,6 +29,9 @@ size_t		fmt_spf_len(char *format)
 	return (0);
 }
 
+/*
+** 서식지정자의 각 원소를 추출하는 함수, 반환값은 각 원소에 대한 (% ~ cspdiuxX%) 실제로 출력한 길이
+*/
 size_t		ft_parser(va_list ap, char *format)
 {
 	t_all	all;
@@ -50,6 +56,7 @@ size_t		ft_parser(va_list ap, char *format)
 /*
 ** idx : 서식 지정자의 인덱스
 ** rtn : 실제 출력하는 문자의 개수
+** 반환값은 실제로 출력한 모든 문자의 개수
 */
 size_t		ft_check_fmt(va_list ap, char *format)
 {
