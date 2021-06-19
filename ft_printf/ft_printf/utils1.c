@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 16:02:55 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/16 21:58:15 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/19 16:10:30 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 t_flag check_flag(char *str)
 {
 	t_flag rtn;
-	size_t num;
 
-	num = 0;
 	ft_memset((void *) &rtn, 0, sizeof(rtn));
-	while (!ft_isalnum(*str) || *str == '0')
+	while (!ft_isalnum(*str)|| *str == '0')
 	{
 		if (*str == '0')
 		{
-			rtn.zero = 1;
+			rtn.zero = '0';
 			rtn.idx++;
 			str++;
 			break;
@@ -94,8 +92,8 @@ t_type check_type(char *str)
 	else if (*str == 'x')
 		rtn.x = 1;
 	else if (*str == 'X')
-		rtn.X = 1;
-	if (rtn.c || rtn.d || rtn.s || rtn.p || rtn.u || rtn.x || rtn.X)
+		rtn.x = 2;
+	if (rtn.c || rtn.d || rtn.s || rtn.p || rtn.u || rtn.x)
 		rtn.idx = 1;
 	return (rtn);
 }

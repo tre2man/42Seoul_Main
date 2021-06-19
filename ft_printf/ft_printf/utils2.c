@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 17:42:36 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/16 22:00:46 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/19 16:15:21 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,26 @@ size_t			ft_printf_char(va_list ap, t_all all)
 	width = all.width.num;
 	if (all.flag.star)
 		width = va_arg(ap, int);
-	c = va_arg(ap, char);
+	if (width < 0)
+	{
+		width *= -1;
+		all.flag.bar = 1;
+	}
+	c = (char)va_arg(ap, int);
 	if (!all.flag.bar)
-		print_empty(' ', width - 1);
+		print_empty(all.flag.zero, width - 1);
 	ft_putchar_fd(c, 1);
 	if (all.flag.bar)
-		print_empty(' ', width - 1);
+		print_empty(all.flag.zero, width - 1);
 	if (width > 1)
 		return (width);
 	else
 		return (1);
 }
 
+/*
+** 줄넘어감
+*/
 size_t			ft_printf_str(va_list ap, t_all all)
 {
 	char		*str;
@@ -47,6 +55,11 @@ size_t			ft_printf_str(va_list ap, t_all all)
 	width = all.width.num;
 	if (all.flag.star)
 		width = va_arg(ap, int);
+	if (width < 0)
+	{
+		width *= -1;
+		all.flag.bar = 1;
+	}
 	if (all.prec.star)
 		prec = va_arg(ap, int);
 	str = va_arg(ap, char *);
@@ -54,11 +67,15 @@ size_t			ft_printf_str(va_list ap, t_all all)
 	if ((len > prec) && (all.prec.dot == 1))
 		len = prec;
 	if (!all.flag.bar)
-		print_empty(' ', width - len);
+		print_empty(all.flag.zero, width - len);
 	write(1, str, len);
 	if (all.flag.bar)
-		print_empty(' ', width - len);
-}
+		print_empty(all.flag.zero, width - len);
+	if (width - len < 0)
+		return (len);
+	else
+		return (width);
+}	
 
 size_t			ft_printf_ptr(va_list ap, t_all all)
 {
@@ -69,11 +86,16 @@ size_t			ft_printf_ptr(va_list ap, t_all all)
 	width = all.width.num;
 	if (all.flag.star)
 		width = va_arg(ap, int);
+	if (width < 0)
+	{
+		width *= -1;
+		all.flag.bar = 1;
+	}
 	ptr = (void*)va_arg(ap, char*);
-	len = ft_hexanbr_len((t_lld)ptr);
+	len = ft_nbr_len((t_lld)ptr, 16);
 	if (!all.flag.bar)
 		print_empty(' ', width - len - 2);
-	ft_putnbr_hexa_fd(ptr, 1, 1);
+	ft_putnbr_len_fd((t_lld)ptr, 16, 1, 1, len);
 	if (all.flag.bar)
 		print_empty(' ', width - len - 2);
 	if (width > len + 2)
@@ -82,7 +104,28 @@ size_t			ft_printf_ptr(va_list ap, t_all all)
 		return ((size_t)(len + 2));
 }
 
-size_t ft_printf_int(va_list ap, t_all all)
+/*
+** d,i,u,x(1, 2) 
+*/
+size_t			ft_printf_int(va_list ap, t_all all)
 {
 	/* 정밀도, 플래그, 폭 순서대로 탐색 */
+	int			num;
+	int			width;
+	int			prec;
+	int			len;
+
+	prec = all.prec.num;
+	width = all.width.num;
+	if (all.flag.star)
+		width = va_arg(ap, int);
+	if (width < 0)
+	{
+		width *= -1;
+		all.flag.bar = 1;
+	}
+	if (all.prec.star)
+		prec = va_arg(ap, int);
+	num = va_arg(ap, int);
+	/* 상태 개판임. 하나씩 정리해야 할듯 */
 }

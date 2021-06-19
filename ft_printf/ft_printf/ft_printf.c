@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:51:32 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/16 21:50:08 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/19 16:10:12 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,8 @@ size_t		fmt_spf_len(char *format)
 size_t		ft_parser(va_list ap, char *format)
 {
 	t_all	all;
-	size_t	rtn;
 
-	format++;
-	all.flag = check_flag(format);
+	all.flag = check_flag(++format);
 	all.width = check_width(format += all.flag.idx);
 	all.prec = check_prec(format += all.width.idx);
 	all.type = check_type(format += all.prec.idx);
@@ -61,10 +59,8 @@ size_t		ft_parser(va_list ap, char *format)
 size_t		ft_check_fmt(va_list ap, char *format)
 {
 	size_t	rtn;
-	size_t	len;
 	size_t	idx;
 
-	len = ft_strlen(format);
 	rtn = 0;
 	idx = 0;
 	if (!format)

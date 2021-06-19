@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:51:28 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/16 21:58:04 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/19 17:14:36 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef long long			t_lld;
 typedef struct				s_flag
 {
 	int						bar;
-	int						zero;
+	char					zero;
 	int						dot;
 	int						star;
 	int						idx;
@@ -51,7 +51,6 @@ typedef struct				s_type
 	int						d;
 	int						u;
 	int						x;
-	int						X;
 	int						pct;
 	int						idx;
 }							t_type;
@@ -92,7 +91,7 @@ size_t						ft_printf_int(va_list ap, t_all all);
 ** utils3.c -> flags, specifier, etc...
 */
 void						print_empty(char c, int i);
-void						ft_putnbr_hexa_fd(t_lld i, int fd, int lower);
-int							ft_hexanbr_len(t_lld n);
+void						ft_putnbr_len_fd(t_lld i, int num, int fd, int pf, int len);
+int							ft_nbr_len(t_lld n, int num);
 
 #endif

@@ -5,7 +5,7 @@
 
 int main()
 {
-	printf("[%7.3s]\n", "12345");
-	ft_printf("[%7.3s]\n", "12345");
+	printf("[%p]\n", 0);
+	ft_printf("[%p]\n", 0);
 	return (0);
 }
