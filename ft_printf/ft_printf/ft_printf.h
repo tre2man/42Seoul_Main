@@ -6,7 +6,7 @@
 /*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:51:28 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/19 17:14:36 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/19 23:24:54 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,18 +80,18 @@ t_prec						check_prec(char *str);
 t_type						check_type(char *str);
 
 /*
-** utils2.c -> puts
+** utils2.c -> flags, specifier, etc...
+*/
+void						print_empty(char c, int i);
+void						ft_putnbr_len_fd(t_lld i, int num, int fd, int pf, int len);
+int							ft_nbr_len(t_lld n, int num);
+
+/*
+** printf_xxx.c -> puts
 */
 size_t						ft_printf_char(va_list ap, t_all all);
 size_t						ft_printf_str(va_list ap, t_all all);
 size_t						ft_printf_ptr(va_list ap, t_all all);
 size_t						ft_printf_int(va_list ap, t_all all);
-
-/*
-** utils3.c -> flags, specifier, etc...
-*/
-void						print_empty(char c, int i);
-void						ft_putnbr_len_fd(t_lld i, int num, int fd, int pf, int len);
-int							ft_nbr_len(t_lld n, int num);
 
 #endif

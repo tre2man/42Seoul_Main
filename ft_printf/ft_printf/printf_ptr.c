@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils3.c                                           :+:      :+:    :+:   */
+/*   printf_ptr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/15 15:11:15 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/19 17:12:30 by namwoo           ###   ########.fr       */
+/*   Created: 2021/06/19 23:19:25 by namwoo            #+#    #+#             */
+/*   Updated: 2021/06/20 00:29:25 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		print_empty(char c, int i)
+int		ft_ptr_len(t_ulld n, int num)
 {
-	int		idx;
-	char	prt;
+	t_ulld	i;
+	int		rtn;
 
-	idx = 0;
-	prt = ' ';
-	if (c)
-		prt = c;
-	while (idx < i)
+	i = 1;
+	rtn = 0;
+	if (!n)
+		return (1);
+	while (n / i)
 	{
-		ft_putchar_fd(prt, 1);
-		idx++;
-	}
+		i *= num;
+		rtn++;
+	}	
+	return (rtn);
 }
 
-static void	ft_putnbr_rec(t_lld n, int num, int fd, int pf, int len)
+static void		ft_putnbr_rec(t_ulld n, int num, int fd, int pf, int len)
 {
 	int		input;
 	char	out;
@@ -51,7 +52,7 @@ static void	ft_putnbr_rec(t_lld n, int num, int fd, int pf, int len)
 ** n : 출력숫자, num : 진수, fd, pf : 접두사, len : 출력할 길이
 ** pf = 0 : 접두사x, pf = 1 : 접두사 소문자, pf = 2 : 접두사 대문자
 */
-void		ft_putnbr_len_fd(t_lld n, int num, int fd, int pf, int len)
+static void		ft_putptr_len_fd(t_ulld n, int num, int fd, int pf, int len)
 {
 	if (fd < 0)
 		return ;
@@ -67,27 +68,29 @@ void		ft_putnbr_len_fd(t_lld n, int num, int fd, int pf, int len)
 		ft_putnbr_rec(n, num, fd, pf, len);
 }
 
-/*
-** n : 숫자, num : 진수
-*/
-int			ft_nbr_len(t_lld n, int num)
+size_t			ft_printf_ptr(va_list ap, t_all all)
 {
-	t_lld	i;
-	int		rtn;
+	t_ulld      ptr;
+	int			len;
+	int			width;
 
-	i = 1;
-	rtn = 0;
-	if (!n)
-		return (1);
-	if (n < 0)
+	width = all.width.num;
+	if (all.flag.star)
+		width = va_arg(ap, int);
+	if (width < 0)
 	{
-		rtn++;
-		n *= -1;
+		width *= -1;
+		all.flag.bar = 1;
 	}
-	while (n / i)
-	{
-		i *= num;
-		rtn++;
-	}	
-	return (rtn);
+	ptr = (t_ulld)va_arg(ap, char*);
+	len = ft_ptr_len(ptr, 16);
+	if (!all.flag.bar)
+		print_empty(' ', width - len - 2);
+	ft_putptr_len_fd(ptr, 16, 1, 1, len);
+	if (all.flag.bar)
+		print_empty(' ', width - len - 2);
+	if (width > len + 2)
+		return ((size_t)(width));
+	else
+		return ((size_t)(len + 2));
 }

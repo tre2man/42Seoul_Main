@@ -1,131 +1,93 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/14 17:42:36 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/19 16:15:21 by namwoo           ###   ########.fr       */
+/*   Created: 2021/06/15 15:11:15 by namwkim           #+#    #+#             */
+/*   Updated: 2021/06/19 17:12:30 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
-** i : *인자 들어올때 저장
-** rtn : 반환할 실제 출력될 문자열의 길이
-*/
-size_t			ft_printf_char(va_list ap, t_all all)
+void		print_empty(char c, int i)
 {
-	char		c;
-	int			width;
+	int		idx;
+	char	prt;
 
-	width = all.width.num;
-	if (all.flag.star)
-		width = va_arg(ap, int);
-	if (width < 0)
+	idx = 0;
+	prt = ' ';
+	if (c)
+		prt = c;
+	while (idx < i)
 	{
-		width *= -1;
-		all.flag.bar = 1;
+		ft_putchar_fd(prt, 1);
+		idx++;
 	}
-	c = (char)va_arg(ap, int);
-	if (!all.flag.bar)
-		print_empty(all.flag.zero, width - 1);
-	ft_putchar_fd(c, 1);
-	if (all.flag.bar)
-		print_empty(all.flag.zero, width - 1);
-	if (width > 1)
-		return (width);
+}
+
+static void	ft_putnbr_rec(t_lld n, int num, int fd, int pf, int len)
+{
+	int		input;
+	char	out;
+
+	input = (int)(n % num);
+	if (input < 0)
+		input *= -1;
+	if (input < 10)
+		out = input + '0';
+	else if (pf == 2)
+		out = input + 55;
 	else
+		out = input + 87;
+	if ((n > num - 1) && (len))
+		ft_putnbr_rec(n / num, num, fd, pf, len - 1);
+	ft_putchar_fd(out, 1);
+}
+
+/*
+** n : 출력숫자, num : 진수, fd, pf : 접두사, len : 출력할 길이
+** pf = 0 : 접두사x, pf = 1 : 접두사 소문자, pf = 2 : 접두사 대문자
+*/
+void		ft_putnbr_len_fd(t_lld n, int num, int fd, int pf, int len)
+{
+	if (fd < 0)
+		return ;
+	if (n < 0)
+		write(fd, "-", 1);
+	if (pf == 1)
+		ft_putstr_fd("0x", 1);
+	else if (pf == 2)
+		ft_putstr_fd("0X", 1);
+	if (!n)
+		ft_putstr_fd("0", 1);
+	else
+		ft_putnbr_rec(n, num, fd, pf, len);
+}
+
+/*
+** n : 숫자, num : 진수
+*/
+int			ft_nbr_len(t_lld n, int num)
+{
+	t_lld	i;
+	int		rtn;
+
+	i = 1;
+	rtn = 0;
+	if (!n)
 		return (1);
-}
-
-/*
-** 줄넘어감
-*/
-size_t			ft_printf_str(va_list ap, t_all all)
-{
-	char		*str;
-	int			width;
-	int			prec;
-	int			len;
-
-	prec = all.prec.num;
-	width = all.width.num;
-	if (all.flag.star)
-		width = va_arg(ap, int);
-	if (width < 0)
+	if (n < 0)
 	{
-		width *= -1;
-		all.flag.bar = 1;
+		rtn++;
+		n *= -1;
 	}
-	if (all.prec.star)
-		prec = va_arg(ap, int);
-	str = va_arg(ap, char *);
-	len = ft_strlen(str);
-	if ((len > prec) && (all.prec.dot == 1))
-		len = prec;
-	if (!all.flag.bar)
-		print_empty(all.flag.zero, width - len);
-	write(1, str, len);
-	if (all.flag.bar)
-		print_empty(all.flag.zero, width - len);
-	if (width - len < 0)
-		return (len);
-	else
-		return (width);
-}	
-
-size_t			ft_printf_ptr(va_list ap, t_all all)
-{
-	void		*ptr;
-	int			len;
-	int			width;
-
-	width = all.width.num;
-	if (all.flag.star)
-		width = va_arg(ap, int);
-	if (width < 0)
+	while (n / i)
 	{
-		width *= -1;
-		all.flag.bar = 1;
-	}
-	ptr = (void*)va_arg(ap, char*);
-	len = ft_nbr_len((t_lld)ptr, 16);
-	if (!all.flag.bar)
-		print_empty(' ', width - len - 2);
-	ft_putnbr_len_fd((t_lld)ptr, 16, 1, 1, len);
-	if (all.flag.bar)
-		print_empty(' ', width - len - 2);
-	if (width > len + 2)
-		return ((size_t)(width));
-	else
-		return ((size_t)(len + 2));
-}
-
-/*
-** d,i,u,x(1, 2) 
-*/
-size_t			ft_printf_int(va_list ap, t_all all)
-{
-	/* 정밀도, 플래그, 폭 순서대로 탐색 */
-	int			num;
-	int			width;
-	int			prec;
-	int			len;
-
-	prec = all.prec.num;
-	width = all.width.num;
-	if (all.flag.star)
-		width = va_arg(ap, int);
-	if (width < 0)
-	{
-		width *= -1;
-		all.flag.bar = 1;
-	}
-	if (all.prec.star)
-		prec = va_arg(ap, int);
-	num = va_arg(ap, int);
-	/* 상태 개판임. 하나씩 정리해야 할듯 */
+		i *= num;
+		rtn++;
+	}	
+	return (rtn);
 }
