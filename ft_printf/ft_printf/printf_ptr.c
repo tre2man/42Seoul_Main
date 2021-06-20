@@ -6,16 +6,19 @@
 /*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 23:19:25 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/20 00:29:25 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/20 14:07:05 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_ptr_len(t_ulld n, int num)
+/*
+** ulld가 들어올 수 있으므로 int랑 같이 사용이 불가능
+*/
+int				ft_ptr_len(t_ulld n, int num)
 {
-	t_ulld	i;
-	int		rtn;
+	t_ulld		i;
+	int			rtn;
 
 	i = 1;
 	rtn = 0;

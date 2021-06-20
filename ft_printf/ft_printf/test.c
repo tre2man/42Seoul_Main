@@ -5,7 +5,7 @@
 
 int main()
 {
-	printf("[%p %p]\n", __LONG_MAX__ *2UL+1UL, -(__LONG_MAX__ *2UL+1UL));
-	ft_printf("[%p %p]\n", __LONG_MAX__ *2UL+1UL, -(__LONG_MAX__ *2UL+1UL));
+	printf("[%5.7d]\n", 1);
+	ft_printf("[%5.7d]\n", 1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:51:32 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/19 16:10:12 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/20 14:05:42 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ size_t		ft_parser(va_list ap, char *format)
 	else if (all.type.p)
 		return (ft_printf_ptr(ap, all));
 	else
-		return (ft_printf_int(ap, all));
+		return (ft_printf_nbr(ap, all));
 	return (0);
 }
 

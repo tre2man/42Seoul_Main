@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils3.c                                           :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 15:11:15 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/19 17:12:30 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/20 14:14:47 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static void	ft_putnbr_rec(t_lld n, int num, int fd, int pf, int len)
 	int		input;
 	char	out;
 
+	if (!len)
+		return ;
 	input = (int)(n % num);
 	if (input < 0)
 		input *= -1;
@@ -42,7 +44,7 @@ static void	ft_putnbr_rec(t_lld n, int num, int fd, int pf, int len)
 		out = input + 55;
 	else
 		out = input + 87;
-	if ((n > num - 1) && (len))
+	if (n > num - 1)
 		ft_putnbr_rec(n / num, num, fd, pf, len - 1);
 	ft_putchar_fd(out, 1);
 }
@@ -61,10 +63,7 @@ void		ft_putnbr_len_fd(t_lld n, int num, int fd, int pf, int len)
 		ft_putstr_fd("0x", 1);
 	else if (pf == 2)
 		ft_putstr_fd("0X", 1);
-	if (!n)
-		ft_putstr_fd("0", 1);
-	else
-		ft_putnbr_rec(n, num, fd, pf, len);
+	ft_putnbr_rec(n, num, fd, pf, len);
 }
 
 /*

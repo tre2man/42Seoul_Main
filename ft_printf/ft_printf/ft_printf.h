@@ -6,7 +6,7 @@
 /*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:51:28 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/19 23:24:54 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/20 13:40:54 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,6 @@ int							ft_nbr_len(t_lld n, int num);
 size_t						ft_printf_char(va_list ap, t_all all);
 size_t						ft_printf_str(va_list ap, t_all all);
 size_t						ft_printf_ptr(va_list ap, t_all all);
-size_t						ft_printf_int(va_list ap, t_all all);
+size_t						ft_printf_nbr(va_list ap, t_all all);
 
 #endif

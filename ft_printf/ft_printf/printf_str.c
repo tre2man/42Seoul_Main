@@ -6,7 +6,7 @@
 /*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 23:18:35 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/19 23:42:07 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/20 13:55:52 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ static void     ft_print_str_(t_all all, char *str, int len, int width)
 		print_empty(all.flag.zero, width - len);
 }
 
-/*
-** 줄넘어감
-*/
 size_t			ft_printf_str(va_list ap, t_all all)
 {
 	char		*str;
@@ -44,7 +41,7 @@ size_t			ft_printf_str(va_list ap, t_all all)
 		prec = va_arg(ap, int);
 	str = va_arg(ap, char *);
 	len = ft_strlen(str);
-	if ((len > prec) && (all.prec.dot == 1))
+	if ((len > prec) && (all.prec.dot))
 		len = prec;
     ft_print_str_(all, str, len, width);
 	if (width - len < 0)
