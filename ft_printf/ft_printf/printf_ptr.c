@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf_ptr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 23:19:25 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/20 14:07:05 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/21 16:33:32 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ size_t			ft_printf_ptr(va_list ap, t_all all)
 		width *= -1;
 		all.flag.bar = 1;
 	}
-	ptr = (t_ulld)va_arg(ap, char*);
+	ptr = (t_ulld)va_arg(ap, void*);
 	len = ft_ptr_len(ptr, 16);
 	if (!all.flag.bar)
 		print_empty(' ', width - len - 2);
