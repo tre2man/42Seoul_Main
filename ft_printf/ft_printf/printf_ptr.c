@@ -6,11 +6,49 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 23:19:25 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/21 16:33:32 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/22 19:17:51 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void		ft_putnbr_rec(t_lld n, int num, int fd, int pf, int len)
+{
+	int		input;
+	char	out;
+
+	if (!len)
+		return ;
+	input = (int)(n % num);
+	if (input < 0)
+		input *= -1;
+	if (input < 10)
+		out = input + '0';
+	else if (pf == 2)
+		out = input + 55;
+	else
+		out = input + 87;
+	if (n > num - 1)
+		ft_putnbr_rec(n / num, num, fd, pf, len - 1);
+	ft_putchar_fd(out, 1);
+}
+
+/*
+** n : 출력숫자, num : 진수, fd, pf : 접두사, len : 출력할 길이
+** pf = 0 : 접두사x, pf = 1 : 접두사 소문자, pf = 2 : 접두사 대문자
+*/
+static void		ft_putnbr_len_fd(t_lld n, int num, int fd, int pf, int len)
+{
+	if (fd < 0)
+		return ;
+	if (n < 0)
+		write(fd, "-", 1);
+	if (pf == 1)
+		ft_putstr_fd("0x", 1);
+	else if (pf == 2)
+		ft_putstr_fd("0X", 1);
+	ft_putnbr_rec(n, num, fd, pf, len);
+}
 
 /*
 ** ulld가 들어올 수 있으므로 int랑 같이 사용이 불가능
@@ -30,25 +68,6 @@ int				ft_ptr_len(t_ulld n, int num)
 		rtn++;
 	}	
 	return (rtn);
-}
-
-static void		ft_putnbr_rec(t_ulld n, int num, int fd, int pf, int len)
-{
-	int		input;
-	char	out;
-
-	input = (int)(n % num);
-	if (input < 0)
-		input *= -1;
-	if (input < 10)
-		out = input + '0';
-	else if (pf == 2)
-		out = input + 55;
-	else
-		out = input + 87;
-	if ((n > num - 1) && (len))
-		ft_putnbr_rec(n / num, num, fd, pf, len - 1);
-	ft_putchar_fd(out, 1);
 }
 
 /*

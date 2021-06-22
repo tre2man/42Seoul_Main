@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:51:28 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/21 15:51:17 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/22 19:17:01 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ t_type						check_type(char *str);
 ** utils2.c -> flags, specifier, etc...
 */
 void						print_empty(char c, int i);
-void						ft_putnbr_len_fd(t_lld i, int num, int fd, int pf, int len);
 int							ft_nbr_len(t_lld n, int num);
 
 /*

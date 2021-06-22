@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 16:02:55 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/19 16:10:30 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/22 15:37:19 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,11 @@ t_flag check_flag(char *str)
 	while (!ft_isalnum(*str)|| *str == '0')
 	{
 		if (*str == '0')
-		{
 			rtn.zero = '0';
-			rtn.idx++;
-			str++;
-			break;
-		}
 		else if (*str == '-')
 			rtn.bar = 1;
 		else if (*str == '*')
 			rtn.star = 1;
-		else if (*str == ',')
-			rtn.dot = 1;
 		else if (*str == '.')
 			break;
 		str++;
