@@ -87,7 +87,7 @@ int				get_next_line(int fd, char **line)
 	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	rread = 1;
-	while (!in_newline(save) && rread != 0)
+	while (!in_newline(save[fd]) && rread != 0)
 	{
 		ft_memset(buffer, 0, sizeof(char) * (BUFFER_SIZE + 1));
 		if ((rread = read(fd, buffer, BUFFER_SIZE)) == -1)
