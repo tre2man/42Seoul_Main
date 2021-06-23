@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 14:51:32 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/22 18:55:35 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/23 16:09:41 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t		fmt_spf_len(char *format)
 	while (*format++)
 	{
 		len++;
-		if (ft_strchr("cspdiuxX%", *format))
+		if (ft_strchr("cspdiuxX%%", *format))
 			return (len);
 	}
 	return (0);
@@ -46,6 +46,11 @@ size_t		ft_parser(va_list ap, char *format)
 		return (ft_printf_str(ap, all));
 	else if (all.type.p)
 		return (ft_printf_ptr(ap, all));
+	else if (all.type.pct)
+	{
+		ft_putchar_fd('%', 1);
+		return (1);
+	}
 	else
 		return (ft_printf_nbr(ap, all));
 	return (0);

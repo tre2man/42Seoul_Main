@@ -5,11 +5,11 @@
 
 int main()
 {
-	const char *input = "[%05.4d]";
+	const char *input = "%% %% %%";
 	int a;
-	a = printf(input, 3);
+	a = printf("%%");
 	printf("\n%d\n", a);
-	a = ft_printf(input, 3);
+	a = ft_printf("%%");
 	printf("\n%d\n", a);
 	return (0);
 }

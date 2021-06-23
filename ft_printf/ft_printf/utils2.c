@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 15:11:15 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/22 19:13:00 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/23 14:49:39 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		print_empty(char c, int i)
 }
 
 /*
-** n : 숫자, num : 진수
+** n : 숫자, num : 진수 , 음수의 -는 포함하지 않음
 */
 int			ft_nbr_len(t_lld n, int num)
 {
@@ -41,10 +41,7 @@ int			ft_nbr_len(t_lld n, int num)
 	if (!n)
 		return (1);
 	if (n < 0)
-	{
-		rtn++;
 		n *= -1;
-	}
 	while (n / i)
 	{
 		i *= num;

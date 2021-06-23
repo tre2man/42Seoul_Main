@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 16:02:55 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/22 15:37:19 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/23 15:59:39 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ t_prec check_prec(char *str)
 		rtn.dot = 1;
 		rtn.idx++;
 		str++;
-		rtn.num = ft_atoi(str);
+		if (ft_isdigit(*str))
+			rtn.num = ft_atoi(str);
+		else if (*str != '*')
+			rtn.num = -1;
 	}
 	if (*str == '*' && rtn.idx)
 	{
@@ -86,7 +89,9 @@ t_type check_type(char *str)
 		rtn.x = 1;
 	else if (*str == 'X')
 		rtn.x = 2;
-	if (rtn.c || rtn.d || rtn.s || rtn.p || rtn.u || rtn.x)
+	else if (*str == '%')
+		rtn.pct = 1;
+	if (rtn.c || rtn.d || rtn.s || rtn.p || rtn.u || rtn.x || rtn.pct)
 		rtn.idx = 1;
 	return (rtn);
 }

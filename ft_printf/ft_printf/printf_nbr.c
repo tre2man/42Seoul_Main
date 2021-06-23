@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/20 13:51:08 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/22 19:27:47 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/23 15:51:02 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,19 +75,31 @@ size_t			ft_printf_nbr(va_list ap, t_all all)
 		prec = va_arg(ap, int);
 	num = (t_lld)va_arg(ap, int);
 	len = ft_nbr_len(num, 10);
+	if (!all.flag.bar && all.flag.zero && !all.prec.dot)
+	{
+		if (num >= 0)
+			prec = width;
+		else
+			prec = width - 1;
+	}
 	if (prec > len)
 		len = prec;
+	if (all.prec.num == -1)
+		len = 0;
 	if (num < 0)
 		len++;
-	if (width && !prec && !all.flag.bar)
-	{
-		prec = width;
-		width = len;
-	}
 	// width 출력, 플래그에 따라서 0일수도 아닐수도
 	if (!all.flag.bar)
-		print_empty(all.flag.zero, width - len);
-	ft_putnbr_len(num, 10, prec, 0, len);
+		print_empty(' ', width - len);
+	if ((num == 0) && (all.prec.dot == 1) && (all.prec.num == 0) && (all.width.num == 0))
+	{
+		print_empty(' ', 0);
+		len--;
+	}
+	else if (all.prec.dot && (all.prec.num <= 0) && (num == 0))
+		print_empty(' ', all.prec.num + 1);
+	else
+		ft_putnbr_len(num, 10, prec, 0, len);
 	// 뒤에서 width 출력, 0 플래그 무시
 	if (all.flag.bar)
 		print_empty(' ', width - len);

@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 23:18:35 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/21 16:33:40 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/23 16:17:52 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ size_t			ft_printf_str(va_list ap, t_all all)
 	if (!(str = va_arg(ap, void*)))
 		str = "(null)";
 	len = ft_strlen(str);
-	if ((len > prec) && (all.prec.dot) && (prec >= 0))
+	if ((len > prec) && (all.prec.dot) && (prec >= -1))
 		len = prec;
+	if (len < 0)
+		len++;
 	ft_print_str_(all, str, len, width);
 	if (width - len < 0)
 		return (len);
