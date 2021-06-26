@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:09:03 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/26 10:49:38 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/26 17:50:14 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct				s_info
 	int						zero;
 	int						width;
 	int						prec;
+	int						isprec;
 	char					type;
 	int						base;
 	int						pct;

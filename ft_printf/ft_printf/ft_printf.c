@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:12:28 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/26 10:49:10 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/26 21:24:03 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ void			width_prec(va_list ap, char *format, t_info *info)
 {
 	int			num;
 
-	while (*format == '.' || *format == '0')
+	if (*format == '.')
 	{
-		if (*format == '.')
-			info->prec = 0;
+		info->isprec = 1;
 		format++;
 	}
 	num = ft_atoi(format);
@@ -41,42 +40,46 @@ void			width_prec(va_list ap, char *format, t_info *info)
 		format++;
 	if (ft_isdigit(*format))
 	{
-		if (info->prec == -1 && !(info->width))
+		if (info->isprec == 0 && !(info->width))
 			info->width = num;
-		else if (info->prec == 0)
+		else if (info->isprec == 1 && !(info->prec))
 			info->prec = num;
 	}
 	else if (*format == '*')
 	{
-		if (info->prec == -1 && !(info->width))
+		if (info->isprec == 0 && !(info->width))
 			info->width = va_arg(ap, int);
-		else if (info->prec == 0)
+		else if (info->isprec == 1 && !(info->prec))
 			info->prec = va_arg(ap, int);
 	}
 }
 
 t_lld			parser(va_list ap, char *format, t_info *info)
 {
-	if (*format == '0' || *format == '-')
+	while (*format && ft_strchr("-0", *format))
 	{
-		if (*format == '0')
-			info->zero = 1;
 		if (*format == '-')
 			info->minus = 1;
+		if (*format == '0' && !info->minus)
+			info->zero = 1;
 		format++;
 	}
 	while (*format && !ft_strchr(FORMAT, *format))
 		width_prec(ap, format++, info);
-	info->type = *format;
-	if (info->zero == 1 && info->prec == -1 && info->width > 0)
+	//printf("[%d %d]", info->width, info->prec);
+	/* 맨 앞에 0이 있으면서 prec가 0으로 정의되었다면, prec을 width로 변경 */
+	if (info->zero && !info->isprec && !info->minus)
 	{
 		info->prec = info->width;
+		if (info->prec < 0)
+			info->prec *= -1;
 		info->width = 0;
 	}
+	info->type = *format;
 	return (dtb_type(ap, info, format));
 }
 
-t_lld			check_fmt(va_list ap, char* format)
+t_lld			check_fmt(va_list ap, char *format)
 {
 	t_info		*info;
 	int			idx;
@@ -103,7 +106,7 @@ t_lld			check_fmt(va_list ap, char* format)
 	}
 	free(info);
 	return (rtn);
-}				
+}
 
 int				ft_printf(const char *format, ...)
 {

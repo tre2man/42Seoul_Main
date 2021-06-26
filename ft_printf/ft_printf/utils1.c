@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:51:07 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/26 10:49:21 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/26 17:50:27 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void		init_info(t_info *info)
 	info->minus = 0;
 	info->zero = 0;
 	info->width = 0;
-	info->prec = -1;
+	info->isprec = 0;
+	info->prec = 0;
 	info->type = 'd';
 	info->base = 10;
 	info->pct = 0;
