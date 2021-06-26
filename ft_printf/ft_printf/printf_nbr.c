@@ -6,7 +6,7 @@
 /*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 13:17:20 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/25 21:45:33 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/26 10:51:50 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,6 @@ static int		putnbr_base10(t_info *info, t_lld num)
 	int			rtn;
 
 	rtn = 0;
-	if (num < 0)
-	{
-		ft_putchar_fd('-', 1);
-		num *= 1;
-		rtn = 1;
-	}
 	if ((info->prec) && (info->prec - num_len_hex(num) >= 0))
 	{
 		print_empty('0', info->prec - num_len_int(num));
