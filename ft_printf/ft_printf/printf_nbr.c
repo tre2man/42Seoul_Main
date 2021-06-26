@@ -3,58 +3,95 @@
 /*                                                        :::      ::::::::   */
 /*   printf_nbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/20 13:51:08 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/21 17:01:04 by namwkim          ###   ########.fr       */
+/*   Created: 2021/06/24 13:17:20 by namwoo            #+#    #+#             */
+/*   Updated: 2021/06/25 21:45:33 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
-** 정밀도, 폭 순으로 계산
-*/
-
-
-/*
-** 음수 출력, 정밀도 계산, 반환값 오류
-*/
-size_t			ft_printf_nbr(va_list ap, t_all all)
+static int		putnbr_base16(t_info *info, t_ulld num)
 {
-	t_lld		num;
-	int			len;
-	int			width;
-	int			prec;
+	int			rtn;
 
-	prec = all.prec.num;
-	width = all.width.num;
-	if (all.flag.star)
-		width = va_arg(ap, int);
-	if (width < 0)
+	rtn = 1;
+	if ((info->prec != 0) && (num))
+		rtn = 0;
+	if (info->type == 'p')
 	{
-		width *= -1;
-		all.flag.bar = 1;
+		ft_putstr_fd("0x", 1);
+		rtn += 2;
+		info->type = 0;
 	}
-	if (all.prec.star)
-		prec = va_arg(ap, int);
-	num = (t_lld)va_arg(ap, int);
-	len = ft_nbr_len(num, 10);
-	if (prec > len)
-		len = prec;
-	if (!all.flag.bar)
-		print_empty(all.flag.zero, width - len);
+	if ((info->prec) && (info->prec - num_len_hex(num) >= 0))
+	{
+		print_empty('0', info->prec - num_len_hex(num));
+		rtn += (info->prec - num_len_hex(num));
+		info->prec = 0;
+	}
+	if (num > 15)
+		rtn += putnbr_base16(info, num / 16);
+	if ((info->type == 'X') && (info->prec != 0) && (num))
+		ft_putchar_fd(BASE_X[num % 16], 1);
+	else if ((info->prec != 0) && (num))
+		ft_putchar_fd(BASE_x[num % 16], 1);
+	return (rtn);
+}
+
+static int		putnbr_base10(t_info *info, t_lld num)
+{
+	int			rtn;
+
+	rtn = 0;
 	if (num < 0)
 	{
 		ft_putchar_fd('-', 1);
-		num *= -1;
+		num *= 1;
+		rtn = 1;
 	}
-	print_empty('0', prec - ft_nbr_len(num, 10));
-	ft_putnbr_len_fd(num, 10, 1, 0, len);
-	if (all.flag.bar)
-		print_empty(all.flag.zero, width - len);
-	if (len > width)
-		return ((size_t)(len));
-	else
-		return ((size_t)(width));
+	if ((info->prec) && (info->prec - num_len_hex(num) >= 0))
+	{
+		print_empty('0', info->prec - num_len_int(num));
+		rtn += (info->prec - num_len_int(num));
+		info->prec = 0;
+	}
+	if (num > 9)
+		putnbr_base10(info, num / 10);
+	ft_putchar_fd(BASE_D[num % 10], 1);
+}
+
+static int		int_control(t_info *info, t_lld num)
+{
+	int			rtn;
+
+	rtn = 0;
+	if (info->prec >= 0)
+	{
+		info->width = info->prec;
+		info->width = 0;
+	}
+	if (!(info->minus) && (info->prec >= 0))
+		print_empty(' ', info->width - info->prec);
+	putnbr_base10(info, num);
+	if (info->minus&& (info->prec >= 0))
+		print_empty(' ', info->width - info->prec);
+	return (rtn);
+}
+
+int				printf_nbr(va_list ap, t_info *info)
+{
+	int			len;
+	int			rtn;
+
+	if (info->width < 0)
+	{
+		info->width *= -1;
+		info->minus = 1;
+	}
+
+	info->base = 10;
+	rtn = int_control(info, (t_lld)va_arg(ap, int));
+	return (rtn);
 }

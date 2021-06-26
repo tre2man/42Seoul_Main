@@ -3,95 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/14 14:51:28 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/21 15:51:17 by namwkim          ###   ########.fr       */
+/*   Created: 2021/06/24 11:09:03 by namwoo            #+#    #+#             */
+/*   Updated: 2021/06/25 22:14:54 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include "libft/libft.h"
-# include <stdarg.h>
 
-# include <stdio.h>
+#include <stdarg.h>
+#include "libft/libft.h"
+
+#include <stdio.h>
+#define BASE_X "0123456789ABCDEF"
+#define BASE_x "0123456789abcdef"
+#define BASE_D "0123456789"
+#define FORMAT "cspiduxX%"
 
 typedef unsigned long long	t_ulld;
-typedef long long			t_lld;
+typedef long long int		t_lld;
 
-typedef struct				s_flag
+typedef struct				s_info
 {
-	int						bar;
-	char					zero;
-	int						dot;
-	int						star;
-	int						idx;
-}							t_flag;
-
-typedef struct				s_width
-{
-	int						num;
-	int						idx;
-}							t_width;
-
-typedef struct				s_prec
-{
-	int						dot;
-	int						num;
-	int						star;
-	int						idx;
-}							t_prec;
-
-typedef struct				s_type
-{
-	int						c;
-	int						s;
-	int						p;
-	int						d;
-	int						u;
-	int						x;
+	int						minus;
+	int						zero;
+	int						width;
+	int						prec;
+	char					type;
+	int						base;
 	int						pct;
-	int						idx;
-}							t_type;
-
-typedef struct				s_all
-{
-	t_flag					flag;
-	t_width					width;
-	t_prec					prec;
-	t_type					type;
-}							t_all;
+}							t_info;
 
 /*
 ** ft_printf.c
 */
 int							ft_printf(const char *format, ...);
-size_t						ft_check_fmt(va_list ap, char *format);
-size_t						ft_parser(va_list ap, char *format);
-size_t						fmt_spf_len(char *format);
 
 /*
-** utils1.c -> specifier parser
+** ft_printf_xxx.c
 */
-t_flag						check_flag(char *str);
-t_width						check_width(char *str);
-t_prec						check_prec(char *str);
-t_type						check_type(char *str);
+int							printf_char(va_list ap, t_info *info, char *format);
+int							printf_str(va_list ap, t_info *info);
+int							printf_hex(va_list ap, t_info *info);
+int							printf_ptr(va_list ap, t_info *info);
+int							printf_nbr(va_list ap, t_info *info);
 
 /*
-** utils2.c -> flags, specifier, etc...
+** utils1.c
 */
-void						print_empty(char c, int i);
-void						ft_putnbr_len_fd(t_lld i, int num, int fd, int pf, int len);
-int							ft_nbr_len(t_lld n, int num);
-
-/*
-** printf_xxx.c -> puts
-*/
-size_t						ft_printf_char(va_list ap, t_all all);
-size_t						ft_printf_str(va_list ap, t_all all);
-size_t						ft_printf_ptr(va_list ap, t_all all);
-size_t						ft_printf_nbr(va_list ap, t_all all);
+void						init_info(t_info *info);
+void						print_empty(char c, int len);
+int							num_len_int(t_lld n);
+int							num_len_hex(t_ulld n);
+t_lld						format_len(char *format);
 
 #endif

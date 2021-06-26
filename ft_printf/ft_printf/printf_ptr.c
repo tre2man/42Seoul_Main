@@ -3,97 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   printf_ptr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/19 23:19:25 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/21 16:33:32 by namwkim          ###   ########.fr       */
+/*   Created: 2021/06/25 21:35:11 by namwoo            #+#    #+#             */
+/*   Updated: 2021/06/25 22:33:07 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/*
-** ulld가 들어올 수 있으므로 int랑 같이 사용이 불가능
-*/
-int				ft_ptr_len(t_ulld n, int num)
+static int		putnbr_base16(t_info *info, t_ulld num)
 {
-	t_ulld		i;
 	int			rtn;
 
-	i = 1;
-	rtn = 0;
-	if (!n)
-		return (1);
-	while (n / i)
-	{
-		i *= num;
-		rtn++;
-	}	
+	rtn = 1;
+	if (num > 15)
+		rtn += putnbr_base16(info, num / 16);
+	ft_putchar_fd(BASE_x[num % 16], 1);
 	return (rtn);
 }
 
-static void		ft_putnbr_rec(t_ulld n, int num, int fd, int pf, int len)
+int			printf_ptr(va_list ap, t_info *info)
 {
-	int		input;
-	char	out;
-
-	input = (int)(n % num);
-	if (input < 0)
-		input *= -1;
-	if (input < 10)
-		out = input + '0';
-	else if (pf == 2)
-		out = input + 55;
-	else
-		out = input + 87;
-	if ((n > num - 1) && (len))
-		ft_putnbr_rec(n / num, num, fd, pf, len - 1);
-	ft_putchar_fd(out, 1);
-}
-
-/*
-** n : 출력숫자, num : 진수, fd, pf : 접두사, len : 출력할 길이
-** pf = 0 : 접두사x, pf = 1 : 접두사 소문자, pf = 2 : 접두사 대문자
-*/
-static void		ft_putptr_len_fd(t_ulld n, int num, int fd, int pf, int len)
-{
-	if (fd < 0)
-		return ;
-	if (n < 0)
-		write(fd, "-", 1);
-	if (pf == 1)
-		ft_putstr_fd("0x", 1);
-	else if (pf == 2)
-		ft_putstr_fd("0X", 1);
-	if (!n)
-		ft_putstr_fd("0", 1);
-	else
-		ft_putnbr_rec(n, num, fd, pf, len);
-}
-
-size_t			ft_printf_ptr(va_list ap, t_all all)
-{
-	t_ulld      ptr;
 	int			len;
-	int			width;
+	int			rtn;
+	t_ulld		num;
 
-	width = all.width.num;
-	if (all.flag.star)
-		width = va_arg(ap, int);
-	if (width < 0)
+	info->base = 16;
+	num = (t_ulld)va_arg(ap, void*);
+	if (info->width < 0)
 	{
-		width *= -1;
-		all.flag.bar = 1;
+		info->width *= -1;
+		info->minus = 1;
 	}
-	ptr = (t_ulld)va_arg(ap, void*);
-	len = ft_ptr_len(ptr, 16);
-	if (!all.flag.bar)
-		print_empty(' ', width - len - 2);
-	ft_putptr_len_fd(ptr, 16, 1, 1, len);
-	if (all.flag.bar)
-		print_empty(' ', width - len - 2);
-	if (width > len + 2)
-		return ((size_t)(width));
-	else
-		return ((size_t)(len + 2));
+	rtn = 2;
+	if (!info->minus)
+		print_empty(' ', info->width - num_len_hex(num) - 2);
+	ft_putstr_fd("0x", 1);
+	rtn += putnbr_base16(info, num);
+	if (info->minus)
+		print_empty(' ', info->width - num_len_hex(num) - 2);
+	if (info->width - num_len_hex(num) - 2 > 0)
+		rtn += (info->width - num_len_hex(num) - 2);	
+	return (rtn);
 }

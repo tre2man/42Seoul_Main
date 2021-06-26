@@ -3,51 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   printf_str.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/19 23:18:35 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/21 16:33:40 by namwkim          ###   ########.fr       */
+/*   Created: 2021/06/24 13:16:45 by namwoo            #+#    #+#             */
+/*   Updated: 2021/06/25 13:16:17 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void		ft_print_str_(t_all all, char *str, int len, int width)
+int				printf_str(va_list ap, t_info *info)
 {
-	if (!all.flag.bar)
-		print_empty(all.flag.zero, width - len);
-	if (str)
-		write(1, str, len);
-	if (all.flag.bar)
-		print_empty(all.flag.zero, width - len);
-}
-
-size_t			ft_printf_str(va_list ap, t_all all)
-{
-	char		*str;
-	int			width;
-	int			prec;
 	int			len;
+	char		*str;
 
-	prec = all.prec.num;
-	width = all.width.num;
-	if (all.flag.star)
-		width = va_arg(ap, int);
-	if (width < 0)
-	{
-		width *= -1;
-		all.flag.bar = 1;
-	}
-	if (all.prec.star)
-		prec = va_arg(ap, int);
 	if (!(str = va_arg(ap, void*)))
 		str = "(null)";
 	len = ft_strlen(str);
-	if ((len > prec) && (all.prec.dot) && (prec >= 0))
-		len = prec;
-	ft_print_str_(all, str, len, width);
-	if (width - len < 0)
+	if (info->width < 0)
+	{
+		info->width *= -1;
+		info->minus = 1;
+	}
+	if ((len > info->prec) && (info->prec >= 0))
+		len = info->prec;
+	if(!info->minus)
+		print_empty(' ', info->width - len);
+	write(1, str, len);
+	if (info->minus)
+		print_empty(' ', info->width - len);
+	if (info->width < len)
 		return (len);
 	else
-		return (width);
+		return (info->width);
 }

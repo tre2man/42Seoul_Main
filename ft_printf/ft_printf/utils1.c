@@ -5,95 +5,84 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/14 16:02:55 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/19 16:10:30 by namwoo           ###   ########.fr       */
+/*   Created: 2021/06/24 11:51:07 by namwoo            #+#    #+#             */
+/*   Updated: 2021/06/25 22:06:59 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_flag check_flag(char *str)
+void		init_info(t_info *info)
 {
-	t_flag rtn;
+	info->minus = 0;
+	info->zero = 0;
+	info->width = 0;
+	info->prec = -1;
+	info->type = 'd';
+	info->base = 10;
+	info->pct = 0;
+}
 
-	ft_memset((void *) &rtn, 0, sizeof(rtn));
-	while (!ft_isalnum(*str)|| *str == '0')
+void		print_empty(char c, int len)
+{
+	int		i;
+
+	i = 0;
+	while (i < len)
 	{
-		if (*str == '0')
-		{
-			rtn.zero = '0';
-			rtn.idx++;
-			str++;
-			break;
-		}
-		else if (*str == '-')
-			rtn.bar = 1;
-		else if (*str == '*')
-			rtn.star = 1;
-		else if (*str == ',')
-			rtn.dot = 1;
-		else if (*str == '.')
-			break;
-		str++;
-		rtn.idx++;
+		ft_putchar_fd(c, 1);
+		i++;
+	}
+}
+
+int			num_len_int(t_lld n)
+{
+	t_lld	i;
+	int		rtn;
+
+	i = 1;
+	rtn = 0;
+	if (!n)
+		return (1);
+	if (n < 0)
+		n *= -1;
+	while (n / i)
+	{
+		i *= 10;
+		rtn++;
+	}	
+	return (rtn);
+}
+
+int			num_len_hex(t_ulld n)
+{
+	t_lld	i;
+	int		rtn;
+
+	i = 1;
+	rtn = 0;
+	if (!n)
+		return (1);
+	while (n / i)
+	{
+		i *= 16;
+		rtn++;
 	}
 	return (rtn);
 }
 
-t_width check_width(char *str)
+t_lld			format_len(char *format)
 {
-	t_width rtn;
+	int			rtn;
 
-	ft_memset((void *) &rtn, 0, sizeof(rtn));
-	rtn.num = ft_atoi(str);
-	while (ft_isdigit(*str++))
-		rtn.idx++;
-	return (rtn);
-}
-
-t_prec check_prec(char *str)
-{
-	t_prec rtn;
-
-	ft_memset((void *) &rtn, 0, sizeof(rtn));
-	if (*str == '.')
+	if (!format)
+		return (0);
+	rtn = 2;
+	format++;
+	while (*format && !ft_strchr(FORMAT, *format))
 	{
-		rtn.dot = 1;
-		rtn.idx++;
-		str++;
-		rtn.num = ft_atoi(str);
+		format++;
+		rtn++;
 	}
-	if (*str == '*' && rtn.idx)
-	{
-		rtn.star = 1;
-		rtn.idx++;
-	}
-	else
-		while (ft_isdigit(*str++))
-			rtn.idx++;
-	return (rtn);
-}
-
-t_type check_type(char *str)
-{
-	t_type rtn;
-
-	ft_memset((void *) &rtn, 0, sizeof(rtn));
-	if (*str == 'c')
-		rtn.c = 1;
-	else if (*str == 'd' || *str == 'i')
-		rtn.d = 1;
-	else if (*str == 's')
-		rtn.s = 1;
-	else if (*str == 'p')
-		rtn.p = 1;
-	else if (*str == 'u')
-		rtn.u = 1;
-	else if (*str == 'x')
-		rtn.x = 1;
-	else if (*str == 'X')
-		rtn.x = 2;
-	if (rtn.c || rtn.d || rtn.s || rtn.p || rtn.u || rtn.x)
-		rtn.idx = 1;
 	return (rtn);
 }
