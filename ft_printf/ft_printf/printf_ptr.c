@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   printf_ptr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 21:35:11 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/26 13:18:27 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/27 12:34:33 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int		num_len_hex(t_ulld n)
+{
+	int		rtn;
+
+	rtn = 1;
+	if (n > 15)
+		rtn += num_len_hex(n / 16);
+	return (rtn);
+}
 
 static int		putnbr_base16(t_info *info, t_ulld num)
 {

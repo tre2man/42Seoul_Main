@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:12:28 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/26 21:24:03 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/27 12:40:06 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ t_lld			dtb_type(va_list ap, t_info *info, char *format)
 		return (printf_char(ap, info, format));
 	else if (*format == 'p')
 		return (printf_ptr(ap, info));
-	else if (*format == 'X' || *format == 'x')
-		return (printf_hex(ap, info));
+	else if (*format == 'X' || *format == 'x' || *format == 'u')
+		return (printf_uint(ap, info));
 	else
-		return (printf_nbr(ap, info));
+		return (printf_int(ap, info));
 }
 
 void			width_prec(va_list ap, char *format, t_info *info)
@@ -68,6 +68,7 @@ t_lld			parser(va_list ap, char *format, t_info *info)
 		width_prec(ap, format++, info);
 	//printf("[%d %d]", info->width, info->prec);
 	/* 맨 앞에 0이 있으면서 prec가 0으로 정의되었다면, prec을 width로 변경 */
+	/*
 	if (info->zero && !info->isprec && !info->minus)
 	{
 		info->prec = info->width;
@@ -75,6 +76,7 @@ t_lld			parser(va_list ap, char *format, t_info *info)
 			info->prec *= -1;
 		info->width = 0;
 	}
+	*/
 	info->type = *format;
 	return (dtb_type(ap, info, format));
 }
@@ -92,7 +94,7 @@ t_lld			check_fmt(va_list ap, char *format)
 	rtn = 0;
 	while (format[idx])
 	{
-		if (format[idx] != '%')
+		if (format[idx] && format[idx] != '%')
 		{
 			ft_putchar_fd(format[idx++], 1);
 			rtn++;

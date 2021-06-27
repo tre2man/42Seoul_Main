@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:09:03 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/26 17:50:14 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/27 12:36:56 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int							ft_printf(const char *format, ...);
 */
 int							printf_char(va_list ap, t_info *info, char *format);
 int							printf_str(va_list ap, t_info *info);
-int							printf_hex(va_list ap, t_info *info);
+int							printf_uint(va_list ap, t_info *info);
 int							printf_ptr(va_list ap, t_info *info);
-int							printf_nbr(va_list ap, t_info *info);
+int							printf_int(va_list ap, t_info *info);
 
 /*
 ** utils1.c
@@ -57,7 +57,6 @@ int							printf_nbr(va_list ap, t_info *info);
 void						init_info(t_info *info);
 void						print_empty(char c, int len);
 int							num_len_int(t_lld n);
-int							num_len_hex(t_ulld n);
 t_lld						format_len(char *format);
 
 #endif

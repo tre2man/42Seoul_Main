@@ -2,7 +2,7 @@ NAME		= libftprintf.a
 LIBFT		= libft
 LIBFT_LIB	= libft.a
 
-SRCS		= ./ft_printf.c ./utils1.c ./printf_char.c ./printf_str.c ./printf_nbr.c ./printf_hex.c ./printf_ptr.c
+SRCS		= ./ft_printf.c ./utils1.c ./printf_char.c ./printf_str.c ./printf_int.c ./printf_uint.c ./printf_ptr.c
 OBJS		= $(SRCS:.c=.o)
 INCS		= .
 RM			= rm -f

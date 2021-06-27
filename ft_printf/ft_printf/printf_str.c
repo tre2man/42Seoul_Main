@@ -6,7 +6,7 @@
 /*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 13:16:45 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/26 10:48:53 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/27 00:34:04 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int				printf_str(va_list ap, t_info *info)
 		info->width *= -1;
 		info->minus = 1;
 	}
-	if ((len > info->prec) && (info->prec >= 0))
+	if ((len > info->prec) && (info->prec >= 0) && (info->isprec))
 		len = info->prec;
 	if(!info->minus)
 		print_empty(' ', info->width - len);

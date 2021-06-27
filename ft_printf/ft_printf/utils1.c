@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:51:07 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/26 17:50:27 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/27 14:29:54 by namwoo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,6 @@ int			num_len_int(t_lld n)
 		i *= 10;
 		rtn++;
 	}	
-	return (rtn);
-}
-
-int			num_len_hex(t_ulld n)
-{
-	t_lld	i;
-	int		rtn;
-
-	i = 1;
-	rtn = 0;
-	if (!n)
-		return (1);
-	while (n / i)
-	{
-		i *= 16;
-		rtn++;
-	}
 	return (rtn);
 }
 
