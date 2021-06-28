@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:12:28 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/27 12:40:06 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/28 20:39:31 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,17 @@
 t_lld			dtb_type(va_list ap, t_info *info, char *format)
 {
 	if (*format == 's')
-		return (printf_str(ap, info));
-	else if (*format == 'c' || *format == '%')
-		return (printf_char(ap, info, format));
+		return (printf_str((char *)va_arg(ap, void*), info));
+	else if (*format == 'c')
+		return (printf_char((char)va_arg(ap, int), info));
+	else if (*format == '%')
+		return (printf_char('%', info));
 	else if (*format == 'p')
-		return (printf_ptr(ap, info));
+		return (printf_ptr(va_arg(ap, void*), info));
 	else if (*format == 'X' || *format == 'x' || *format == 'u')
-		return (printf_uint(ap, info));
+		return (printf_uint((unsigned int)va_arg(ap, int), info));
 	else
-		return (printf_int(ap, info));
+		return (printf_int(va_arg(ap, int), info));
 }
 
 void			width_prec(va_list ap, char *format, t_info *info)
@@ -31,25 +33,22 @@ void			width_prec(va_list ap, char *format, t_info *info)
 	int			num;
 
 	if (*format == '.')
-	{
-		info->isprec = 1;
-		format++;
-	}
+		info->prec = 0;
 	num = ft_atoi(format);
 	if (num < 0)
 		format++;
 	if (ft_isdigit(*format))
 	{
-		if (info->isprec == 0 && !(info->width))
+		if (info->prec == -1 && !(info->width))
 			info->width = num;
-		else if (info->isprec == 1 && !(info->prec))
+		else if (info->prec >= 0 && !(info->prec))
 			info->prec = num;
 	}
 	else if (*format == '*')
 	{
-		if (info->isprec == 0 && !(info->width))
+		if (info->prec == -1 && !(info->width))
 			info->width = va_arg(ap, int);
-		else if (info->isprec == 1 && !(info->prec))
+		else if (info->prec >= 0 && !(info->prec))
 			info->prec = va_arg(ap, int);
 	}
 }
@@ -66,17 +65,8 @@ t_lld			parser(va_list ap, char *format, t_info *info)
 	}
 	while (*format && !ft_strchr(FORMAT, *format))
 		width_prec(ap, format++, info);
-	//printf("[%d %d]", info->width, info->prec);
-	/* 맨 앞에 0이 있으면서 prec가 0으로 정의되었다면, prec을 width로 변경 */
-	/*
-	if (info->zero && !info->isprec && !info->minus)
-	{
-		info->prec = info->width;
-		if (info->prec < 0)
-			info->prec *= -1;
-		info->width = 0;
-	}
-	*/
+	if (info->prec < 0)
+		info->prec = -1;
 	info->type = *format;
 	return (dtb_type(ap, info, format));
 }

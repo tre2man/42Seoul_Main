@@ -1,0 +1,110 @@
+
+------------------------------
+|        string.c            |
+|                            |
+------------------------------
+
+make: `libftprintf.a' is up to date.
+21[     ]9						      |	21[	½]9
+22[     ]9						      |	22[	½]9
+23[     ]9						      |	23[	½]9
+25[     ]9						      |	25[	½]9
+21[     ]9						      |	21[	½]9
+22[     ]9						      |	22[	½]9
+23[     ]9						      |	23[	½]9
+25[     ]9						      |	25[	½]9
+21[     ]9						      |	21[	½]9
+22[     ]9						      |	22[	½]9
+23[     ]9						      |	23[	½]9
+25[     ]9						      |	25[	½]9
+21[     ]9						      |	21[	½]9
+22[     ]9						      |	22[	½]9
+23[     ]9						      |	23[	½]9
+25[     ]9						      |	25[	½]9
+26[]4							      |	26[(null)]10
+26[]4							      |	26[(null)]10
+21[     ]9						      |	21[	½]9
+22[     ]9						      |	22[	½]9
+23[     ]9						      |	23[	½]9
+25[     ]9						      |	25[	½]9
+26[]4							      |	26[(null)]10
+21[     ]9						      |	21[	½]9
+22[     ]9						      |	22[	½]9
+23[     ]9						      |	23[	½]9
+25[     ]9						      |	25[	½]9
+26[]4							      |	26[(null)]10
+26[]4							      |	26[(null)]10
+26[]4							      |	26[(null)]10
+26[]4							      |	26[(null)]10
+ 							      |
+ 							      |
+ 							      |
+ 							      |
+ PRINTF							      |	 FT_PRINTF
+------------------------------------------------------------------------------------------------------------------------------
+
+[0;31m[ KO ]        31 errors
+[0m
+Please select: 1, 2, 3, or 4
+
+
+[ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |
+
+rm -f ./ft_printf.o ./utils1.o ./printf_char.o ./printf_str.o ./printf_int.o ./printf_uint.o ./printf_ptr.o
+make clean -C libft
+rm -f ft_isalnum.o ft_isprint.o ft_memcmp.o ft_putchar_fd.o ft_split.o ft_strlcat.o ft_strncmp.o ft_substr.o ft_atoi.o ft_isalpha.o ft_itoa.o ft_memcpy.o ft_putendl_fd.o ft_strchr.o ft_strlcpy.o ft_strnstr.o ft_tolower.o ft_bzero.o ft_isascii.o ft_memccpy.o ft_memmove.o ft_putnbr_fd.o ft_strdup.o ft_strlen.o ft_strrchr.o ft_toupper.o ft_calloc.o ft_isdigit.o ft_memchr.o ft_memset.o ft_putstr_fd.o ft_strjoin.o ft_strmapi.o ft_strtrim.o ft_lstadd_back.o ft_lstadd_front.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o
+rm -f libftprintf.a
+make fclean -C libft
+rm -f ft_isalnum.o ft_isprint.o ft_memcmp.o ft_putchar_fd.o ft_split.o ft_strlcat.o ft_strncmp.o ft_substr.o ft_atoi.o ft_isalpha.o ft_itoa.o ft_memcpy.o ft_putendl_fd.o ft_strchr.o ft_strlcpy.o ft_strnstr.o ft_tolower.o ft_bzero.o ft_isascii.o ft_memccpy.o ft_memmove.o ft_putnbr_fd.o ft_strdup.o ft_strlen.o ft_strrchr.o ft_toupper.o ft_calloc.o ft_isdigit.o ft_memchr.o ft_memset.o ft_putstr_fd.o ft_strjoin.o ft_strmapi.o ft_strtrim.o ft_lstadd_back.o ft_lstadd_front.o ft_lstclear.o ft_lstdelone.o ft_lstiter.o ft_lstlast.o ft_lstmap.o ft_lstnew.o ft_lstsize.o
+rm -f libft.a
+------------------------------
+|        number.c            |
+|                            |
+------------------------------
+
+gcc  -c ft_printf.c -o ft_printf.o -I.
+gcc  -c utils1.c -o utils1.o -I.
+gcc  -c printf_char.c -o printf_char.o -I.
+gcc  -c printf_str.c -o printf_str.o -I.
+gcc  -c printf_int.c -o printf_int.o -I.
+gcc  -c printf_uint.c -o printf_uint.o -I.
+gcc  -c printf_ptr.c -o printf_ptr.o -I.
+make all -C libft/
+gcc -Wall -Wextra -Werror   -c -o ft_isalnum.o ft_isalnum.c
+gcc -Wall -Wextra -Werror   -c -o ft_isprint.o ft_isprint.c
+gcc -Wall -Wextra -Werror   -c -o ft_memcmp.o ft_memcmp.c
+gcc -Wall -Wextra -Werror   -c -o ft_putchar_fd.o ft_putchar_fd.c
+gcc -Wall -Wextra -Werror   -c -o ft_split.o ft_split.c
+gcc -Wall -Wextra -Werror   -c -o ft_strlcat.o ft_strlcat.c
+gcc -Wall -Wextra -Werror   -c -o ft_strncmp.o ft_strncmp.c
+gcc -Wall -Wextra -Werror   -c -o ft_substr.o ft_substr.c
+gcc -Wall -Wextra -Werror   -c -o ft_atoi.o ft_atoi.c
+gcc -Wall -Wextra -Werror   -c -o ft_isalpha.o ft_isalpha.c
+gcc -Wall -Wextra -Werror   -c -o ft_itoa.o ft_itoa.c
+gcc -Wall -Wextra -Werror   -c -o ft_memcpy.o ft_memcpy.c
+gcc -Wall -Wextra -Werror   -c -o ft_putendl_fd.o ft_putendl_fd.c
+gcc -Wall -Wextra -Werror   -c -o ft_strchr.o ft_strchr.c
+gcc -Wall -Wextra -Werror   -c -o ft_strlcpy.o ft_strlcpy.c
+gcc -Wall -Wextra -Werror   -c -o ft_strnstr.o ft_strnstr.c
+gcc -Wall -Wextra -Werror   -c -o ft_tolower.o ft_tolower.c
+gcc -Wall -Wextra -Werror   -c -o ft_bzero.o ft_bzero.c
+gcc -Wall -Wextra -Werror   -c -o ft_isascii.o ft_isascii.c
+gcc -Wall -Wextra -Werror   -c -o ft_memccpy.o ft_memccpy.c
+gcc -Wall -Wextra -Werror   -c -o ft_memmove.o ft_memmove.c
+gcc -Wall -Wextra -Werror   -c -o ft_putnbr_fd.o ft_putnbr_fd.c
+gcc -Wall -Wextra -Werror   -c -o ft_strdup.o ft_strdup.c
+gcc -Wall -Wextra -Werror   -c -o ft_strlen.o ft_strlen.c
+gcc -Wall -Wextra -Werror   -c -o ft_strrchr.o ft_strrchr.c
+gcc -Wall -Wextra -Werror   -c -o ft_toupper.o ft_toupper.c
+gcc -Wall -Wextra -Werror   -c -o ft_calloc.o ft_calloc.c
+gcc -Wall -Wextra -Werror   -c -o ft_isdigit.o ft_isdigit.c
+gcc -Wall -Wextra -Werror   -c -o ft_memchr.o ft_memchr.c
+gcc -Wall -Wextra -Werror   -c -o ft_memset.o ft_memset.c
+gcc -Wall -Wextra -Werror   -c -o ft_putstr_fd.o ft_putstr_fd.c
+gcc -Wall -Wextra -Werror   -c -o ft_strjoin.o ft_strjoin.c
+gcc -Wall -Wextra -Werror   -c -o ft_strmapi.o ft_strmapi.c
+gcc -Wall -Wextra -Werror   -c -o ft_strtrim.o ft_strtrim.c
+ar rcs libft.a ft_isalnum.o ft_isprint.o ft_memcmp.o ft_putchar_fd.o ft_split.o ft_strlcat.o ft_strncmp.o ft_substr.o ft_atoi.o ft_isalpha.o ft_itoa.o ft_memcpy.o ft_putendl_fd.o ft_strchr.o ft_strlcpy.o ft_strnstr.o ft_tolower.o ft_bzero.o ft_isascii.o ft_memccpy.o ft_memmove.o ft_putnbr_fd.o ft_strdup.o ft_strlen.o ft_strrchr.o ft_toupper.o ft_calloc.o ft_isdigit.o ft_memchr.o ft_memset.o ft_putstr_fd.o ft_strjoin.o ft_strmapi.o ft_strtrim.o
+cp libft/libft.a libftprintf.a
+ar rc libftprintf.a ./ft_printf.o ./utils1.o ./printf_char.o ./printf_str.o ./printf_int.o ./printf_uint.o ./printf_ptr.o
+######### 42TESTERS-PRINTF ##########

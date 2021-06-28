@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:09:03 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/27 12:36:56 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/28 20:36:43 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ typedef struct				s_info
 	int						zero;
 	int						width;
 	int						prec;
-	int						isprec;
 	char					type;
-	int						base;
-	int						pct;
 }							t_info;
 
 /*
@@ -45,11 +42,11 @@ int							ft_printf(const char *format, ...);
 /*
 ** ft_printf_xxx.c
 */
-int							printf_char(va_list ap, t_info *info, char *format);
-int							printf_str(va_list ap, t_info *info);
-int							printf_uint(va_list ap, t_info *info);
-int							printf_ptr(va_list ap, t_info *info);
-int							printf_int(va_list ap, t_info *info);
+int							printf_char(char c, t_info *info);
+int							printf_str(char *str, t_info *info);
+int							printf_uint(unsigned int i, t_info *info);
+int							printf_ptr(void *ptr, t_info *info);
+int							printf_int(int i, t_info *info);
 
 /*
 ** utils1.c
