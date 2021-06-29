@@ -37,7 +37,6 @@ int				printf_char(char c, t_info *info)
 		print_empty('0', info->width);
 	else if (!info->minus)
 		print_empty(' ', info->width);
-	print_empty('0', prec);
 	ft_putchar_fd(c, 1);
 	if (info->minus)
 		print_empty(' ', info->width);

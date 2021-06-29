@@ -35,7 +35,7 @@ void			width_prec(va_list ap, char *format, t_info *info)
 	if (*format == '.')
 		info->prec = 0;
 	num = ft_atoi(format);
-	if (ft_isdigit(*format) || *format == '-')
+	if (ft_isdigit(*format))
 	{
 		if (info->prec == -1 && !(info->width))
 			info->width = num;
