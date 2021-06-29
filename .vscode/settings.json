@@ -10,6 +10,7 @@
         "get_next_line_bonus.h": "c",
         "*.a": "c",
         "_stdio.h": "c",
-        "new": "cpp"
+        "new": "cpp",
+        "ratio": "c"
     }
 }

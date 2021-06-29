@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:12:28 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/28 20:39:31 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/29 20:36:46 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ void			width_prec(va_list ap, char *format, t_info *info)
 	if (*format == '.')
 		info->prec = 0;
 	num = ft_atoi(format);
-	if (num < 0)
-		format++;
-	if (ft_isdigit(*format))
+	if (ft_isdigit(*format) || *format == '-')
 	{
 		if (info->prec == -1 && !(info->width))
 			info->width = num;
@@ -59,7 +57,7 @@ t_lld			parser(va_list ap, char *format, t_info *info)
 	{
 		if (*format == '-')
 			info->minus = 1;
-		if (*format == '0' && !info->minus)
+		if (*format == '0')
 			info->zero = 1;
 		format++;
 	}
@@ -67,6 +65,11 @@ t_lld			parser(va_list ap, char *format, t_info *info)
 		width_prec(ap, format++, info);
 	if (info->prec < 0)
 		info->prec = -1;
+	if (info->width < 0)
+	{
+		info->width *= -1;
+		info->minus = 1;
+	}
 	info->type = *format;
 	return (dtb_type(ap, info, format));
 }
@@ -76,7 +79,6 @@ t_lld			check_fmt(va_list ap, char *format)
 	t_info		*info;
 	int			idx;
 	int			rtn;
-	int			temp;
 
 	if (!(info = malloc(sizeof(t_info))))
 		return (-1);

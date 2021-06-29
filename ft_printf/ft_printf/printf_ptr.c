@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf_ptr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 21:35:11 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/27 12:34:33 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/06/29 19:53:05 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,16 @@ static int		putnbr_base16(t_info *info, t_ulld num)
 	rtn = 1;
 	if (num > 15)
 		rtn += putnbr_base16(info, num / 16);
-	ft_putchar_fd(BASE_x[num % 16], 1);
+	ft_putchar_fd(BASE_SX[num % 16], 1);
 	return (rtn);
 }
 
-int			printf_ptr(va_list ap, t_info *info)
+int				printf_ptr(void *ptr, t_info *info)
 {
-	int			len;
 	int			rtn;
 	t_ulld		num;
 
-	info->base = 16;
-	num = (t_ulld)va_arg(ap, void*);
-	if (info->width < 0)
-	{
-		info->width *= -1;
-		info->minus = 1;
-	}
+	num = (t_ulld)ptr;
 	rtn = 2;
 	if (!info->minus)
 		print_empty(' ', info->width - num_len_hex(num) - 2);
@@ -54,6 +47,6 @@ int			printf_ptr(va_list ap, t_info *info)
 	if (info->minus)
 		print_empty(' ', info->width - num_len_hex(num) - 2);
 	if (info->width - num_len_hex(num) - 2 > 0)
-		rtn += (info->width - num_len_hex(num) - 2);	
+		rtn += (info->width - num_len_hex(num) - 2);
 	return (rtn);
 }

@@ -6,21 +6,20 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:09:03 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/28 20:36:43 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/29 19:53:44 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdarg.h>
-#include "libft/libft.h"
+# include <stdarg.h>
+# include "libft/libft.h"
 
-#include <stdio.h>
-#define BASE_X "0123456789ABCDEF"
-#define BASE_x "0123456789abcdef"
-#define BASE_D "0123456789"
-#define FORMAT "cspiduxX%"
+# define BASE_X "0123456789ABCDEF"
+# define BASE_SX "0123456789abcdef"
+# define BASE_D "0123456789"
+# define FORMAT "cspiduxX%"
 
 typedef unsigned long long	t_ulld;
 typedef long long int		t_lld;
@@ -53,7 +52,6 @@ int							printf_int(int i, t_info *info);
 */
 void						init_info(t_info *info);
 void						print_empty(char c, int len);
-int							num_len_int(t_lld n);
 t_lld						format_len(char *format);
 
 #endif
