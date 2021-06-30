@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 13:17:20 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/29 16:12:59 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/30 11:26:24 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,11 @@ int				printf_int(int i, t_info *info)
 	int			prec;
 
 	rtn = 0;
+	len = num_len_int(i);
 	if (!info->prec && !i)
 		len = 0;
-	else
-		len = num_len_int(i);
 	check_info(i, len, info, &prec);
-	if (info->zero && (info->prec == -1) && !(info->minus))
-		print_empty('0', info->width);
-	else if (!info->minus)
+	if (!info->minus)
 		print_empty(' ', info->width);
 	rtn = putnbr_base10(info, i, prec);
 	if (info->minus)

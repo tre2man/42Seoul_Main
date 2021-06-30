@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 21:35:11 by namwoo            #+#    #+#             */
-/*   Updated: 2021/06/29 19:53:05 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/06/30 11:24:59 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,22 @@ static int		putnbr_base16(t_info *info, t_ulld num)
 int				printf_ptr(void *ptr, t_info *info)
 {
 	int			rtn;
+	int			len;
 	t_ulld		num;
 
 	num = (t_ulld)ptr;
+	len = num_len_hex(num);
+	if (!info->prec && !num)
+		len = 0;
 	rtn = 2;
 	if (!info->minus)
-		print_empty(' ', info->width - num_len_hex(num) - 2);
+		print_empty(' ', info->width - len - 2);
 	ft_putstr_fd("0x", 1);
-	rtn += putnbr_base16(info, num);
+	if (len)
+		rtn += putnbr_base16(info, num);
 	if (info->minus)
-		print_empty(' ', info->width - num_len_hex(num) - 2);
-	if (info->width - num_len_hex(num) - 2 > 0)
-		rtn += (info->width - num_len_hex(num) - 2);
+		print_empty(' ', info->width - len - 2);
+	if (info->width - len - 2 > 0)
+		rtn += (info->width - len - 2);
 	return (rtn);
 }
