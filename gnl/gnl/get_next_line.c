@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char			*get_next(char *save)
+char	*get_next(char *save)
 {
 	int			i;
 	char		*ans;
@@ -27,14 +27,15 @@ char			*get_next(char *save)
 		free(save);
 		return (0);
 	}
-	if (!(ans = malloc(sizeof(char) * ((ft_strlen(save) - i) + 1))))
+	ans = malloc(sizeof(char) * ((ft_strlen(save) - i) + 1));
+	if (!ans)
 		return (0);
 	ft_strlcpy(ans, save + i + 1, ft_strlen(save + i + 1) + 1);
 	free(save);
 	return (ans);
 }
 
-char			*get_now(char *save)
+char	*get_now(char *save)
 {
 	int			len;
 	int			idx;
@@ -46,7 +47,8 @@ char			*get_now(char *save)
 	idx = 0;
 	while (save[len] && save[len] != '\n')
 		len++;
-	if (!(ans = malloc(sizeof(char) * (len + 1))))
+	ans = malloc(sizeof(char) * (len + 1));
+	if (!ans)
 		return (0);
 	ft_memset(ans, 0, sizeof(char) * (len + 1));
 	while (save[idx] && save[idx] != '\n')
@@ -57,7 +59,7 @@ char			*get_now(char *save)
 	return (ans);
 }
 
-int				in_newline(char *save)
+int	in_newline(char *save)
 {
 	if (!save)
 		return (0);
@@ -70,29 +72,31 @@ int				in_newline(char *save)
 	return (0);
 }
 
-int				free_error(char *str)
+int	free_error(char *str)
 {
 	free(str);
 	return (-1);
 }
 
-int				get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
-	static char *save;
+	static char	*save;
 	char		*buffer;
 	int			rread;
 
-	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0 || !line)
+	if (rread_(&rread) || fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0 || !line)
 		return (-1);
-	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
 		return (-1);
-	rread = 1;
 	while (!in_newline(save) && rread != 0)
 	{
 		ft_memset(buffer, 0, sizeof(char) * (BUFFER_SIZE + 1));
-		if ((rread = read(fd, buffer, BUFFER_SIZE)) == -1)
+		rread = read(fd, buffer, BUFFER_SIZE);
+		if (rread == -1)
 			return (free_error(buffer));
-		if (!(save = ft_strjoin_(save, buffer)))
+		save = ft_strjoin_(save, buffer);
+		if (!save)
 			return (free_error(buffer));
 	}
 	free(buffer);

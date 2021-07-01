@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	front;
 	size_t	rear;
@@ -26,8 +26,8 @@ char		*ft_strtrim(char const *s1, char const *set)
 		front++;
 	while (s1[rear - 1] && ft_strchr(set, s1[rear - 1]) && front < rear)
 		rear--;
-	ans = (char*)malloc(sizeof(char) * (rear - front + 1));
+	ans = (char *)malloc(sizeof(char) * (rear - front + 1));
 	if (ans)
-		ft_strlcpy(ans, (char*)(s1 + front), rear - front + 1);
+		ft_strlcpy(ans, (char *)(s1 + front), rear - front + 1);
 	return (ans);
 }

@@ -17,7 +17,7 @@
 # define OPEN_MAX 256
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 32
+#  define BUFFER_SIZE 32
 # endif
 
 /*
@@ -36,5 +36,6 @@ void		*ft_memset(void *s, int c, size_t n);
 size_t		ft_strlen(char const *s);
 char		*ft_strjoin_(char const *s1, char const *s2);
 size_t		ft_strlcpy(char *dst, char *src, size_t size);
+int			rread_(int *rread);
 
 #endif

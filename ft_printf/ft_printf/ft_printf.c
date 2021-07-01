@@ -12,23 +12,23 @@
 
 #include "ft_printf.h"
 
-t_lld			dtb_type(va_list ap, t_info *info, char *format)
+t_lld	dtb_type(va_list ap, t_info *info, char *format)
 {
 	if (*format == 's')
-		return (printf_str((char *)va_arg(ap, void*), info));
+		return (printf_str((char *)va_arg(ap, void *), info));
 	else if (*format == 'c')
 		return (printf_char((char)va_arg(ap, int), info));
 	else if (*format == '%')
 		return (printf_char('%', info));
 	else if (*format == 'p')
-		return (printf_ptr(va_arg(ap, void*), info));
+		return (printf_ptr(va_arg(ap, void *), info));
 	else if (*format == 'X' || *format == 'x' || *format == 'u')
 		return (printf_uint((unsigned int)va_arg(ap, int), info));
 	else
 		return (printf_int(va_arg(ap, int), info));
 }
 
-void			width_prec(va_list ap, char *format, t_info *info)
+void	width_prec(va_list ap, char *format, t_info *info)
 {
 	int			num;
 
@@ -51,7 +51,7 @@ void			width_prec(va_list ap, char *format, t_info *info)
 	}
 }
 
-t_lld			parser(va_list ap, char *format, t_info *info)
+t_lld	parser(va_list ap, char *format, t_info *info)
 {
 	while (*format && ft_strchr("-0", *format))
 	{
@@ -74,13 +74,14 @@ t_lld			parser(va_list ap, char *format, t_info *info)
 	return (dtb_type(ap, info, format));
 }
 
-t_lld			check_fmt(va_list ap, char *format)
+t_lld	check_fmt(va_list ap, char *format)
 {
 	t_info		*info;
 	int			idx;
 	int			rtn;
 
-	if (!(info = malloc(sizeof(t_info))))
+	info = malloc(sizeof(t_info));
+	if (!info)
 		return (-1);
 	idx = 0;
 	rtn = 0;
@@ -102,14 +103,14 @@ t_lld			check_fmt(va_list ap, char *format)
 	return (rtn);
 }
 
-int				ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	int			rtn;
 
 	rtn = 0;
 	va_start(ap, format);
-	rtn = (int)check_fmt(ap, (char*)format);
+	rtn = (int)check_fmt(ap, (char *)format);
 	va_end(ap);
 	return (rtn);
 }

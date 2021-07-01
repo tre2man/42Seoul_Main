@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int		num_len_base(unsigned int n, int base)
+static int	num_len_base(unsigned int n, int base)
 {
 	int		rtn;
 
@@ -22,7 +22,7 @@ static int		num_len_base(unsigned int n, int base)
 	return (rtn);
 }
 
-static int		putnbr_base(t_info *info, unsigned int num)
+static int	putnbr_base(t_info *info, unsigned int num)
 {
 	int			rtn;
 
@@ -42,7 +42,7 @@ static int		putnbr_base(t_info *info, unsigned int num)
 	return (rtn);
 }
 
-static void		check_info(int len, t_info *info, int *prec)
+static void	check_info(int len, t_info *info, int *prec)
 {
 	*prec = info->prec;
 	if (*prec > len)
@@ -57,7 +57,7 @@ static void		check_info(int len, t_info *info, int *prec)
 		info->width = 0;
 }
 
-int				printf_uint(unsigned int i, t_info *info)
+int	printf_uint(unsigned int i, t_info *info)
 {
 	int			len;
 	int			rtn;

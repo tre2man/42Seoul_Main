@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-static int		ft_iscontrol(char c)
+static int	ft_iscontrol(char c)
 {
 	if (9 <= c && c <= 13)
 		return (1);
 	return (0);
 }
 
-int				ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	long long	ans;
 	int			minus;
@@ -27,7 +27,7 @@ int				ft_atoi(const char *str)
 	ans = 0;
 	minus = 1;
 	while (*str != '+' && *str != '-' && *str
-			&& (ft_iscontrol(*str) || *str == ' '))
+		&& (ft_iscontrol(*str) || *str == ' '))
 		str++;
 	if (*str == '+' || *str == '-')
 	{

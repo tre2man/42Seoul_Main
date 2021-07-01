@@ -26,7 +26,7 @@ static void	ft_rec(int n, int fd)
 	write(fd, &out, 1);
 }
 
-void		ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	if (fd < 0)
 		return ;

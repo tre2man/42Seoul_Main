@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int		num_len_int(t_lld n)
+static int	num_len_int(t_lld n)
 {
 	t_lld	i;
 	int		rtn;
@@ -34,7 +34,7 @@ static int		num_len_int(t_lld n)
 	return (rtn);
 }
 
-static int		putnbr_base10(t_info *info, t_lld num, int prec)
+static int	putnbr_base10(t_info *info, t_lld num, int prec)
 {
 	int			rtn;
 
@@ -58,7 +58,7 @@ static int		putnbr_base10(t_info *info, t_lld num, int prec)
 	return (rtn);
 }
 
-static void		check_info(int i, int len, t_info *info, int *prec)
+static void	check_info(int i, int len, t_info *info, int *prec)
 {
 	*prec = info->prec;
 	if (*prec > len && i >= 0)
@@ -80,7 +80,7 @@ static void		check_info(int i, int len, t_info *info, int *prec)
 	}
 }
 
-int				printf_int(int i, t_info *info)
+int	printf_int(int i, t_info *info)
 {
 	int			len;
 	int			rtn;

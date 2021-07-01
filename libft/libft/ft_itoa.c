@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int		ft_numlen(long int n)
+static int	ft_numlen(long int n)
 {
 	size_t		len;
 	long int	check;
@@ -32,7 +32,7 @@ static int		ft_numlen(long int n)
 	return (len);
 }
 
-static void		ft_init(int n, char **ans,
+static void	ft_init(int n, char **ans,
 						size_t *isminus, unsigned long *check)
 {
 	if (n < 0)
@@ -48,7 +48,7 @@ static void		ft_init(int n, char **ans,
 	}
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char		*ans;
 	size_t		len;
@@ -56,7 +56,8 @@ char			*ft_itoa(int n)
 	size_t		isminus;
 
 	len = ft_numlen((long int)n);
-	if (!(ans = malloc(len + 1)))
+	ans = malloc(sizeof(char) * (len + 1));
+	if (!ans)
 		return (0);
 	ans[len] = '\0';
 	ft_init(n, &ans, &isminus, &check);

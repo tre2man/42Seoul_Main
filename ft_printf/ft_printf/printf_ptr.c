@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int		num_len_hex(t_ulld n)
+static int	num_len_hex(t_ulld n)
 {
 	int		rtn;
 
@@ -22,7 +22,7 @@ static int		num_len_hex(t_ulld n)
 	return (rtn);
 }
 
-static int		putnbr_base16(t_info *info, t_ulld num)
+static int	putnbr_base16(t_info *info, t_ulld num)
 {
 	int			rtn;
 
@@ -33,7 +33,7 @@ static int		putnbr_base16(t_info *info, t_ulld num)
 	return (rtn);
 }
 
-int				printf_ptr(void *ptr, t_info *info)
+int	printf_ptr(void *ptr, t_info *info)
 {
 	int			rtn;
 	int			len;

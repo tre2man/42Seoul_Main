@@ -6,19 +6,18 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 12:16:03 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/21 13:59:47 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/08 14:28:13 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
 	i = 0;
-	if (s)
-		while (*s++)
-			i++;
+	while (*s++)
+		i++;
 	return (i);
 }

@@ -24,14 +24,14 @@
 typedef unsigned long long	t_ulld;
 typedef long long int		t_lld;
 
-typedef struct				s_info
+typedef struct s_info
 {
 	int						minus;
 	int						zero;
 	int						width;
 	int						prec;
 	char					type;
-}							t_info;
+}	t_info;
 
 /*
 ** ft_printf.c

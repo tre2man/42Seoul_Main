@@ -29,5 +29,5 @@ char	*ft_strrchr(const char *s, int c)
 		j = i;
 	if (j == -1)
 		return (0);
-	return ((char*)s + j);
+	return ((char *)s + j);
 }

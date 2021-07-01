@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/08 14:18:50 by namwkim           #+#    #+#             */
-/*   Updated: 2021/06/21 13:54:06 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/05/08 14:19:24 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,5 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	if (fd < 0 || !s)
 		return ;
-	if (s)
-		write(fd, s, ft_strlen(s));
+	write(fd, s, ft_strlen(s));
 }

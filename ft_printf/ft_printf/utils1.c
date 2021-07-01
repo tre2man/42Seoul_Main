@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void		init_info(t_info *info)
+void	init_info(t_info *info)
 {
 	info->minus = 0;
 	info->zero = 0;
@@ -21,7 +21,7 @@ void		init_info(t_info *info)
 	info->type = 'd';
 }
 
-void		print_empty(char c, int len)
+void	print_empty(char c, int len)
 {
 	int		i;
 
@@ -33,7 +33,7 @@ void		print_empty(char c, int len)
 	}
 }
 
-t_lld		format_len(char *format)
+t_lld	format_len(char *format)
 {
 	int		rtn;
 

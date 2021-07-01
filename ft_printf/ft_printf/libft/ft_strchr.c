@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char				*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	unsigned char	i;
 	unsigned char	*a;
 
-	a = (unsigned char*)s;
+	a = (unsigned char *)s;
 	i = (unsigned char)c;
 	while (*a)
 	{
 		if (*a == i)
-			return ((char*)a);
+			return ((char *)a);
 		a++;
 	}
 	if (*a == i)
-		return ((char*)a);
+		return ((char *)a);
 	return (0);
 }

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int				printf_char(char c, t_info *info)
+int	printf_char(char c, t_info *info)
 {
 	int			rtn;
 

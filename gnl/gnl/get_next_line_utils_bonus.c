@@ -12,7 +12,7 @@
 
 #include "get_next_line_bonus.h"
 
-size_t		ft_strlen(char const *s)
+size_t	ft_strlen(char const *s)
 {
 	size_t	i;
 
@@ -24,7 +24,7 @@ size_t		ft_strlen(char const *s)
 	return (i);
 }
 
-char		*ft_strjoin_(char const *s1, char const *s2)
+char	*ft_strjoin_(char const *s1, char const *s2)
 {
 	char	*s;
 	size_t	len1;
@@ -35,7 +35,8 @@ char		*ft_strjoin_(char const *s1, char const *s2)
 		return (0);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	if (!(s = malloc(len1 + len2 + 1)))
+	s = malloc(len1 + len2 + 1);
+	if (!s)
 		return (0);
 	i = 0;
 	if (s1)
@@ -45,11 +46,11 @@ char		*ft_strjoin_(char const *s1, char const *s2)
 		while (*s2)
 			s[i++] = *s2++;
 	s[i] = '\0';
-	free((char*)(s1 - len1));
+	free((char *)(s1 - len1));
 	return (s);
 }
 
-void		*ft_memset(void *s, int c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	char	*a;
 
@@ -61,7 +62,7 @@ void		*ft_memset(void *s, int c, size_t n)
 	return (s);
 }
 
-size_t		ft_strlcpy(char *dst, char *src, size_t size)
+size_t	ft_strlcpy(char *dst, char *src, size_t size)
 {
 	size_t	i;
 
@@ -79,4 +80,10 @@ size_t		ft_strlcpy(char *dst, char *src, size_t size)
 	while (src[i])
 		i++;
 	return (i);
+}
+
+int	rread_(int *rread)
+{
+	*rread = 1;
+	return (0);
 }
