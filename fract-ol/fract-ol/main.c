@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fract_ol.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/06 13:29:12 by namwkim           #+#    #+#             */
-/*   Updated: 2021/07/07 14:39:47 by namwkim          ###   ########.fr       */
+/*   Created: 2021/07/08 13:05:15 by namwkim           #+#    #+#             */
+/*   Updated: 2021/07/08 15:43:55 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract_ol.h"
 
-int			main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	/*
-	mlx_init();
 	if (argc != 2)
-		ft_putstr_fd(INPUT_ERROR, 1);
-	if (!ft_strncmp(*argv, "Mandelbrot", ft_strlen(*argv)))
-		// 실행 함수
-	else if (!ft_strncmp(*argv, "Julia", ft_strlen(*argv)))
-		// 실행 함수
+		return (throw_error(INPUT_ERROR));
+	if (!ft_strncmp(argv[1], "Mandelbrot", ft_strlen("Mandelbrot") + 1))
+	{
+		if (!mandel_main())
+			return (throw_error(MLX_ERROR));
+	}
+	else if (!ft_strncmp(argv[1], "Julia", ft_strlen("Julia") + 1))
+	{
+		if (!julia_main())
+			return (throw_error(MLX_ERROR));
+	}
 	else
-		ft_putstr_fd(INPUT_ERROR, 1)
+		return (throw_error(INPUT_ERROR));
 	return (0);
-	*/
 }
