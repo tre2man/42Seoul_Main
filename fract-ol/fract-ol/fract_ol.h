@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 13:27:47 by namwkim           #+#    #+#             */
-/*   Updated: 2021/07/08 16:34:14 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/07/09 14:45:08 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 # define PURPLE 0x008B00FF
 # define BLUE 0x000000FF
-# define YELLOW 0xFFFF00
+# define YELLOW 0x00FFFF00
 # define BLACK 0x00000000
 # define WHITE 0x00FFFFFF
 
