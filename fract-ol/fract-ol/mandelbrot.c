@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/08 13:15:22 by namwkim           #+#    #+#             */
-/*   Updated: 2021/07/09 14:13:03 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/07/11 15:45:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	key_hook(int keycode, t_vars *vars)
 {
-	if (keycode == 53)
+	if (keycode == ESC)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
 		exit(0);
