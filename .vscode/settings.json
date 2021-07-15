@@ -11,6 +11,10 @@
         "*.a": "c",
         "_stdio.h": "c",
         "new": "cpp",
-        "ratio": "c"
+        "ratio": "c",
+        "array": "c",
+        "deque": "c",
+        "vector": "c",
+        "string_view": "c"
     }
 }
