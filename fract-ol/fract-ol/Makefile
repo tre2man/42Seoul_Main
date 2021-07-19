@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+         #
+#    By: namwookim <namwookim@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/06 13:58:22 by namwkim           #+#    #+#              #
-#    Updated: 2021/07/15 22:44:15 by namwoo           ###   ########.fr        #
+#    Updated: 2021/07/19 22:25:03 by namwookim        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,21 +20,25 @@ OBJS		= $(SRCS:.c=.o)
 RM			= rm -rf
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
-MLXFLAGS	= -O3 -lmlx -framework OpenGl -framework AppKit
+MLXLIB		= minilibx_opengl
+MLXFLAGS	= -L$(MLXLIB) -lmlx -framework OpenGl -framework AppKit
 
 $(NAME) : $(OBJS)
 	make -C $(LIBFT)
+	make -C $(MLXLIB)
 	$(CC) $(CFLAGS) $(LIBFT)/$(LIBFT_LIB) $(SRCS) -o $(NAME) $(MLXFLAGS)
 
 all : $(NAME)
 
 fclean : clean
 	$(RM) $(NAME)
+	make clean -C $(MLXLIB)
 	make fclean -C $(LIBFT)
 
 clean :
 	$(RM) $(OBJS)
-	make clean -C $(LIBFT)
+	make clean -C $(MLXLIB)
+	make fclean -C $(LIBFT)
 
 re : fclean all
 
