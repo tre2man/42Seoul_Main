@@ -33,7 +33,6 @@ all : $(NAME)
 fclean : clean
 	$(RM) $(NAME)
 	make clean -C $(MLXLIB)
-	make fclean -C $(LIBFT)
 
 clean :
 	$(RM) $(OBJS)
