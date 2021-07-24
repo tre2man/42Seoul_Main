@@ -39,8 +39,8 @@ static void	mandelbrot(t_vars *vars, double x, double y)
 	put_y = (y + MAX_Y) * (HEIGHT / (MAX_Y * 2));
 	put_x = (WIDTH / 2) + (put_x - (WIDTH / 2)) * vars->zoom;
 	put_y = (HEIGHT / 2) + (put_y - (HEIGHT / 2)) * vars->zoom;
-	if (isdvg_complex(zn) && (put_x > 0) && (put_x < WIDTH)
-		&& (put_y > 0) && (put_y < HEIGHT))
+	if (isdvg_complex(zn) && (put_x > 0) && ((int)put_x < WIDTH)
+		&& (put_y > 0) && ((int)put_y < HEIGHT))
 		pixel_put(&vars->img, (int)put_x, (int)put_y, PURPLE * (cycle * 7));
 	else
 		pixel_put(&vars->img, (int)put_x, (int)put_y, BLACK);
