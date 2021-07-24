@@ -19,7 +19,7 @@ OBJS		= $(SRCS:.c=.o)
 
 RM			= rm -rf
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g -fsanitize=address
 MLXLIB		= minilibx_opengl
 MLXFLAGS	= -L$(MLXLIB) -lmlx -framework OpenGl -framework AppKit
 
