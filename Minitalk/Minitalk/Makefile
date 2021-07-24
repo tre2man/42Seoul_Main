@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+         #
+#    By: namwookim <namwookim@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/15 22:34:12 by namwoo            #+#    #+#              #
-#    Updated: 2021/07/15 22:45:12 by namwoo           ###   ########.fr        #
+#    Updated: 2021/07/25 02:13:21 by namwookim        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,33 +15,26 @@ SERVER		= server
 LIBFT		= libft
 LIBFT_LIB	= libft.a
 
-SRCS		= ./client.c ./server.c
-OBJS		= ./client.o ./server.o
-SRCS_BONUS	= .
-OBJS_BONUS	= .
-INCS		= .
+SRCS		= client.c server.c
+OBJS		= $(SRCS:.c=.o)
+
 RM			= rm -rf
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -O3
 
-ifdef IS_BONUS
-	NOW_OBJS = $(OBJS_BONUS)
-else
-	NOW_OBJS = $(OBJS)
-endif
+all		: $(OBJS)
+		make -C $(LIBFT)
+		make $(CLIENT)
+		make $(SERVER)
 
-.c.o :
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I$(INCS)
+$(CLIENT)	:
+		$(CC) $(CFLAGS) $(LIBFT)/$(LIBFT_LIB) -o $(CLIENT) client.o
 
-$(NAME) : $(OBJS)
-	make all -C $(LIBFT)
-	$(CC) $(CFLAGS) $(LIBFT)/$(LIBFT_LIB) $(NOW_OBJS)
+$(SERVER)	:
+		$(CC) $(CFLAGS) $(LIBFT)/$(LIBFT_LIB) -o $(SERVER) server.o
 
-all : $(NAME)
-
-fclean : clean
-		$(RM) $(NAME)
-		make fclean -C $(LIBFT)
+fclean	: clean
+		$(RM) $(CLIENT) $(SERVER)
 
 clean	:
 		$(RM) $(OBJS)
@@ -49,7 +42,4 @@ clean	:
 
 re		: fclean all
 
-bonus	:
-		IS_BONUS=1 $(MAKE)
-
-.PHONY : all fclean clean re bonus
+.PHONY	: all fclean clean re

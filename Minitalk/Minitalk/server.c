@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namwookim <namwookim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 17:46:19 by namwoo            #+#    #+#             */
-/*   Updated: 2021/07/16 00:05:48 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/07/25 02:12:41 by namwookim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void print_char(int sig)
 
 	if (sig == SIGUSR1)
 		c |= 1 << byte;
-	if (++byte == 8)
+	if (++byte == BYTE)
 	{
 		write(1, &c, 1);
 		byte = 0;
@@ -27,13 +27,19 @@ void print_char(int sig)
 	}
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
-	printf("pid is %d\n", getpid());
+	if (argc != 1 || argv[1])
+	{
+		ft_putstr_fd("PROHIBIT ARGV!", 2);
+		return (0);
+	}
+	ft_putstr_fd("pid is", 1);
+	ft_putnbr_fd(getpid(), 1);
+	ft_putstr_fd("\n", 1);
 	signal(SIGUSR1, print_char);
 	signal(SIGUSR2, print_char);
 	while(1)
-	{
-		;
-	}
+		pause();
+	return (0);
 }

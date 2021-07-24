@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namwookim <namwookim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 17:49:18 by namwoo            #+#    #+#             */
-/*   Updated: 2021/07/15 23:42:17 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/07/25 02:07:36 by namwookim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@
 # include "libft/libft.h"
 # include <signal.h>
 
-# include <stdio.h>
-# include <string.h>
-# include <ctype.h>
-# include <stdlib.h>
-
 # define BYTE 8
+# define PID_MAX 32768
 
 #endif

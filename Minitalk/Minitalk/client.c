@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwoo <namwoo@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namwookim <namwookim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:35:56 by namwoo            #+#    #+#             */
-/*   Updated: 2021/07/16 00:11:04 by namwoo           ###   ########.fr       */
+/*   Updated: 2021/07/25 02:12:25 by namwookim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,21 @@ void	send_argv(char **argv)
 {
 	int				pid;
 	int				idx;
-	unsigned char	shift;
 	int				byte;
 
-	pid = atoi(argv[1]);
+	pid = ft_atoi(argv[1]);
+	if (pid < 2 || pid > PID_MAX)
+	{
+		ft_putstr_fd("INCORRECT PID!", 2);
+		exit(0);
+	}
 	idx = -1;
 	while (argv[2][++idx])
 	{
-		shift = 1;
 		byte = -1;
 		while (++byte < BYTE)
 		{
-			if (argv[2][idx] & (shift << byte))
+			if (argv[2][idx] & (1 << byte))
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
@@ -43,16 +46,16 @@ int		main(int argc, char **argv)
 	i = 0;
 	if (argc != 3 || !argv[2])
 	{
-		printf("error\n");
+		ft_putstr_fd("TYPE CORRECT ARGV!\n", 2);
 		return (0);
 	}
 	else
 	{
 		while(argv[1][i])
 		{
-			if (!isdigit(argv[1][i++]))
+			if (!ft_isdigit(argv[1][i++]))
 			{
-				printf("error\n");
+				ft_putstr_fd("PID FAULT!\n", 2);
 				return (0);
 			}
 		}
