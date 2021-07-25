@@ -38,7 +38,7 @@ fclean		: clean
 
 clean		:
 			$(RM) $(OBJS)
-			make clean -C $(LIBFT)
+			make fclean -C $(LIBFT)
 
 re			: fclean all
 
