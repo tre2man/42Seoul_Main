@@ -6,7 +6,7 @@
 /*   By: namwookim <namwookim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 17:46:19 by namwoo            #+#    #+#             */
-/*   Updated: 2021/07/25 02:12:41 by namwookim        ###   ########.fr       */
+/*   Updated: 2021/07/25 12:51:02 by namwookim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 	if (argc != 1 || argv[1])
 	{
 		ft_putstr_fd("PROHIBIT ARGV!", 2);
-		return (0);
+		exit(1);
 	}
 	ft_putstr_fd("pid is", 1);
 	ft_putnbr_fd(getpid(), 1);

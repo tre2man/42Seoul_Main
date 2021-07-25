@@ -6,23 +6,23 @@
 /*   By: namwookim <namwookim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:35:56 by namwoo            #+#    #+#             */
-/*   Updated: 2021/07/25 02:12:25 by namwookim        ###   ########.fr       */
+/*   Updated: 2021/07/25 12:51:18 by namwookim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	send_argv(char **argv)
+void send_argv(char **argv)
 {
-	int				pid;
-	int				idx;
-	int				byte;
+	int pid;
+	int idx;
+	int byte;
 
 	pid = ft_atoi(argv[1]);
-	if (pid < 2 || pid > PID_MAX)
+	if (pid < 2 || pid >= PID_MAX)
 	{
 		ft_putstr_fd("INCORRECT PID!", 2);
-		exit(0);
+		exit(1);
 	}
 	idx = -1;
 	while (argv[2][++idx])
@@ -39,7 +39,7 @@ void	send_argv(char **argv)
 	}
 }
 
-int		main(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	int i;
 
@@ -47,17 +47,14 @@ int		main(int argc, char **argv)
 	if (argc != 3 || !argv[2])
 	{
 		ft_putstr_fd("TYPE CORRECT ARGV!\n", 2);
-		return (0);
+		exit(1);
 	}
-	else
+	while (argv[1][i])
 	{
-		while(argv[1][i])
+		if (!ft_isdigit(argv[1][i++]))
 		{
-			if (!ft_isdigit(argv[1][i++]))
-			{
-				ft_putstr_fd("PID FAULT!\n", 2);
-				return (0);
-			}
+			ft_putstr_fd("PID FAULT!\n", 2);
+			exit(1);
 		}
 	}
 	send_argv(argv);

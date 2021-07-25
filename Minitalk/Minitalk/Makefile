@@ -22,24 +22,24 @@ RM			= rm -rf
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -O3
 
-all		: $(OBJS)
-		make -C $(LIBFT)
-		make $(CLIENT)
-		make $(SERVER)
+all			: $(OBJS)
+			make -C $(LIBFT)
+			make $(CLIENT)
+			make $(SERVER)
 
 $(CLIENT)	:
-		$(CC) $(CFLAGS) $(LIBFT)/$(LIBFT_LIB) -o $(CLIENT) client.o
+			$(CC) $(CFLAGS) $(LIBFT)/$(LIBFT_LIB) -o $(CLIENT) client.o
 
 $(SERVER)	:
-		$(CC) $(CFLAGS) $(LIBFT)/$(LIBFT_LIB) -o $(SERVER) server.o
+			$(CC) $(CFLAGS) $(LIBFT)/$(LIBFT_LIB) -o $(SERVER) server.o
 
-fclean	: clean
-		$(RM) $(CLIENT) $(SERVER)
+fclean		: clean
+			$(RM) $(CLIENT) $(SERVER)
 
-clean	:
-		$(RM) $(OBJS)
-		make clean -C $(LIBFT)
+clean		:
+			$(RM) $(OBJS)
+			make clean -C $(LIBFT)
 
-re		: fclean all
+re			: fclean all
 
-.PHONY	: all fclean clean re
+.PHONY		: all fclean clean re
