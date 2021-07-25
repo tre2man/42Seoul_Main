@@ -23,6 +23,16 @@ void	pixel_put(t_img *data, int x, int y, int color)
 	}
 }
 
+int	key_hook(int keycode, t_vars *vars)
+{
+	if (keycode == ESC)
+	{
+		mlx_destroy_window(vars->mlx, vars->win);
+		exit(0);
+	}
+	return (0);
+}
+
 int	throw_error(char *s)
 {
 	ft_putstr_fd(s, 2);

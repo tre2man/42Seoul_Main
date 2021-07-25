@@ -84,6 +84,7 @@ int			julia_main(void);
 ** utils.c
 */
 void		pixel_put(t_img *data, int x, int y, int color);
+int			key_hook(int keycode, t_vars *vars);
 int			throw_error(char *s);
 
 /*

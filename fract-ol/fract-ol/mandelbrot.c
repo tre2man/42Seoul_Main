@@ -12,16 +12,6 @@
 
 #include "fract_ol.h"
 
-static int	key_hook(int keycode, t_vars *vars)
-{
-	if (keycode == ESC)
-	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		exit(0);
-	}
-	return (0);
-}
-
 static void	mandelbrot(t_vars *vars, double x, double y)
 {
 	int			cycle;

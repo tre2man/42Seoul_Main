@@ -12,16 +12,6 @@
 
 #include "fract_ol.h"
 
-static int	key_hook(int keycode, t_vars *vars)
-{
-	if (keycode == ESC)
-	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		exit(0);
-	}
-	return (0);
-}
-
 static void	julia(t_vars *vars, double x, double y)
 {
 	int			cycle;
@@ -75,13 +65,18 @@ static int	mouse_hook(int button, int x, int y, t_vars *vars)
 		vars->zoom *= 1.2;
 	else if (button == ZOOM_OUT && vars->zoom >= 1.2)
 		vars->zoom /= 1.2;
-	else if (button == CLK_LEFT)
-	{
-		vars->num.real = ((double)(x - WIDTH / 2))
-			/ ((double)(WIDTH / 2)) * MAX_X;
-		vars->num.imaginary = ((double)(y - HEIGHT / 2))
-			/ ((double)(HEIGHT / 2)) * MAX_Y;
-	}
+	x = 1;
+	y = 1;
+	draw_julia(vars);
+	return (0);
+}
+
+static int	mouse_mov(int x, int y, t_vars *vars)
+{
+	vars->num.real = ((double)(x - WIDTH / 2))
+		/ ((double)(WIDTH / 2)) * MAX_X;
+	vars->num.imaginary = ((double)(y - HEIGHT / 2))
+		/ ((double)(HEIGHT / 2)) * MAX_Y;
 	draw_julia(vars);
 	return (0);
 }
@@ -102,6 +97,7 @@ int	julia_main(void)
 	vars.num.imaginary = 0.156;
 	draw_julia(&vars);
 	mlx_put_image_to_window(vars.mlx, vars.win, vars.img.img, 0, 0);
+	mlx_hook(vars.win, 6, 1L << 6, mouse_mov, &vars);
 	mlx_hook(vars.win, 4, 1L << 3, mouse_hook, &vars);
 	mlx_hook(vars.win, 2, 1L << 0, key_hook, &vars);
 	mlx_loop(vars.mlx);
