@@ -6,7 +6,7 @@
 /*   By: namwookim <namwookim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:35:56 by namwoo            #+#    #+#             */
-/*   Updated: 2021/07/25 12:51:18 by namwookim        ###   ########.fr       */
+/*   Updated: 2021/07/27 17:56:36 by namwookim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void send_argv(char **argv)
 	int byte;
 
 	pid = ft_atoi(argv[1]);
-	if (pid < 2 || pid >= PID_MAX)
+	if (pid < 2)
 	{
 		ft_putstr_fd("INCORRECT PID!", 2);
 		exit(1);

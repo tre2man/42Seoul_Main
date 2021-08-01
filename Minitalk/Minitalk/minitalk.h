@@ -6,7 +6,7 @@
 /*   By: namwookim <namwookim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 17:49:18 by namwoo            #+#    #+#             */
-/*   Updated: 2021/07/25 02:07:36 by namwookim        ###   ########.fr       */
+/*   Updated: 2021/07/27 18:03:15 by namwookim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,5 @@
 # include <signal.h>
 
 # define BYTE 8
-# define PID_MAX 32768
 
 #endif
