@@ -6,17 +6,17 @@
 /*   By: namwookim <namwookim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:35:56 by namwoo            #+#    #+#             */
-/*   Updated: 2021/07/27 17:56:36 by namwookim        ###   ########.fr       */
+/*   Updated: 2021/08/01 17:35:50 by namwookim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void send_argv(char **argv)
+void	send_argv(char **argv)
 {
-	int pid;
-	int idx;
-	int byte;
+	int	pid;
+	int	idx;
+	int	byte;
 
 	pid = ft_atoi(argv[1]);
 	if (pid < 2)
@@ -39,9 +39,9 @@ void send_argv(char **argv)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (argc != 3 || !argv[2])

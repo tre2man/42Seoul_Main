@@ -6,15 +6,15 @@
 /*   By: namwookim <namwookim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 17:46:19 by namwoo            #+#    #+#             */
-/*   Updated: 2021/07/27 17:56:03 by namwookim        ###   ########.fr       */
+/*   Updated: 2021/08/01 17:36:39 by namwookim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void print_char(int sig)
+void	print_char(int sig)
 {
-	static int 			byte;
+	static int			byte;
 	static unsigned int	c;
 
 	if (sig == SIGUSR1)
@@ -27,7 +27,7 @@ void print_char(int sig)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	if (argc != 1 || argv[1])
 	{
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 	ft_putstr_fd("\n", 1);
 	signal(SIGUSR1, print_char);
 	signal(SIGUSR2, print_char);
-	while(1)
+	while (1)
 		pause();
 	return (0);
 }
