@@ -19,7 +19,7 @@ void	send_argv(char **argv)
 	int	byte;
 
 	pid = ft_atoi(argv[1]);
-	if (pid < 2)
+	if (pid < 2 || pid > PID_MAX)
 	{
 		ft_putstr_fd("INCORRECT PID!", 2);
 		exit(1);
@@ -34,7 +34,7 @@ void	send_argv(char **argv)
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
-			usleep(50);
+			usleep(100);
 		}
 	}
 }

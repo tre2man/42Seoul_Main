@@ -17,5 +17,10 @@
 # include <signal.h>
 
 # define BYTE 8
+# ifdef __APPLE__
+#  define PID_MAX 99999
+# else
+#  define PID_MAX 32768
+# endif
 
 #endif
