@@ -16,5 +16,6 @@
         "deque": "c",
         "vector": "c",
         "string_view": "c"
-    }
+    },
+    "editor.tabSize": 4
 }
