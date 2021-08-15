@@ -5,41 +5,40 @@
 #                                                     +:+ +:+         +:+      #
 #    By: namwookim <namwookim@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/07/15 22:34:12 by namwoo            #+#    #+#              #
-#    Updated: 2021/08/15 22:18:33 by namwookim        ###   ########.fr        #
+#    Created: 2021/07/06 13:58:22 by namwkim           #+#    #+#              #
+#    Updated: 2021/08/15 21:56:18 by namwookim        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CLIENT		= client
-SERVER		= server
+NAME		= fractol
 LIBFT		= libft
 LIBFT_LIB	= libft.a
 
-SRCS		= client.c server.c
+SRCS		= main.c mandelbrot.c julia.c ship.c utils.c complex.c
 OBJS		= $(SRCS:.c=.o)
 
 RM			= rm -rf
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -O3
+MLXLIB		= minilibx_opengl
+MLXFLAGS	= -L$(MLXLIB) -lmlx -framework OpenGl -framework AppKit
 
-all			: $(OBJS)
-			make -C $(LIBFT)
-			make $(CLIENT)
-			make $(SERVER)
+$(NAME) : $(OBJS)
+	make -C $(LIBFT)
+	make -C $(MLXLIB)
+	$(CC) $(CFLAGS) $(LIBFT)/$(LIBFT_LIB) $(SRCS) -o $(NAME) $(MLXFLAGS)
 
-$(CLIENT)	:
-			$(CC) $(CFLAGS) $(LIBFT)/$(LIBFT_LIB) -o $(CLIENT) client.o
+all : $(NAME)
 
-$(SERVER)	:
-			$(CC) $(CFLAGS) $(LIBFT)/$(LIBFT_LIB) -o $(SERVER) server.o
+fclean : clean
+	$(RM) $(NAME)
+	make clean -C $(MLXLIB)
 
-fclean		: clean
-			$(RM) $(CLIENT) $(SERVER)
+clean :
+	$(RM) $(OBJS)
+	make clean -C $(MLXLIB)
+	make fclean -C $(LIBFT)
 
-clean		:
-			$(RM) $(OBJS)
-			make fclean -C $(LIBFT)
+re : fclean all
 
-re			: fclean all
-
-.PHONY		: all fclean clean re
+.PHONY : all fclean clean re
