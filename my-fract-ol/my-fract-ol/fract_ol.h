@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fract_ol.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namwookim <namwookim@student.42.fr>        +#+  +:+       +#+        */
+/*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 13:27:47 by namwkim           #+#    #+#             */
-/*   Updated: 2021/08/15 21:51:52 by namwookim        ###   ########.fr       */
+/*   Updated: 2021/08/27 01:12:48 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define ZOOM_IN 5
 # define ZOOM_OUT 4
 
-# define INPUT_ERROR "INPUT ARG(S) INVALIED!\nYou can use Mandelbrot or Julia\n"
+# define INPUT_ERROR "INPUT ARG(S) INVALIED!\nYou can use Mandelbrot or Julia or Ship\n"
 # define MLX_ERROR "MLX ERROR!"
 
 /*
