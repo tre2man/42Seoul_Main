@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 18:43:14 by namwkim           #+#    #+#             */
-/*   Updated: 2021/08/26 19:35:46 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/08/28 01:21:30 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ int main(int argc, char **argv)
 	}
 	free_all_tree(argv_dup_checker);
 	// 실제 계산 실행되는 로직
+	return (0);
 }

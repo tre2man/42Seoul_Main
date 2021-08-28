@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_run.c                                        :+:      :+:    :+:   */
+/*   stack_func.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 21:04:54 by namwkim           #+#    #+#             */
-/*   Updated: 2021/08/26 21:04:59 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/08/28 01:26:40 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	sx(node **stack_a, node **stack_b, char c)
+int	sx(stack *stack_a, stack *stack_b, char c)
 {
 	int	x;
 	int	y;
-	if (get_stack_size(*stack_a) <= 1 || get_stack_size(*stack_b) <= 1)
+	if (stack_a->size <= 1 || stack_b->size <= 1)
 		return (0);
 	if (c == 'a' || c == 's')
 	{
@@ -35,12 +35,12 @@ int	sx(node **stack_a, node **stack_b, char c)
 	return (1);
 }
 
-int	px(node **stack_a, node **stack_b, char c)
+int	px(stack *stack_a, stack *stack_b, char c)
 {
 	int	x;
-	if (get_stack_size(*stack_b) <= 0 && c == 'a')
+	if (stack_b->size <= 0 && c == 'a')
 		return (0);
-	if (get_stack_size(*stack_a) <= 0 && c == 'b')
+	if (stack_a->size <= 0 && c == 'b')
 		return (0);
 	if (c == 'a')
 	{
@@ -55,12 +55,12 @@ int	px(node **stack_a, node **stack_b, char c)
 	return (1);
 }
 
-int	rx(node **stack_a, node **stack_b, char c)
+int	rx(stack *stack_a, stack *stack_b, char c)
 {
 	int	x;
-	if (get_stack_size(*stack_a) <= 1 && (c == 'a' || c == 'r'))
+	if (stack_a->size <= 1 && (c == 'a' || c == 'r'))
 		return (0);
-	if (get_stack_size(*stack_b) <= 1 && (c == 'b' || c == 'r'))
+	if (stack_b->size <= 1 && (c == 'b' || c == 'r'))
 		return (0);
 	if (c == 'a' || c == 'r')
 	{
@@ -75,12 +75,12 @@ int	rx(node **stack_a, node **stack_b, char c)
 	return (1);
 }
 
-int	rrx(node **stack_a, node **stack_b, char c)
+int	rrx(stack *stack_a, stack *stack_b, char c)
 {
 	int	x;
-	if (get_stack_size(*stack_a) <= 0 && (c == 'a' || c == 'r'))
+	if (stack_a->size <= 0 && (c == 'a' || c == 'r'))
 		return (0);
-	if (get_stack_size(*stack_b) <= 0 && (c == 'b' || c == 'r'))
+	if (stack_b->size <= 0 && (c == 'b' || c == 'r'))
 		return (0);
 	if (c == 'a' || c == 'r')
 	{

@@ -5,66 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/26 21:04:38 by namwkim           #+#    #+#             */
-/*   Updated: 2021/08/26 21:17:05 by namwkim          ###   ########.fr       */
+/*   Created: 2021/08/27 22:23:53 by namwkim           #+#    #+#             */
+/*   Updated: 2021/08/28 01:22:30 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-node *new_node(int num)
+stack		new_stack(void)
 {
-	node *new;
+	stack	new;
 
-	new = malloc(sizeof(node));
-	if (!new)
-		return (0);
-	new->data = num;
-	new->back = NULL;
-	new->next = NULL;
+	new.head = NULL;
+	new.tail = NULL;
+	new.size = 0;
 	return (new);
 }
 
-void print_stack(node *start)
+void		print_stack(stack stack)
 {
-	if (!start)
-		ft_putendl_fd("NULL", 2);
+	if (!(stack.head))
+		ft_putstr_fd("NULL", 1);
 	else
 	{
-		while (start)
+		while (stack.head)
 		{
-			ft_putnbr_fd(start->data, 1);
+			ft_putnbr_fd((stack.head)->data, 1);
 			ft_putstr_fd(" ", 1);
-			start = start->next;
+			stack.head = (stack.head)->next;
 		}
 	}
-	ft_putstr_fd("\n", 2);
+	ft_putstr_fd("\n", 1);
 }
 
-int get_stack_size(node *start)
+void		free_stack(stack stack)
 {
-	int rtn;
+	node	*temp;
 
-	rtn = 0;
-	if (start)
+	while (stack.head)
 	{
-		while (start)
-		{
-			start = start->next;
-			rtn++;
-		}
-	}
-	return (rtn);
-}
-
-void free_all_node(node *start)
-{
-	node *temp;
-
-	while (start)
-	{
-		temp = start->next;
-		free(start);
-		start = temp;
+		temp = (stack.head)->next;
+		free(stack.head);
+		stack.head = temp;
 	}
 }

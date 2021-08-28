@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 19:02:49 by namwkim           #+#    #+#             */
-/*   Updated: 2021/08/26 21:19:01 by namwkim          ###   ########.fr       */
+/*   Updated: 2021/08/28 01:25:17 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ typedef struct node
 	struct node	*next;
 }	node;
 
+typedef struct stack
+{
+	int			size;
+	node		*head;
+	node		*tail;
+}	stack;
+
 typedef struct tree
 {
 	int			data;
@@ -27,28 +34,28 @@ typedef struct tree
 }	tree;
 
 /*
-** onenode
+** stack_utils
+*/
+stack	new_stack(void);
+void	print_stack(stack stack);
+void	free_stack(stack stack);
+
+/*
+** stack_node
 */
 node	*new_node(int num);
-void	print_stack(node *start);
-int		get_stack_size(node *start);
-void	free_all_node(node *start);
+void	add_node_front(stack *stack, int data);
+void	add_node_back(stack *stack, int data);
+int		del_node_front(stack *stack);
+int		del_node_back(stack *stack);
 
 /*
-** check
+** stack_func
 */
-void	add_node_front(node **start, int data);
-void	add_node_back(node **start, int data);
-int		del_node_front(node **start);
-int		del_node_back(node **start);
-
-/*
-** run
-*/
-int		sx(node **stack_a, node **stack_b, char c);
-int		px(node **stack_a, node **stack_b, char c);
-int		rx(node **stack_a, node **stack_b, char c);
-int		rrx(node **stack_a, node **stack_b, char c);
+int		sx(stack *stack_a, stack *stack_b, char c);
+int		px(stack *stack_a, stack *stack_b, char c);
+int		rx(stack *stack_a, stack *stack_b, char c);
+int		rrx(stack *stack_a, stack *stack_b, char c);
 
 /*
 ** tree

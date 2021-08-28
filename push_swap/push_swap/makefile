@@ -6,7 +6,7 @@
 #    By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/26 19:48:04 by namwkim           #+#    #+#              #
-#    Updated: 2021/08/26 21:21:47 by namwkim          ###   ########.fr        #
+#    Updated: 2021/08/28 01:23:31 by namwkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		=	push_swap
 LIBFT		=	libft
 LIBFT_LIB	=	libft.a
 
-SRCS		=	stack_check.c stack_onenode.c stack_run.c \
+SRCS		=	stack_node.c stack_utils.c stack_func.c \
 				tree.c \
 				main.c \
 				error.c
