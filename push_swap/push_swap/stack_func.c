@@ -6,16 +6,16 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 21:04:54 by namwkim           #+#    #+#             */
-/*   Updated: 2021/08/28 01:26:40 by namwkim          ###   ########.fr       */
+/*   Updated: 2022/02/01 17:18:09 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	sx(stack *stack_a, stack *stack_b, char c)
+int sx(stack *stack_a, stack *stack_b, char c)
 {
-	int	x;
-	int	y;
+	int x;
+	int y;
 	if (stack_a->size <= 1 || stack_b->size <= 1)
 		return (0);
 	if (c == 'a' || c == 's')
@@ -32,12 +32,15 @@ int	sx(stack *stack_a, stack *stack_b, char c)
 		add_node_back(stack_b, x);
 		add_node_back(stack_b, y);
 	}
+	ft_putchar_fd('s', 1);
+	ft_putchar_fd(c, 1);
+	ft_putchar_fd('\n', 1);
 	return (1);
 }
 
-int	px(stack *stack_a, stack *stack_b, char c)
+int px(stack *stack_a, stack *stack_b, char c)
 {
-	int	x;
+	int x;
 	if (stack_b->size <= 0 && c == 'a')
 		return (0);
 	if (stack_a->size <= 0 && c == 'b')
@@ -52,12 +55,15 @@ int	px(stack *stack_a, stack *stack_b, char c)
 		x = del_node_back(stack_a);
 		add_node_back(stack_b, x);
 	}
+	ft_putchar_fd('p', 1);
+	ft_putchar_fd(c, 1);
+	ft_putchar_fd('\n', 1);
 	return (1);
 }
 
-int	rx(stack *stack_a, stack *stack_b, char c)
+int rx(stack *stack_a, stack *stack_b, char c)
 {
-	int	x;
+	int x;
 	if (stack_a->size <= 1 && (c == 'a' || c == 'r'))
 		return (0);
 	if (stack_b->size <= 1 && (c == 'b' || c == 'r'))
@@ -72,12 +78,15 @@ int	rx(stack *stack_a, stack *stack_b, char c)
 		x = del_node_back(stack_b);
 		add_node_front(stack_b, x);
 	}
+	ft_putchar_fd('r', 1);
+	ft_putchar_fd(c, 1);
+	ft_putchar_fd('\n', 1);
 	return (1);
 }
 
-int	rrx(stack *stack_a, stack *stack_b, char c)
+int rrx(stack *stack_a, stack *stack_b, char c)
 {
-	int	x;
+	int x;
 	if (stack_a->size <= 0 && (c == 'a' || c == 'r'))
 		return (0);
 	if (stack_b->size <= 0 && (c == 'b' || c == 'r'))
@@ -92,5 +101,8 @@ int	rrx(stack *stack_a, stack *stack_b, char c)
 		x = del_node_front(stack_b);
 		add_node_back(stack_b, x);
 	}
+	ft_putstr_fd("rr", 1);
+	ft_putchar_fd(c, 1);
+	ft_putchar_fd('\n', 1);
 	return (1);
 }

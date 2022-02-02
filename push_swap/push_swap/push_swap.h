@@ -6,12 +6,16 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 19:02:49 by namwkim           #+#    #+#             */
-/*   Updated: 2021/08/28 01:25:17 by namwkim          ###   ########.fr       */
+/*   Updated: 2022/02/01 17:22:45 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include <stdio.h>
 typedef struct node
 {
 	int			data;
@@ -34,9 +38,15 @@ typedef struct tree
 }	tree;
 
 /*
+** validator
+*/
+int check_notnumber_args(int argc, char **argv);
+int check_duplicate_args(int argc, char **argv);
+
+/*
 ** stack_utils
 */
-stack	new_stack(void);
+stack	init_stack(void);
 void	print_stack(stack stack);
 void	free_stack(stack stack);
 
@@ -69,3 +79,5 @@ void	print_tree_preorder(tree *input);
 ** error
 */
 int		throw_error(char *str);
+
+# endif

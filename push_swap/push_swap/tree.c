@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 21:05:07 by namwkim           #+#    #+#             */
-/*   Updated: 2021/08/27 16:13:34 by namwkim          ###   ########.fr       */
+/*   Updated: 2022/02/01 16:35:57 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,17 @@ int		tree_insert_data(tree **input, int data)
 	if (!(*input))
 	{
 		*input = new_tree(data);
+		return (0);
+	}
+	head = *input;
+	if ((*input)->data == data)
 		return (1);
-	}
+	else if ((*input)->data < data)
+		rtn = tree_insert_data(&((*input)->right), data);
 	else
-	{
-		head = *input;
-		if ((*input)->data == data)
-			return (0);
-		else if ((*input)->data < data)
-			rtn = tree_insert_data(&((*input)->right), data);
-		else
-			rtn = tree_insert_data(&((*input)->left), data);
-		*input = head;
-		return (rtn);
-	}
+		rtn = tree_insert_data(&((*input)->left), data);
+	*input = head;
+	return (rtn);
 }
 
 void	free_all_tree(tree *input)

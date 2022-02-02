@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 19:01:18 by namwkim           #+#    #+#             */
-/*   Updated: 2021/08/26 19:38:27 by namwkim          ###   ########.fr       */
+/*   Updated: 2022/02/01 16:45:16 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 int		throw_error(char *str)
 {
 	ft_putstr_fd(str, 2);
-	return (0);
+	return (2);
 }

@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sorter_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/26 18:43:14 by namwkim           #+#    #+#             */
-/*   Updated: 2022/02/01 17:18:53 by namwkim          ###   ########.fr       */
+/*   Created: 2022/02/01 17:12:14 by namwkim           #+#    #+#             */
+/*   Updated: 2022/02/01 17:22:33 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+int sorter(int argc, char **argv)
 {
-	int		rtn;
+	stack a;
+	stack b;
 
-	rtn = check_notnumber_args(argc, argv);
-	if (rtn != 0)
-		return throw_error("Args invalid!");
-	rtn = check_duplicate_args(argc, argv);
-	if (rtn != 0)
-		return throw_error("Args duplicated!");
-	// 실제 계산 실행되는 로직
-	rtn = 
-	return (0);
+	a = init_stack();
+	b = init_stack();
+
+	
+
+	free_stack(a);
+	free_stack(b);
 }
