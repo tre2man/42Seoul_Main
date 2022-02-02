@@ -6,7 +6,7 @@
 #    By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/26 19:48:04 by namwkim           #+#    #+#              #
-#    Updated: 2022/02/01 16:52:53 by namwkim          ###   ########.fr        #
+#    Updated: 2022/02/02 17:42:05 by namwkim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,11 @@ LIBFT		=	libft
 LIBFT_LIB	=	libft.a
 
 SRCS		=	stack_node.c stack_utils.c stack_func.c \
+				sorter_1.c \
 				tree.c \
-				main.c \
 				error.c \
-				validator.c
+				validator.c \
+				main.c
 OBJS		=	$(SRCS:.c=.o)
 
 RM			=	rm -rf

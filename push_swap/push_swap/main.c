@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 18:43:14 by namwkim           #+#    #+#             */
-/*   Updated: 2022/02/01 17:18:53 by namwkim          ###   ########.fr       */
+/*   Updated: 2022/02/02 17:21:47 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int main(int argc, char **argv)
 	if (rtn != 0)
 		return throw_error("Args duplicated!");
 	// 실제 계산 실행되는 로직
-	rtn = 
+	sorter(argc, argv);
 	return (0);
 }

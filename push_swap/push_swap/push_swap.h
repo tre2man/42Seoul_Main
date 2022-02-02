@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/26 19:02:49 by namwkim           #+#    #+#             */
-/*   Updated: 2022/02/01 17:22:45 by namwkim          ###   ########.fr       */
+/*   Updated: 2022/02/02 17:48:05 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define PUSH_SWAP_H
 
 # include <stdio.h>
+
 typedef struct node
 {
 	int			data;
@@ -42,11 +43,12 @@ typedef struct tree
 */
 int check_notnumber_args(int argc, char **argv);
 int check_duplicate_args(int argc, char **argv);
+int get_pivot(stack a, int size);
 
 /*
 ** stack_utils
 */
-stack	init_stack(void);
+stack	*init_stack(void);
 void	print_stack(stack stack);
 void	free_stack(stack stack);
 
@@ -74,6 +76,12 @@ tree	*new_tree(int data);
 int		tree_insert_data(tree **input, int data);
 void	free_all_tree(tree *input);
 void	print_tree_preorder(tree *input);
+int		get_value_from_index(tree *input, int target_index, int target_find, int *ans);
+
+/*
+** sort_start
+*/
+int		sorter(int argc, char **argv);
 
 /*
 ** error

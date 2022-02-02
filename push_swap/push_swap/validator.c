@@ -6,7 +6,7 @@
 /*   By: namwkim <namwkim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 16:39:42 by namwkim           #+#    #+#             */
-/*   Updated: 2022/02/01 17:06:53 by namwkim          ###   ########.fr       */
+/*   Updated: 2022/02/02 17:41:32 by namwkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,23 @@ int check_duplicate_args(int argc, char **argv)
 	}
 	print_tree_preorder(argv_duplicate_checker);
 	return (0);
+}
+
+int get_pivot(stack a, int size)
+{
+	int idx;
+	int ans;
+	tree *checker;
+
+	idx = 0;
+	checker = NULL;
+	if (size <= 2)
+		return a.head->data;
+	while (idx++ < size)
+	{
+		tree_insert_data(&checker, a.head->data);
+		a.head = a.head->next;
+	}
+	get_value_from_index(checker, size / 2, 0, &ans);
+	return ans;
 }
